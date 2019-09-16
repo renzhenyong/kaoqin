@@ -1,0 +1,16 @@
+<!--pages/login/index.wxml-->
+<view class='rongqi' style='height:{{rongqiHeight}}px'>
+  <view>
+    <button 
+    class="login-btn" 
+    open-type='getUserInfo'
+    bindgetuserinfo="bindGetUserInfo"
+    >
+      <image src='/img/wx.png' style='width:25px;height:25px;'></image>
+      <view style="margin-left:10px">微信登录</view>
+    </button>
+  </view>
+</view>
+<view style='text-align:center;'>
+  <navigator style='color:#999;font-size:13px;'>登录代表你已同意协议</navigator>
+</view>
