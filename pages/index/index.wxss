@@ -1,21 +1,91 @@
-/**index.wxss**/
-.userinfo {
+map {
+  width: 100%;
+  height: 50vh;
+}
+
+.cover {
+  position: absolute;
+  top: 20rpx;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  justify-content: center;
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.scan {
+  background:#fff;
+  width: 90%;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 5px;
 }
-
-.usermotto {
-  margin-top: 200px;
+.map-clock {
+  width: 100%;
+  height: calc(100vh - 90rpx);
+  position: relative;
+}
+.schoolname{
+margin-left:20px;
+font-size:1.1rem;
+ color:#313131;
+}
+.current_time{
+  color:#686868;
+  margin-left:5px;
+  font-size:1rem;
+}
+/* .cover1{
+ width: 100%;
+position: absolute;
+bottom:10px;
+  display: flex;
+  justify-content: center;
+}
+.scan1{
+  background:#fff;
+  width: 90%;
+  height: 200px;
+  border-radius: 5px;
+    padding-left:50rpx；
+}
+.address{
+margin:0 auto;text-align:center;margin-top:10px;
+} */
+.floor{
+margin-top:10px;
+color:#313131;
+}
+.distrinct{
+  margin-top:5px;
+ color: #686868
+}
+.addmarks{
+  margin-top:10px;
+  color:#576B95;
+  font-size:0.9rem;
+}
+.daka{
+  margin-top:10px;
+width:120px;
+height:120px;
+border-radius: 50%;
+background: #3F88FB;
+text-align:center;
+}
+.daka_attention{
+  margin-top:10px;
+}
+.daka_time{
+color:#fff;
+font-size:30px;
+}
+.daka_guiqin{
+  font-size:13px;
+  color:#fff;
+}
+.daka_icon{
+width:40px;
+height:40px;
+background:black;
+margin:0 auto;
+margin-top:10px;
 }

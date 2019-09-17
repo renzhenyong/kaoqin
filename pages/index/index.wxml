@@ -1,20 +1,29 @@
 <!--index.wxml-->
 <view class="container">
-<view>
-<map id="map" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map>
-
-
+<map class='map' longitude='{{longitude}}' latitude='{{latitude}}' scale='{{scale}}'  show-location>
+  <view class="cover">
+  <view class="scan"><text class="schoolname">实验中学</text><text class="current_time">2019.06.11</text><text class="current_time">星期三</text></view> 
   </view>
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登陆 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view style="position:absolute;top:28vh;left:30%;"><image src="/img/popover.png" style="width:150px;height:50px"></image>
+  <text style="position:absolute;top:18px;left:10px;color:#1AAD19">你已在考勤范围内</text>
   </view>
-  <view><button bindtap="getLocation">获取经纬度</button></view>
-    <view><button bindtap="logout">退出登陆</button></view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+</map>
+   <!-- <cover-view class="cover1">
+     <cover-view class="scan1">
+         <view class="address">
+             <view>宝威大厦一号楼</view>
+               <view>山东省烟台市开发区宝威大厦</view>
+         </view>
+     </cover-view>
+   </cover-view> -->
+  
+   <view class="floor">宝威大厦1号楼</view>
+    <view class="distrinct">山东省烟台市开发区宝威大厦</view>
+     <view class="addmarks">添加备注</view>
+     <view class="daka">
+          <view class="daka_icon"></view>
+          <view class="daka_time">21:23</view>
+         <view class="daka_guiqin">归勤打卡</view>
+     </view>
+     <view class="daka_attention">请在21:00-22:00之间打卡</view>
 </view>

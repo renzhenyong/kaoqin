@@ -14,5 +14,27 @@
   "navigationBarBackgroundColor": "#3F88FB",
   "navigationBarTitleText": "考勤助手",
   "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "考勤打卡",
+        "iconPath": "img/home.png",
+        "selectedIconPath": "img/home1.png"
+      },{
+          "pagePath": "pages/index/index",
+          "text": "学务申请",
+          "iconPath": "img/home.png",
+          "selectedIconPath": "img/home1.png"
+        },
+      {
+        "pagePath": "pages/login/index",
+        "text": "我的",
+        "iconPath": "img/mine.png",
+        "selectedIconPath": "img/mine1.png"
+      }
+    ]
   }
+
 }
