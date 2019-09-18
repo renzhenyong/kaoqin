@@ -1,0 +1,10 @@
+<!--pages/xwsq/index.wxml-->
+<view class="xw_bg">
+  <view class="xwsq_card">
+             <view><view class="buka_menu"><view class="buka_circle"></view><view class="buka_text">补卡</view></view></view>
+               <view><view class="buka_menu"><view class="buka_circle"></view><view class="buka_text">请假</view></view></view>
+                 <view><view class="buka_menu"><view class="buka_circle"></view><view class="buka_text" style="margin-left:-10px">考勤记录</view></view></view>
+  </view>
+</view>
+
+ 

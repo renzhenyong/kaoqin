@@ -20,7 +20,7 @@
    <view class="floor">宝威大厦1号楼</view>
     <view class="distrinct">山东省烟台市开发区宝威大厦</view>
      <view class="addmarks">添加备注</view>
-     <view class="daka">
+     <view class="daka" bindtap="dakapaizao">
           <view class="daka_icon"></view>
           <view class="daka_time">21:23</view>
          <view class="daka_guiqin">归勤打卡</view>

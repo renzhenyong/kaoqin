@@ -1,0 +1,29 @@
+<!--pages/mine/index.wxml-->
+<view class="xw_bg">
+  <view class="xwsq_card" bindtap="getdetail">
+               <view class="mine_ziliao">   
+                  <image  class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                      <view >
+                     <view>{{userInfo.nickName}}</view>
+                     <view>三年级二班</view>
+                      <view>计算机学院</view>
+                 </view>
+                    </view>
+                
+           
+    </view>
+</view>
+
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>
+ 

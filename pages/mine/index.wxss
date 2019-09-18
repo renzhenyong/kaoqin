@@ -1,0 +1,22 @@
+/* pages/mine/index.wxss */
+.xw_bg{
+background: #E8EAEE;
+height:100vh;
+ padding:20px 10px;
+}
+.xwsq_card{
+ border-radius: 5px;
+  margin:0 auto;
+  width:100%;
+  height:130px;
+  background: #fff;
+ 
+}
+.mine_ziliao{
+  padding:25px 0 25px 9px;
+   display: flex;
+}
+.userinfo-avatar{
+width:70px;height:70px;border-radius:50%;
+text-align:left;
+}

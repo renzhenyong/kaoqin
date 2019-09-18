@@ -1,7 +1,11 @@
 {
   "pages":[
       "pages/index/index",
+      "pages/mine/index",
+    
     "pages/login/index",
+    "pages/xwsq/index",
+  "pages/mine/detail",
     "pages/logs/logs"
   ],
   "permission": {
@@ -23,13 +27,13 @@
         "iconPath": "img/home.png",
         "selectedIconPath": "img/home1.png"
       },{
-          "pagePath": "pages/index/index",
+          "pagePath": "pages/xwsq/index",
           "text": "学务申请",
           "iconPath": "img/home.png",
           "selectedIconPath": "img/home1.png"
         },
       {
-        "pagePath": "pages/login/index",
+        "pagePath": "pages/mine/index",
         "text": "我的",
         "iconPath": "img/mine.png",
         "selectedIconPath": "img/mine1.png"

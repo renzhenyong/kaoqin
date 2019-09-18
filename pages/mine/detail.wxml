@@ -1,0 +1,2 @@
+<!--pages/mine/detail.wxml-->
+<button bindtap="logout">退出登陆</button>

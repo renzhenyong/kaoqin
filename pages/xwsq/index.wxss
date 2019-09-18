@@ -1,0 +1,26 @@
+/* pages/xwsq/index.wxss */
+.xw_bg{
+background: #E8EAEE;
+height:100vh;
+ padding:20px 10px;
+}
+.xwsq_card{
+ border-radius: 5px;
+  margin:0 auto;
+  width:100%;
+  height:120px;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+}
+.buka_circle{
+width:50px;height:50px;background: #3F88FB;
+border-radius: 50%;
+}
+.buka_menu{
+margin-top:25px;
+}
+.buka_text{
+ text-align:center;
+ margin-top:4px;
+}
