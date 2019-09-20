@@ -1,0 +1,10 @@
+<!--pages/index/marks.wxml-->
+<view class="mark_bg">
+<view class="mark_form">
+  <form bindsubmit="bindFormSubmit" >
+    <textarea placeholder="备注" name="textarea"  auto-focus/>
+
+  </form>
+</view>
+ <button form-type="submit" class="tijao"> 确认 </button>
+</view>

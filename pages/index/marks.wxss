@@ -1,0 +1,15 @@
+.mark_bg{
+background: #E8EAEE;
+height:100vh;
+ padding:15px 10px;
+
+}
+.mark_form{
+  background:#fff;
+    border-radius:5px;
+  }
+.tijao{
+margin-top:30px;
+background: #126FFA;
+color:#fff;
+}

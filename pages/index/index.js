@@ -3,6 +3,7 @@
 const app = getApp()
 Page({
   data: {
+    modalHidden: false,
     latitude: "",
     longitude: "",
     scale: 16,
@@ -14,7 +15,10 @@ Page({
       url: '../logs/logs'
     })
   },
+  onReady: function () {
+  },
   onLoad: function (options) {
+
     var that = this
     //获取当前的地理位置、速度
     wx.getLocation({
@@ -29,21 +33,27 @@ Page({
         })
       }
     })
+  },
+  takePhoto(){
+    var that = this
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['camera'],
+      success(res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        const tempFilePaths = res.tempFilePaths
+        that.setData({
+          modalHidden: false
+        })
+      }
+    })
+    },
+  marks(){
+    console.log(888);
+    wx.navigateTo({
+      url: '../index/marks'
+    })
+  },
 
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-  logout: function (e) {
-    wx.clearStorageSync();
-    console.log(136);
-    wx.redirectTo({
-      url: '../login/index'
-    })
-  },
 })

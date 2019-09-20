@@ -8,22 +8,35 @@
   <text style="position:absolute;top:18px;left:10px;color:#1AAD19">你已在考勤范围内</text>
   </view>
 </map>
-   <!-- <cover-view class="cover1">
-     <cover-view class="scan1">
-         <view class="address">
-             <view>宝威大厦一号楼</view>
-               <view>山东省烟台市开发区宝威大厦</view>
-         </view>
-     </cover-view>
-   </cover-view> -->
-  
    <view class="floor">宝威大厦1号楼</view>
     <view class="distrinct">山东省烟台市开发区宝威大厦</view>
-     <view class="addmarks">添加备注</view>
-     <view class="daka" bindtap="dakapaizao">
+     <view class="addmarks" bindtap='marks'>添加备注</view>
+     <view class="daka" bindtap="takePhoto">
           <view class="daka_icon"></view>
           <view class="daka_time">21:23</view>
          <view class="daka_guiqin">归勤打卡</view>
      </view>
      <view class="daka_attention">请在21:00-22:00之间打卡</view>
+ <!-- modal弹窗-->
+
+<view class="daka_modal">
+</view>
+    <view class="daka_modal1">
+          <view class="daka_floor1">
+                <view class="daka_icon1"></view>
+                <view class="daka_text">打卡成功</view>
+           </view>   
+           <view class="daka_icon2"></view>
+           <view class="daka_text1"><text>晚归</text></view>  
+           <view class="daka_floor2">
+               <view class="daka_icon3"></view>
+               <view class='daka_text3'>00:23</view>
+               <view class="daka_icon4"></view>
+               <view class='daka_text3'>在宿舍范围内</view>
+           </view>
+           <view class="daka_floor3">
+                   <view class='daka_text4'>更新打卡</view>
+                    <view class='daka_text4 text4_right'>我知道了</view>
+           </view>
+    </view>
 </view>
