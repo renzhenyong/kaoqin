@@ -1,0 +1,70 @@
+/* pages/xwsq/buka.wxss */
+.baka_bg{
+background:#E8EAEE;height:100vh;
+   padding-top:18px;
+}
+.baka_content{
+       background:#fff;
+       padding-left:16px;
+}
+.qingjia_start{
+height:44px;line-height:44px;
+border-bottom:1px solid #E5E5E5;
+display:flex;
+   justify-content: space-between;
+font-size:17px;
+}
+.startpicker{
+margin-right:15px;
+}
+.qxz{
+  color:#9A999F;
+}
+.baka_time{
+  font-size:17px;
+height:44px;line-height:44px;
+border-bottom:1px solid #E5E5E5;
+display:flex;
+   justify-content: space-between;
+    align-items: center;
+}
+
+.baka_time_icon{
+  width:16px;height:16px;
+  background:#DCDCDC;
+margin-right:15px;
+}
+.sicang{
+margin-right:15px;
+color:#9A999F;
+}
+.senqing_reason{
+  background:#fff;
+  display:flex;
+  padding-left:15px;
+}
+.senqing_reason_text{
+width:80px;
+font-size:17px;
+}
+.senqing_reason_content{
+  font-size:15px;
+  margin-top:4px;
+}
+.tijiao_zaopian{
+  padding:5px 15px;
+}
+.tijao{
+margin:30px 20px;
+background: #126FFA;
+color:#fff;
+}
+.qingjia_type{
+background:#fff;
+height:44px;
+line-height:44px;
+margin-bottom:18px;
+  display:flex;
+   justify-content: space-between;
+   padding:0 16px;
+}

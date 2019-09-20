@@ -35,6 +35,79 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    api: 'https://banpai.chxgk.com/api/attend/',
+    imgurl: 'https://banpai.chxgk.com/'
+  },
+  loading: () => {
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    });
+  },
+  post: function (route, data, success, fail, complete) {
+    data.token = this.globalData.sid;
+    wx.request({
+      url: this.globalData.api + route,
+      data: data,
+      method: 'POST',
+      success: res => {
+        console.log(res);
+        if (success)
+          success(res);
+      },
+      fail: err => {
+        console.log(err);
+        if (fail)
+          fail(err);
+      },
+      complete: function () {
+        if (!data.noload) {
+          wx.hideLoading();
+        }
+        if (complete)
+          complete();
+      },
+    })
+  },
+  /**
+ * 验证是否已登录
+ */
+  hasLogin: function () {
+    var that = this;
+    //判断session是否有效
+    wx.checkSession({
+      success() {
+        //session_key 未过期，并且在本生命周期一直有效
+        var uid = wx.getStorageSync('uid');
+        if (uid) {
+          //判断是否合法
+          that.post('isAuth', { sid: uid }, res => {
+            if (res.data.code == 0) {
+              console.log('登录状态失效了');
+              //登录失效，重新登录
+              wx.reLaunch({
+                url: '/pages/login/index',
+              })
+            }
+          })
+          that.globalData.uid = uid;
+          //用户已经登录
+        } else {
+          return false;
+          //未登录 跳转到登录界面
+          wx.navigateTo({
+            url: '/pages/login/index'
+          })
+          return false;
+
+        }
+      },
+      fail() {
+        wx.redirectTo({
+          url: '/pages/login/index',
+        })
+      }
+    })
+
   }
 })

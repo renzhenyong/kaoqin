@@ -1,4 +1,4 @@
-// pages/xwsq/index.js
+// pages/xwsq/buka.js
 Page({
 
   /**
@@ -63,20 +63,9 @@ Page({
   onShareAppMessage: function () {
 
   },
-  buka(){
+  tijiao(){
     wx.navigateTo({
-      url: '../xwsq/buka',
+      url: '../xwsq/buka_success',
     })
-  },
-  qingjia(){
-    wx.navigateTo({
-      url: '../xwsq/qingjia',
-    })
-  },
-  kaoqin_record() {
-    wx.navigateTo({
-      url: '../xwsq/kaoqin_record',
-    })
-  },
-  
+  }
 })

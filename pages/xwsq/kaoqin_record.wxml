@@ -1,0 +1,6 @@
+<!--pages/xwsq/kaoqin_record.wxml-->
+<calendar 
+   weeks-type="cn"
+   days-color="{{dayStyle}}"
+   binddayClick="dayClick"
+ />

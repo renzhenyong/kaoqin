@@ -1,0 +1,22 @@
+<!--pages/xwsq/buka.wxml-->
+<view class="baka_bg">
+  <view class="baka_content">
+    <view class="senqing_ren">
+      <text>申请人</text>
+      <text class="benren">本人</text>
+    </view>
+    <view class="baka_time">
+      <view>补卡时间</view>
+      <view class="baka_time_icon"></view>
+    </view>
+    <view class="senqing_reason">
+      <view class="senqing_reason_text">申请原因</view>
+      <textarea placeholder="请填写申请原因" name="textarea" class="senqing_reason_content"></textarea>
+    </view>
+  </view>
+  <view class="tijiao_zaopian">提交照片</view>
+  <view class="buzao_content">
+     <view class="bupaizaopian"></view>
+  </view>
+   <button form-type="submit" class="tijao" bindtap="tijiao">确认提交 </button>
+</view>

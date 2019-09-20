@@ -1,11 +1,17 @@
-// pages/xwsq/index.js
+// pages/xwsq/qingjia.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    array: ['事假', '休假', '婚假', '病假'],
+    index:5,
+    choice:false,
+    choice1: false,
+    choice2: false,
+    start_date: '',
+    end_date:"",
   },
 
   /**
@@ -63,20 +69,24 @@ Page({
   onShareAppMessage: function () {
 
   },
-  buka(){
-    wx.navigateTo({
-      url: '../xwsq/buka',
+  bindPickerChange: function (e) {
+    this.setData({
+      choice:true,
+      index: e.detail.value
     })
   },
-  qingjia(){
-    wx.navigateTo({
-      url: '../xwsq/qingjia',
+  bindStartDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      choice1: true,
+      start_date: e.detail.value
     })
   },
-  kaoqin_record() {
-    wx.navigateTo({
-      url: '../xwsq/kaoqin_record',
+  bindEndDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      choice2: true,
+      end_date: e.detail.value
     })
   },
-  
 })

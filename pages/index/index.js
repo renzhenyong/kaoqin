@@ -3,7 +3,7 @@
 const app = getApp()
 Page({
   data: {
-    modalHidden: false,
+    modalHidden: true,
     latitude: "",
     longitude: "",
     scale: 16,
@@ -19,6 +19,18 @@ Page({
   },
   onLoad: function (options) {
 
+  },
+  onShow: function () {
+    app.hasLogin();
+    this.data.sid = wx.getStorageSync('uid');
+    console.log(22);
+    console.log(this.data.sid);
+    if (this.data.sid != '') {
+    } else {
+      wx.reLaunch({
+        url: '../login/index',
+      })
+    }
     var that = this
     //获取当前的地理位置、速度
     wx.getLocation({
@@ -50,10 +62,15 @@ Page({
     })
     },
   marks(){
-    console.log(888);
     wx.navigateTo({
       url: '../index/marks'
     })
   },
-
+know(){
+  console.log(888);
+  var that = this
+  that.setData({
+    modalHidden: true
+  })
+}
 })

@@ -19,9 +19,9 @@
      <view class="daka_attention">请在21:00-22:00之间打卡</view>
  <!-- modal弹窗-->
 
-<view class="daka_modal">
+<view class="daka_modal" hidden="{{modalHidden}}" >
 </view>
-    <view class="daka_modal1">
+    <view class="daka_modal1" hidden="{{modalHidden}}">
           <view class="daka_floor1">
                 <view class="daka_icon1"></view>
                 <view class="daka_text">打卡成功</view>
@@ -36,7 +36,7 @@
            </view>
            <view class="daka_floor3">
                    <view class='daka_text4'>更新打卡</view>
-                    <view class='daka_text4 text4_right'>我知道了</view>
+                    <view class='daka_text4 text4_right' bindtap="know">我知道了</view>
            </view>
     </view>
 </view>
