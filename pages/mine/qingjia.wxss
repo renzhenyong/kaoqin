@@ -1,0 +1,24 @@
+/* pages/mine/qingjia.wxss */
+.mineqingjia_bg{
+  background: #E8EAEE;
+height:100vh;
+ padding:15px 10px;
+}
+.mineqingjia1{
+  background:#fff;
+  border-radius:5px;
+  padding:15px 10px;
+  display:flex;
+  justify-content: space-between;
+
+}
+.mineqingjia12{
+  width:60px;height:60px;background:#DCDCDC;
+  border-radius:50%;
+  margin-right:30px;
+     align-self: center;
+}
+.mineqingjia111{
+  font-size:14px;
+  margin:5px 0;
+}

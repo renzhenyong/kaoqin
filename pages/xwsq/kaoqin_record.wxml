@@ -1,6 +1,19 @@
 <!--pages/xwsq/kaoqin_record.wxml-->
-<calendar 
-   weeks-type="cn"
-   days-color="{{dayStyle}}"
-   binddayClick="dayClick"
- />
+<view class="demo4">
+  <calendar weeks-type="cn" header-style="demo4-header" board-style="demo4-board" calendar-style="demo4-calendar" days-color="{{demo4_days_style}}" binddayClick="dayClick" />
+</view>
+
+<view class="record_content" bindtap='record_detail'>
+  <view style="display:flex">
+    <view class="record_icon"></view>
+    <view>
+      <text>打卡时间</text>
+      <text class="record_time">21:30</text>
+      <text class="kqsj">（考勤时间21:00）</text>
+    </view>
+  </view>
+  <view class="record_date"><text>2019.06.12</text> <text style="margin-left:5px;">（星期五）</text></view>
+   <view class="record_date zengcang">正常</view>
+   <view class="record_date" ><image src="../../img/wxtx.jpg" class="img_tou"></image></view>
+      <view style="border:1px solid #D8D8D8;margin-top:30px;"></view>
+</view>

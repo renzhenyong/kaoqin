@@ -1,12 +1,13 @@
-// pages/xwsq/kaoqin_record.js
-
+// pages/xwsq/record_detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    demo4_days_style: [{ month: 'current',color: 'white'}],
+    latitude: "37.49794",
+    longitude: "121.26757",
+    scale: 16,
   },
 
   /**
@@ -63,10 +64,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  record_detail(){
-    wx.navigateTo({
-      url: '../xwsq/record_detail',
-    })
   }
 })

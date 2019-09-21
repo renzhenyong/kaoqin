@@ -1,16 +1,18 @@
 {
   "pages":[
-  "pages/xwsq/kaoqin_record",
         "pages/index/index",
         "pages/login/index",
    "pages/index/marks",
-      "pages/mine/index",
         "pages/xwsq/index",
 "pages/xwsq/buka",
 "pages/xwsq/buka_success",
       "pages/xwsq/qingjia",
-      
-  "pages/mine/detail",
+      "pages/xwsq/kaoqin_record",
+"pages/xwsq/record_detail",
+"pages/mine/index",
+    "pages/mine/detail",
+    "pages/mine/qingjiaDetail",
+    "pages/mine/qingjia",
     "pages/logs/logs"
   ],
   "permission": {
@@ -44,6 +46,12 @@
         "selectedIconPath": "img/mine1.png"
       }
     ]
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
   }
 
 }

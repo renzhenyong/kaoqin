@@ -1,1 +1,23 @@
 /* pages/mine/detail.wxss */
+.minedetail_bg{
+background: #E8EAEE;
+height:100vh;
+ padding:15px 0px;
+}
+.minedetail1{
+  background:#fff;
+}
+.minedetail11{
+  display:flex;
+  border-bottom:1px solid #E5E5E5;
+  padding:15px;
+  justify-content: space-between;
+}
+.minedetail111{
+  width:50px;height:50px;
+  background:#A0A0A0;
+  border-radius:50%;
+}
+.minedetail112{
+ color:#9A999F;
+}

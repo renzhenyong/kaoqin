@@ -1,29 +1,50 @@
 <!--pages/mine/index.wxml-->
 <view class="xw_bg">
   <view class="xwsq_card" bindtap="getdetail">
-               <view class="mine_ziliao">   
-                  <image  class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-                      <view >
-                     <view>{{userInfo.nickName}}</view>
-                     <view>三年级二班</view>
-                      <view>计算机学院</view>
-                 </view>
-                    </view>
-                
-           
+    <view class="mine_ziliao">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <view class="mine1">
+        <view class="mine2">
+          <text class="mine2_1">{{userInfo.nickName}}</text>
+          <text class="mine2_2">18053535260</text>
+        </view>
+        <view class="mine3">三年级二班</view>
+        <view class="mine4">计算机学院</view>
+      </view>
+      <view class="mine5">诚海中职学校</view>
     </view>
-</view>
+  </view>
 
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view class="mine6">
+    <view style="display:flex">
+      <view class="mine61"></view>
+      <view>心悦楼</view>
+    </view>
+    <view class="mine62">1102室</view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+  <view class="mine7">消息</view>
+  <view class="mine8">
+    <view class="mine81" bindtap="qingjia">
+      <view style="display:flex;">
+        <view class="mine811"></view>
+        <view>
+          <view>请假</view>
+          <view class="mine812">你的请假已通过</view>
+        </view>
+      </view>
+      <view class="mine812">8:56</view>
+    </view>
+
+    <view class="mine81">
+      <view style="display:flex;">
+        <view class="mine811 bu1"></view>
+        <view>
+          <view>补卡</view>
+          <view class="mine812">你的补卡已通过</view>
+        </view>
+      </view>
+      <view class="mine812">8:56</view>
+    </view>
   </view>
 </view>
- 

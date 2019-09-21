@@ -1,2 +1,34 @@
 <!--pages/mine/detail.wxml-->
-<button bindtap="logout">退出登陆</button>
+
+<view class="minedetail_bg">
+  <view class="minedetail1">
+    <view class="minedetail11">
+      <view>头像</view>
+      <view class="minedetail111"></view>
+    </view>
+    <view class="minedetail11">
+               <view>姓名</view>
+                <view class="minedetail112">张天师</view>
+    </view>
+     <view class="minedetail11">
+               <view>性别</view>
+                <view class="minedetail112">男</view>
+    </view>
+     <view class="minedetail11">
+               <view>学号</view>
+                <view class="minedetail112">201923221223</view>
+    </view>
+  </view>
+
+          <view class="minedetail1" style="margin-top:15px;">
+                          <view class="minedetail11">
+               <view>性别</view>
+                <view class="minedetail112">男</view>
+    </view>
+     <view class="minedetail11">
+               <view>学号</view>
+                <view class="minedetail112">201923221223</view>
+    </view>
+          </view>
+          <button class="minedetail1" style="margin-top:15px;color:#E64340">退出登陆</button>
+</view>

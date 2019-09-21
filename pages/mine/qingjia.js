@@ -1,12 +1,11 @@
-// pages/xwsq/kaoqin_record.js
-
+// pages/mine/qingjia.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    demo4_days_style: [{ month: 'current',color: 'white'}],
+
   },
 
   /**
@@ -64,9 +63,9 @@ Page({
   onShareAppMessage: function () {
 
   },
-  record_detail(){
+  qingjiadetail(){
     wx.navigateTo({
-      url: '../xwsq/record_detail',
+      url: '../mine/qingjiaDetail'
     })
   }
 })

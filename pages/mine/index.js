@@ -53,8 +53,13 @@ Page({
     })
   },
   getdetail:function(){
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../mine/detail'
+    })
+  },
+  qingjia(){
+    wx.navigateTo({
+      url: '../mine/qingjia'
     })
   }
 })
