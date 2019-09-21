@@ -1,11 +1,29 @@
 /* pages/xwsq/index.wxss */
+.chzz{
+  position: absolute;
+  width:70px;height:30px;
+  color:#fff;
+   left: 0;
+      right: 0;
+      top:0;
+      bottom:0;
+      margin-left: auto;
+      margin-right: auto;
+       margin-top: auto;
+      margin-bottom: auto;
+      border-radius:5px;
+}
 .xw_bg{
-background: #E8EAEE;
+background: #fff;
 height:100vh;
- padding:20px 10px;
+ padding:20px 15px;
+}
+.xqsq_title{
+ font-size:24px;
+ font-weight:bold;
+ margin-bottom:40px;
 }
 .xwsq_card{
- border-radius: 5px;
   margin:0 auto;
   width:100%;
   height:120px;

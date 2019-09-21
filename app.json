@@ -1,9 +1,10 @@
 {
   "pages":[
+        
         "pages/index/index",
         "pages/login/index",
    "pages/index/marks",
-        "pages/xwsq/index",
+    "pages/xwsq/index",
 "pages/xwsq/buka",
 "pages/xwsq/buka_success",
       "pages/xwsq/qingjia",

@@ -1,6 +1,12 @@
 <!--pages/xwsq/index.wxml-->
+<view style="position:relative;">
+<image src="../../img/bg2.png" style="width:100%;height:62px;"></image>
+<view class="chzz"><text>诚海职中</text></view>
+</view>
 <view class="xw_bg">
-  <view class="xwsq_card">
+<view class="xqsq_title">学务申请</view>
+  <view class="xwsq_card" style="border-bottom:1px solid #E5E5E5;position:relative">
+  <view style="border-right:1px solid #E5E5E5;position:absolute;height:100%;"></view>
     <view >
       <view class="buka_menu" bindtap='buka'>
         <view class="buka_circle"></view>
@@ -13,11 +19,22 @@
         <view class="buka_text">请假</view>
       </view>
     </view>
-    <view>
+  </view>
+  
+  <view class="xwsq_card" style="position:relative">
+  <view style="border-right:1px solid #E5E5E5;position:absolute;height:100%;"></view>
+      <view>
       <view class="buka_menu" bindtap='kaoqin_record'>
         <view class="buka_circle"></view>
         <view class="buka_text" style="margin-left:-10px">考勤记录</view>
       </view>
     </view>
-  </view>
+       <view>
+      <view class="buka_menu" >
+      
+        <view class="buka_text" style="margin-left:-10px;color:#fff">考勤记录</view>
+      </view>
+    </view>
+</view>
+
 </view>
