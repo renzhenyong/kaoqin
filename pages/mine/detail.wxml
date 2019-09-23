@@ -30,5 +30,5 @@
                 <view class="minedetail112">201923221223</view>
     </view>
           </view>
-          <button class="minedetail1" style="margin-top:15px;color:#E64340">退出登陆</button>
+          <button class="minedetail1" style="margin-top:15px;color:#E64340" bindtap="logout">退出登陆</button>
 </view>

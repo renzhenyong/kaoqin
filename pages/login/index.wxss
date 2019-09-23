@@ -1,7 +1,7 @@
 /* pages/login/index.wxss */
 .login-btn{
   width:80%;
-  background: #04bfad;
+  background: #3F88FB;
   height:40px;
   line-height: 40px;
   color:#fff;

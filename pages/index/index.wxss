@@ -37,6 +37,7 @@ font-size:1.1rem;
 margin-top:10px;
 color:#313131;
 }
+
 .distrinct{
   margin-top:5px;
  color: #686868
@@ -56,6 +57,7 @@ text-align:center;
 }
 .daka_attention{
   margin-top:10px;
+  color:#9A999F;
 }
 .daka_time{
 color:#fff;
@@ -68,7 +70,6 @@ font-size:30px;
 .daka_icon{
 width:40px;
 height:40px;
-background:#DCDCDC;
 margin:0 auto;
 margin-top:10px;
 }

@@ -79,8 +79,6 @@ Page({
   },
   bindGetUserInfo: function (e) {
     e.detail.userInfo.sid = wx.getStorageSync('uid');
-    console.log(66);
-    console.log(e.detail.userInfo.sid);
     app.post('userInfo', e.detail.userInfo, res => {
       console.log(res);
       if (res.data.code == 1) {

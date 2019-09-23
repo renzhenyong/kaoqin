@@ -1,18 +1,21 @@
 <!--index.wxml-->
 <view class="container">
-<map class='map' longitude='{{longitude}}' latitude='{{latitude}}' scale='{{scale}}'  show-location>
+<map class='map' longitude='{{longitude}}' latitude='{{latitude}}' scale='{{scale}}' markers="{{markers}}" show-location>
   <view class="cover">
-  <view class="scan"><text class="schoolname">实验中学</text><text class="current_time">2019.06.11</text><text class="current_time">星期三</text></view> 
+  <view class="scan"><text class="schoolname">实验中学</text><text class="current_time">{{time}}</text>
+  <!-- <text class="current_time">星期三</text> -->
+  </view> 
   </view>
   <view style="position:absolute;top:28vh;left:30%;"><image src="/img/popover.png" style="width:150px;height:50px"></image>
   <text style="position:absolute;top:18px;left:10px;color:#1AAD19">你已在考勤范围内</text>
   </view>
 </map>
-   <view class="floor">宝威大厦1号楼</view>
+   <view class="floor"><image src="../../img/gps2.png" style="width:16px;height:16px;"></image>宝威大厦1号楼</view>
     <view class="distrinct">山东省烟台市开发区宝威大厦</view>
      <view class="addmarks" bindtap='marks'>添加备注</view>
      <view class="daka" bindtap="takePhoto">
-          <view class="daka_icon"></view>
+          <!-- <view class="daka_icon"></view> -->
+          <image src="../../img/pztb.png" class="daka_icon"></image>
           <view class="daka_time">21:23</view>
          <view class="daka_guiqin">归勤打卡</view>
      </view>

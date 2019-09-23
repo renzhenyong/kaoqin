@@ -1,4 +1,5 @@
 // pages/xwsq/qingjia.js
+const app = getApp();
 Page({
 
   /**
@@ -10,15 +11,27 @@ Page({
     choice:false,
     choice1: false,
     choice2: false,
-    start_date: '',
+    start_date: "",
     end_date:"",
+    inputValue: '',
+    reason:'', 
   },
-
+  bindKeyInput: function (e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
+  bindTextAreaBlur: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      reason: e.detail.value,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.data.sid = wx.getStorageSync('uid');
   },
 
   /**
@@ -89,4 +102,32 @@ Page({
       end_date: e.detail.value
     })
   },
+  tijiao(){
+    // console.log(this.data.index);
+    // console.log(this.data.start_date);
+    // console.log(this.data.end_date);
+    // console.log(this.data.inputValue);
+    // console.log(this.data.reason);
+    if (this.data.index==5){
+      wx.showModal({
+        title: '提醒',
+        content: '请输入请假类型',
+      })
+     return;
+       }
+    app.post('askleave', { sid: this.data.sid, leave_type: 1, start_date: this.data.start_date, end_date: this.data.end_date, day_length: this.data.inputValue, remark: this.data.reason},  res => {
+    //     console.log(res);
+        if (res.data.code == 0) {
+          wx.navigateTo({
+            url: '../xwsq/buka_success',
+          })
+        } else {
+          wx.showModal({
+            title: '提醒',
+            content: '未找到数据',
+          })
+        }
+       });
+    
+  }
 })

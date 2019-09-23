@@ -13,7 +13,7 @@
   <view class="baka_content">
     <view class="qingjia_start">
       <text>开始时间</text>
-    <picker mode="date" value="{{start_date}}" start="2015-09-01" end="2017-09-01" bindchange="bindStartDateChange">
+    <picker mode="date" value="{{start_date}}" start="2015-09-01" end="2031-09-01" bindchange="bindStartDateChange">
     <view class="picker" class="startpicker">
       <text hidden="{{choice1}}" class="qxz">请选择</text> {{start_date}}
     </view>
@@ -21,7 +21,7 @@
     </view>
     <view class="baka_time">
       <view>结束时间</view>
-  <picker mode="date" value="{{end_date}}" start="2015-09-01" end="2017-09-01" bindchange="bindEndDateChange">
+  <picker mode="date" value="{{end_date}}" start="2015-09-01" end="2031-09-01" bindchange="bindEndDateChange">
     <view class="picker" class="startpicker">
       <text hidden="{{choice2}}" class="qxz">请选择</text> {{end_date}}
     </view>
@@ -30,12 +30,14 @@
 
   <view class="baka_time">
       <view>请假时长</view>
-       <view class="sicang">0天</view>
+       <!-- <view class="sicang">0天</view> -->
+               <input class="weui-input"  bindinput="bindKeyInput" 
+               placeholder="天" style="text-align:right;margin-right:15px;"/>
     </view>
   </view>
   <view class="tijiao_zaopian">说明原因</view>
    <view class="senqing_reason">
-      <textarea placeholder="请输入请假事由" name="textarea" class="senqing_reason_content"></textarea>
+      <textarea placeholder="请输入请假事由" value='{{reason}}' bindblur='bindTextAreaBlur'  name="textarea" class="senqing_reason_content"></textarea>
     </view>
 
    <button form-type="submit" class="tijao" bindtap="tijiao">确认提交 </button>
