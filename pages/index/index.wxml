@@ -1,8 +1,9 @@
 <!--index.wxml-->
 <view class="container">
-<map class='map' longitude='{{longitude}}' latitude='{{latitude}}' scale='{{scale}}' markers="{{markers}}" show-location>
+<map class='map' longitude='{{longitude}}' latitude='{{latitude}}'  scale='{{scale}}' markers="{{markers}}" show-location>
   <view class="cover">
   <view class="scan"><text class="schoolname">实验中学</text><text class="current_time">{{time}}</text>
+  <image src="../../img/suaxin.png" style="width:28px;height:28px"></image>
   <!-- <text class="current_time">星期三</text> -->
   </view> 
   </view>
@@ -16,7 +17,7 @@
      <view class="daka" bindtap="takePhoto">
           <!-- <view class="daka_icon"></view> -->
           <image src="../../img/pztb.png" class="daka_icon"></image>
-          <view class="daka_time">21:23</view>
+          <view class="daka_time">{{dakatime}}</view>
          <view class="daka_guiqin">归勤打卡</view>
      </view>
      <view class="daka_attention">请在21:00-22:00之间打卡</view>

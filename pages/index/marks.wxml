@@ -1,10 +1,8 @@
 <!--pages/index/marks.wxml-->
 <view class="mark_bg">
 <view class="mark_form">
-  <form bindsubmit="bindFormSubmit" >
-    <textarea placeholder="备注" name="textarea"  auto-focus/>
-
-  </form>
+    <textarea placeholder="备注" name="textarea"  value='{{reason}}' bindinput='bindWordLimit'/>
 </view>
- <button form-type="submit" class="tijao"> 确认 </button>
+ <button  form-type="submit" class="tijao" bindtap='ckmark'> 确认 </button>
+
 </view>

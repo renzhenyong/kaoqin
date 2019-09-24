@@ -107,7 +107,7 @@ Page({
     // console.log(this.data.start_date);
     // console.log(this.data.end_date);
     // console.log(this.data.inputValue);
-    // console.log(this.data.reason);
+    console.log(this.data.reason);
     if (this.data.index==5){
       wx.showModal({
         title: '提醒',

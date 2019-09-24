@@ -1,18 +1,22 @@
-// pages/index/marks.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
   },
-
+  bindWordLimit: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      reason: e.detail.value,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  
   },
 
   /**
@@ -26,7 +30,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
@@ -62,5 +65,12 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
-})
+  },
+
+  ckmark(){
+    wx.reLaunch({
+      url: '../index/index?mark=' + this.data.reason,
+   })
+  },
+  
+ })
