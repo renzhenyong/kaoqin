@@ -32,8 +32,7 @@ height:100vh;
   justify-content: space-around;
 }
 .buka_circle{
-width:50px;height:50px;background: #3F88FB;
-border-radius: 50%;
+width:50px;height:50px;
 }
 .buka_menu{
 margin-top:25px;

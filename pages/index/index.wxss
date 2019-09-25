@@ -9,7 +9,6 @@ map {
   width: 100%;
   display: flex;
   justify-content: center;
-
 }
 .scan {
   background:#fff;
@@ -17,6 +16,8 @@ map {
   height: 100rpx;
   line-height: 100rpx;
   border-radius: 5px;
+   display: flex;
+   justify-content:space-between;
 }
 .map-clock {
   width: 100%;
@@ -27,6 +28,9 @@ map {
 margin-left:20px;
 font-size:1.1rem;
  color:#313131;
+}
+.suaxin{
+ width:28px;height:28px;margin-right:10px;align-self: center;
 }
 .current_time{
   color:#686868;
@@ -49,22 +53,28 @@ color:#313131;
 }
 .daka{
   margin-top:10px;
-width:120px;
-height:120px;
+width:130px;
+height:130px;
 border-radius: 50%;
-background: #3F88FB;
 text-align:center;
 }
 .daka_attention{
   margin-top:10px;
-  color:#9A999F;
+  position: relative;
+  width:100%;
+  display:flex;
+}
+.kaoqin_gz{
+color:#576B95;position:absolute;right:10px;top:3px;font-size:12px;
 }
 .daka_time{
 color:#fff;
 font-size:30px;
+margin-top:-5px;
+
 }
 .daka_guiqin{
-  font-size:13px;
+  font-size:14px;
   color:#fff;
 }
 .daka_icon{

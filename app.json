@@ -1,6 +1,6 @@
 {
   "pages":[
-      
+    
         "pages/index/index",
         "pages/login/index",
    "pages/index/marks",
@@ -32,19 +32,19 @@
       {
         "pagePath": "pages/index/index",
         "text": "考勤打卡",
-        "iconPath": "img/home.png",
-        "selectedIconPath": "img/home1.png"
+        "iconPath": "img/tabar1.png",
+        "selectedIconPath": "img/tabar1_action.png"
       },{
           "pagePath": "pages/xwsq/index",
           "text": "学务申请",
-          "iconPath": "img/home.png",
-          "selectedIconPath": "img/home1.png"
+      "iconPath": "img/tabar2.png",
+      "selectedIconPath": "img/tabar2_action.png"
         },
       {
         "pagePath": "pages/mine/index",
         "text": "我的",
-        "iconPath": "img/mine.png",
-        "selectedIconPath": "img/mine1.png"
+  "iconPath": "img/tabar3.png",
+  "selectedIconPath": "img/tabar3_action.png"
       }
     ]
   },
