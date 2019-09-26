@@ -1,11 +1,14 @@
 // pages/xwsq/buka.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    array: ['本人', '其他人'],
+    index: 0,
+    choice1: false,
   },
 
   /**
@@ -26,7 +29,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    app.hasLogin();
+    this.data.sid = wx.getStorageSync('uid');
   },
 
   /**
@@ -63,7 +68,69 @@ Page({
   onShareAppMessage: function () {
 
   },
+  bindPickerChange: function (e) {
+    this.setData({
+      index: e.detail.value
+    })
+  },
+  bindbukaDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      choice1: true,
+      buka_date: e.detail.value
+    })
+  },
+  bindWordLimit: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      reason: e.detail.value,
+    })
+  },
+  takephoto(){
+    var that = this
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['camera'],
+      success(res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        const tempFilePaths = res.tempFilePaths
+        wx.uploadFile({
+          url: app.globalData.api + 'uploadImg',  //仅为示例，非真实的接口地址
+          filePath: tempFilePaths[0],
+          name: 'image',
+          formData: {
+            sid: that.data.sid
+          },
+          success(res) {
+            var imgres = JSON.parse(res.data);
+            wx.request({
+              url: 'https://banpai.chxgk.com/api/Sushe/huoti',
+              data: {
+                sid: that.data.sid,
+                applyren: that.data.index,
+                bukadate: that.data.buka_date,
+                reason: that.data.reason,
+                pic1: imgres.data,
+              },
+              method: "POST",
+              success: res => {
+                that.setData({
+                  // modalHidden: false,
+                  // score: res.data.Score
+                })
+              }
+            })
+
+          }
+        })
+
+      }
+    })
+  },
+
   tijiao(){
+    console.log(this.data.index);
     wx.navigateTo({
       url: '../xwsq/buka_success',
     })

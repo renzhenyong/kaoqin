@@ -2,21 +2,33 @@
 <view class="baka_bg">
   <view class="baka_content">
     <view class="senqing_ren">
-      <text>申请人</text>
-      <text class="benren">本人</text>
+      <view>申请人</view>
+       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+           <view class="benren">
+              <view >{{array[index]}}</view>
+              <image src="../../img/down.png" class="down_icon"></image>
+            </view>
+            </view>
+    </picker>
     </view>
     <view class="baka_time">
       <view>补卡时间</view>
-      <view class="baka_time_icon"></view>
+        <picker mode="date" value="{{buka_date}}" start="2015-09-01" end="2031-09-01" bindchange="bindbukaDateChange">
+           <view class="picker" class="bukapicker">
+     <image src="../../img/datetime.png" class="baka_time_icon" hidden="{{choice1}}"></image>
+     {{buka_date}}
+   </view>
+  </picker>
     </view>
     <view class="senqing_reason">
       <view class="senqing_reason_text">申请原因</view>
-      <textarea placeholder="请填写申请原因" name="textarea" class="senqing_reason_content"></textarea>
+      <textarea placeholder="请填写申请原因" name="textarea" class="senqing_reason_content" value='{{reason}}' bindinput='bindWordLimit'></textarea>
     </view>
   </view>
   <view class="tijiao_zaopian">提交照片</view>
-  <view class="buzao_content">
-     <view class="bupaizaopian"></view>
+  <view class="buzao_content" bindtap="takephoto">
+     <image src="../../img/bukapaiz.png" class="bupaizaopian"></image>
   </view>
    <button form-type="submit" class="tijao" bindtap="tijiao">确认提交 </button>
 </view>

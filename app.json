@@ -1,16 +1,16 @@
 {
   "pages":[
-    
+ 
         "pages/index/index",
+          "pages/xwsq/index",
+            "pages/mine/index",
         "pages/login/index",
    "pages/index/marks",
-    "pages/xwsq/index",
-"pages/xwsq/buka",
+  "pages/xwsq/qingjia",
 "pages/xwsq/buka_success",
-        "pages/xwsq/qingjia",
       "pages/xwsq/kaoqin_record",
+        "pages/xwsq/buka",
 "pages/xwsq/record_detail",
-"pages/mine/index",
     "pages/mine/detail",
     "pages/mine/qingjiaDetail",
     "pages/mine/qingjia",

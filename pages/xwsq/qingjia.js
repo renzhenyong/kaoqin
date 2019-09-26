@@ -103,11 +103,6 @@ Page({
     })
   },
   tijiao(){
-    // console.log(this.data.index);
-    // console.log(this.data.start_date);
-    // console.log(this.data.end_date);
-    // console.log(this.data.inputValue);
-    console.log(this.data.reason);
     if (this.data.index==5){
       wx.showModal({
         title: '提醒',
@@ -120,6 +115,9 @@ Page({
         if (res.data.code == 0) {
           wx.navigateTo({
             url: '../xwsq/buka_success',
+          })
+          wx.setNavigationBarTitle({
+            title: '趣味表情'
           })
         } else {
           wx.showModal({

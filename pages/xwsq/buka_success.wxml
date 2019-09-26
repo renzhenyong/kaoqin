@@ -1,4 +1,14 @@
 <!--pages/xwsq/buka_success.wxml-->
 <view>
-提交成功
+<view style="margin:0 auto;text-align:center;margin-top:80px">
+   <view class="group">
+  <block >
+    <icon type="success" size="93"/>
+  </block>
+</view>
+
+<view style="font-size:20px;color:#000000;margin-top:28px;">提交成功</view>
+<view style="margin-top:23px;color:#888888">等待审批</view>
+</view>
+
 </view>
