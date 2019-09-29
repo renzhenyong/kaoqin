@@ -1,6 +1,4 @@
 {
-  "usingComponents": {
-        "calendar": "plugin://calendar/calendar"
-  },
-    "navigationBarTitleText": "打卡记录"
+  "usingComponents": {},
+  "navigationBarTitleText": "打卡记录"
 }

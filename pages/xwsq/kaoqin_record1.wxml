@@ -1,6 +1,0 @@
-
-
- 
-  
-<!-- <view class='other'>我是其他元素</view> -->
-<calendar selected="{{selected}}" bindselect="bindselect" bindgetdate="bindgetdate" />

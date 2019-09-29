@@ -7,6 +7,6 @@
                             <view class="mineqingjia111">开始时间：2019/03/02</view>
                              <view style="font-size:14px">结束时间：2019/03/04</view>
                    </view>
-                   <view class="mineqingjia12"></view>
+                   <image src="../../img/tonguo.png" class="mineqingjia12"></image>
       </view>
 </view>

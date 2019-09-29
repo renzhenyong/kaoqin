@@ -17,7 +17,7 @@
 
   <view class="mine6">
     <view style="display:flex">
-      <view class="mine61"></view>
+      <image src="../../img/my_floor.png" class="mine61"></image>
       <view>心悦楼</view>
     </view>
     <view class="mine62">1102室</view>
@@ -27,7 +27,7 @@
   <view class="mine8">
     <view class="mine81" bindtap="qingjia">
       <view style="display:flex;">
-        <view class="mine811"></view>
+         <view class="mine811"><image src="../../img/myqingjia.png" style="width:32px;height:32px;margin-top:7px;"></image></view>
         <view>
           <view>请假</view>
           <view class="mine812">你的请假已通过</view>
@@ -38,7 +38,7 @@
 
     <view class="mine81">
       <view style="display:flex;">
-        <view class="mine811 bu1"></view>
+       <view class="mine811 bu1"><image src="../../img/mybuka.png" style="width:32px;height:32px;margin-top:7px;"></image></view>
         <view>
           <view>补卡</view>
           <view class="mine812">你的补卡已通过</view>

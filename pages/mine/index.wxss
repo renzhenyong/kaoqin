@@ -60,7 +60,6 @@ font-size:14px;
 .mine61{
   width:24px;
   height:24px;
-  background:#EEEEEE;
   margin-right:10px;
 }
 .mine62{
@@ -84,6 +83,8 @@ font-size:14px;
   width:44px;height:44px;
   border-radius:50%;
   margin-right:7px;
+  text-align:center;
+
 }
 .mine812{
   font-size:13px;
