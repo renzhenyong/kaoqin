@@ -80,15 +80,19 @@ Page({
   bindGetUserInfo: function (e) {
     e.detail.userInfo.sid = wx.getStorageSync('uid');
     app.post('userInfo', e.detail.userInfo, res => {
+      console.log("login");
       console.log(res);
-      if (res.data.code == 1) {
+      if (res.data.code == 2) {
         wx.switchTab({
           url: '../index/index',
         })
       } else {
-        wx.showModal({
-          title: '提醒',
-          content: '未找到数据',
+        // wx.showModal({
+        //   title: '提醒',
+        //   content: '未找到数据',
+        // })
+        wx.switchTab({
+          url: '../index/index',
         })
       }
     });
