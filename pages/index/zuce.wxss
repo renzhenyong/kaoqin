@@ -1,1 +1,24 @@
 /* pages/index/zuce.wxss */
+.baka_bg{
+background:#E8EAEE;height:100vh;
+   padding-top:15px;
+}
+.baka_content{
+       background:#fff;
+       padding-left:16px;
+}
+.senqing_ren{
+height:44px;line-height:44px;
+border-bottom:1px solid #E5E5E5;
+display:flex;
+font-size:17px;
+justify-content: space-between
+}
+.xingming{
+ line-height:44px;height:44px;text-align:center;
+}
+.tijao{
+margin:30px 20px;
+background: #126FFA;
+color:#fff;
+}

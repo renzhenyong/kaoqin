@@ -1,2 +1,21 @@
 <!--pages/index/zuce.wxml-->
-<text>pages/index/zuce.wxml</text>
+<view class="baka_bg">
+  <view class="baka_content">
+    <view class="senqing_ren">
+      <view>姓名</view>
+      <view>
+        <input class="xingming" auto-focus placeholder="请输入姓名" />
+      </view>
+    </view>
+
+         <view class="senqing_ren">
+      <view>学号</view>
+      <view>
+        <input class="xingming" auto-focus placeholder="请输入学号" />
+      </view>
+    </view>
+
+  </view>
+
+   <button form-type="submit" class="tijao" bindtap="tijiao">确认提交 </button>
+</view>
