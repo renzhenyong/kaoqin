@@ -12,8 +12,10 @@ Page({
   data: {
     address:'',
     addrssDetail:'',
-    pic:'',
+    daka_pic:'',
     modalHidden: true,
+    daka_endtime:'',
+    dakastatu:'',
     latitude: "",
     longitude: "",
     scale: 16,
@@ -40,7 +42,7 @@ Page({
     console.log(option.mark);
     let time = util.formatTime(new Date());
     let dakatime = util.dakaTime(new Date())
-    if ('21:00' <= dakatime && '22:00'>=dakatime){
+    if ('13:00' <= dakatime && '22:00'>=dakatime){
       this.setData({
         background: "#3F88FB",
         guiqin_daka:"归勤打卡"
@@ -115,7 +117,7 @@ Page({
   takePhoto(){
     let dakatime1 = util.dakaTime(new Date())
     console.log(dakatime1);
-    if ('21:00' >= dakatime1 || '22:00' <= dakatime1) {
+    if ('13:00' >= dakatime1 || '22:00' <= dakatime1) {
       wx.showModal({
         title: '提示',
         content: '请在21点到22点之间打卡',
@@ -135,34 +137,47 @@ Page({
           filePath: tempFilePaths[0],
           name: 'image',
           formData: {
-            sid: that.data.sid
+            sid: that.data.sid,
+            latitude: that.data.latitude,
+            longitude: that.data.longitude,
+            currentime: util.currentTime(new Date()),
+            remark: that.data.mark,
           },
           success(res) {
-            var imgres = JSON.parse(res.data);
-            wx.request({
-              url: 'https://banpai.chxgk.com/api/Sushe/huoti',
-              data: {
-                sid: that.data.sid,
-                latitude: that.data.latitude,
-                longitude: that.data.longitude,
-                currentime: util.currentTime(new Date()),
-                remark: that.data.mark,
-                pic1: imgres.data,
-              },
-              method: "POST",
-              success: res => {
-                var ht_endtime = util.formatTime(new Date());
+            console.log("photo");
+            if (res.statusCode==200){
+              let imgobj = JSON.parse(res.data);
+              var ht_endtime = util.dakaTime(new Date())
+              that.setData({
+                modalHidden: false,
+                daka_pic:imgobj.data,
+                daka_endtime: ht_endtime,
+              })
+              if (ht_endtime > '21:00' && ht_endtime < '22:00') {
                 that.setData({
-                  modalHidden: false,
-                  ht_endtime: ht_endtime,
-                  score: res.data.Score
-                })
+                  dakastatu: '正常',
+                  daka_background: "#3F88FB",
+                  knowcolor:"#4188FE"
+                });
+              } else if (ht_endtime > '22:00' && ht_endtime < '23:00') {
+                that.setData({
+                  dakastatu: '迟到',
+                  daka_background: "#EEB536",
+                  knowcolor: "#EEB536"
+                });
+              } else {
+                that.setData({
+                  dakastatu: '晚归',
+                  daka_background: "#3F88FB",
+                  knowcolor: "#E64340"
+                });
               }
-            })
 
+            }
+       
           }
         })
-       
+
       }
     })
     },
@@ -178,7 +193,11 @@ know(){
   that.setData({
     modalHidden: true
   })
-  }, 
+  },
+  updatedaka(){
+    var that = this
+    that.takePhoto();
+  },
   sua () {
     this.onLoad();
   },

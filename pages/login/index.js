@@ -82,7 +82,7 @@ Page({
     app.post('userInfo', e.detail.userInfo, res => {
       console.log("login");
       console.log(res);
-      if (res.data.code == 2) {
+      if (res.data.code == 1) {
         wx.switchTab({
           url: '../index/index',
         })
@@ -91,8 +91,8 @@ Page({
         //   title: '提醒',
         //   content: '未找到数据',
         // })
-        wx.switchTab({
-          url: '../index/index',
+        wx.navigateTo({
+          url: '../index/zuce',
         })
       }
     });

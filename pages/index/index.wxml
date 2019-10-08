@@ -28,22 +28,22 @@
 
 <view class="daka_modal" hidden="{{modalHidden}}" >
 </view>
-    <view class="daka_modal1" hidden="{{modalHidden}}">
+    <view class="daka_modal1" hidden="{{modalHidden}}" style="background:{{daka_background}}">
           <view class="daka_floor1">
-                <view class="daka_icon1"></view>
+               <image src="../../img/ok1.png" class="daka_icon1"></image>
                 <view class="daka_text">打卡成功</view>
            </view>   
-           <view class="daka_icon2"></view>
-           <view class="daka_text1"><text>晚归</text></view>  
+        <view style="text-align:center"><image src="{{daka_pic}}" class="daka_icon2"></image></view>
+           <view class="daka_text1"><text>{{dakastatu}}</text></view>  
            <view class="daka_floor2">
-               <view class="daka_icon3"></view>
-               <view class='daka_text3'>00:23</view>
-               <view class="daka_icon4"></view>
+               <image src="../../img/dakatime.png" class="daka_icon3"></image>
+               <view class='daka_text3'>{{daka_endtime}}</view>
+               <image src="../../img/dingwei.png" class="daka_icon4"></image>
                <view class='daka_text3'>在宿舍范围内</view>
            </view>
            <view class="daka_floor3">
-                   <view class='daka_text4'>更新打卡</view>
-                    <view class='daka_text4 text4_right' bindtap="know">我知道了</view>
+                   <view class='daka_text4' bindtap="updatedaka">更新打卡</view>
+                    <view class='daka_text4 text4_right' bindtap="know" style="color:{{knowcolor}}">我知道了</view>
            </view>
     </view>
 </view>

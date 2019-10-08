@@ -91,7 +91,6 @@ width:100%;height:100vh;
 .daka_modal1{
   z-index:10000;
   position:absolute;
-  background:#E64340;
   width:260px;height:350px;
      left: 0;
       right: 0;
@@ -104,9 +103,8 @@ width:100%;height:100vh;
       border-radius:5px;
 }
 .daka_icon1{
-width:40px;height:40px;
-background:#fff;
-opacity:0.23
+width:29px;height:29px;
+margin-top:5px;
 }
 .daka_text{
 color:#fff;
@@ -120,8 +118,6 @@ margin-left:5px;
 }
 .daka_icon2{
 width:100px;height:100px;
-background:#fff;
-margin:0 auto;
 border-radius:50%;
 margin-top:30px;
 }
@@ -140,8 +136,6 @@ justify-content: center;
 .daka_icon3{
 width:17px;
 height:17px;
-background:#fff;
-opacity: 0.18;
 }
 .daka_text3{
  color:#fff;
@@ -151,8 +145,6 @@ opacity: 0.18;
 .daka_icon4{
 width:17px;
 height:17px;
-background:#fff;
-opacity: 0.18;
  margin-left:20px;
 }
 .daka_floor3{
@@ -173,6 +165,4 @@ justify-content: center;
 .text4_right{
 margin-left:10px;
 background:#fff;
-color:red;
-
 }
