@@ -22,7 +22,7 @@
      </view>
      <view class="daka_attention">
      <text style="color:#9A999F;margin:0 auto">请在21:00-22:00之间打卡</text>
-     <text class="kaoqin_gz">考勤规则</text>
+     <text class="kaoqin_gz" bindtap='gqgz'>考勤规则</text>
      </view>
  <!-- modal弹窗-->
 

@@ -201,4 +201,9 @@ know(){
   sua () {
     this.onLoad();
   },
+  gqgz(){
+    wx.navigateTo({
+      url: '../index/regular'
+    })
+  }
 })

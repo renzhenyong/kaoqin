@@ -36,6 +36,15 @@ Page({
       success: res => {
         app.post('login', { code: res.code }, res => {
           app.globalData.uid = res.data.sid;
+          if (res.data.code==1) {
+            wx.switchTab({
+              url: '../index/index',
+            })
+          } else {
+            wx.navigateTo({
+              url: '../index/zuce',
+            })
+          }
           //登录，则更新sid标识
           wx.setStorageSync('uid', res.data.sid);
         })
@@ -79,22 +88,9 @@ Page({
   },
   bindGetUserInfo: function (e) {
     e.detail.userInfo.sid = wx.getStorageSync('uid');
-    app.post('userInfo', e.detail.userInfo, res => {
-      console.log("login");
-      console.log(res);
-      if (res.data.code == 1) {
-        wx.switchTab({
-          url: '../index/index',
-        })
-      } else {
-        // wx.showModal({
-        //   title: '提醒',
-        //   content: '未找到数据',
-        // })
-        wx.navigateTo({
-          url: '../index/zuce',
-        })
-      }
-    });
+    // wx.switchTab({
+    //   url: '../index/index',
+    // })
+ 
   }
 })

@@ -1,0 +1,9 @@
+<!--pages/index/regular.wxml-->
+<view style="padding:20px">
+    <view>
+        1.考勤规则1
+     </view>
+     <view>
+        2.考勤规则2
+     </view>
+</view>     

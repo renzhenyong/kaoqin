@@ -194,6 +194,7 @@ Component({
    */
   data: {
     days_array: [], // 日期数组
+    days_record:[],//考勤记录
     days_color: [], // 日期字体、背景颜色数组
     days_addon: [], // 日期附件
     weekTitle: ['日', '一', '二', '三', '四', '五', '六'],
@@ -495,7 +496,8 @@ Component({
           year: year,
           info: 'current',
           color: '#4a4f74',
-          background: 'transparent'
+          background: 'transparent',
+          statu:0
         });
       }
       const days_range = temp;                                   // 本月
@@ -715,12 +717,36 @@ Component({
   attached: function () {
     const year = this.data.year;
     const month = this.data.month;
-    this.setData({
-      days_array: this._setCalendarData(year, month)
+  
+    console.log("当前年月");
+    console.log(year);
+    console.log(month);
+    // this.setData({
+    //   days_array: this._setCalendarData(year, month)
+    // });
+
+     var dayarr = this._setCalendarData(year, month);
+    var recordsarr = [{ day_code: 10, name: 'testA' }, { day_code: 11, name: 'testB' },
+    ];
+    
+    dayarr.forEach((fatherVal) => {
+      fatherVal.forEach((fatherVal1) => {
+      recordsarr.forEach((sonVal) => {
+        if (sonVal.day_code === fatherVal1.day) {
+          console.log('A === ' + sonVal.day_code)
+          fatherVal1.statu=1;
+        }
+      })
+      })
+    })
+     this.setData({
+       days_array: dayarr
     });
+    console.log(this.data.days_array);
   },
 
   ready: function () {
+   
   },
 
   externalClasses: [

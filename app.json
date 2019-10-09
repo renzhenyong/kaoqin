@@ -1,10 +1,11 @@
 {
   "pages":[
-     
+    "pages/xwsq/kaoqin_record",
             "pages/index/index",
+                "pages/index/regular",
             "pages/index/zuce",
       "pages/mine/index",
-    "pages/xwsq/kaoqin_record",
+
     "pages/xwsq/record_detail",
           "pages/xwsq/index",
       "pages/mine/qingjia",

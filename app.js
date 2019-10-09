@@ -37,7 +37,8 @@ App({
     })
   },
   globalData: {
-    api: 'https://banpai.chxgk.com/api/attend/',
+    api: 'http://test-banpai.chxgk.com/api/attend/',
+    // api: 'https://banpai.chxgk.com/api/attend/',
     imgurl: 'https://banpai.chxgk.com/'
   },
   loading: () => {

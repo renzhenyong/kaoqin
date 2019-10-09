@@ -103,14 +103,28 @@ Page({
     })
   },
   tijiao(){
+    console.log("原因");
+    console.log(this.data.reason);
     if (this.data.index==5){
       wx.showModal({
         title: '提醒',
         content: '请输入请假类型',
       })
      return;
+    } else if (this.data.end_date < this.data.start_date){
+      wx.showModal({
+        title: '提醒',
+        content: '结束时间不能小于开始时间',
+      })
+      return;
+    } else if (this.data.reason==""){
+      wx.showModal({
+        title: '提醒',
+        content: '请输入请假原因',
+      })
+      return;
        }
-    app.post('askleave', { sid: this.data.sid, leave_type: 1, start_date: this.data.start_date, end_date: this.data.end_date, day_length: this.data.inputValue, remark: this.data.reason},  res => {
+    app.post('askLeave', { sid: this.data.sid, leave_type: 1, start_date: this.data.start_date, end_date: this.data.end_date, day_length: this.data.inputValue, remark: this.data.reason},  res => {
     //     console.log(res);
         if (res.data.code == 0) {
           wx.navigateTo({
