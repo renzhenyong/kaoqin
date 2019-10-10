@@ -202,7 +202,8 @@ Component({
     max_month: 12,  // 最大月份
     min_year: 1900, // 最小年份
     min_month: 1,   // 最小月份  
-    dakastatu:1      
+    dakastatu:1,
+    d_state: "",      
   },
 
   /**
@@ -459,7 +460,7 @@ Component({
           year: prev_year,
           info: 'prev',
           color: '#c3c6d1',
-          background: 'transparent'
+          background: 'transparent',
         });
       }
 
@@ -495,7 +496,7 @@ Component({
           month: month,
           year: year,
           info: 'current',
-          color: '#4a4f74',
+          color: '',
           background: 'transparent',
           statu:0
         });
@@ -620,6 +621,11 @@ Component({
      * 点击下个月
      */
     nextMonth: function () {
+      console.log(this.data.month);
+      console.log(this.data.month+1);
+      this.setData({
+        d_state: ""
+      });
       const eventDetail = {
         prevYear: this.data.year,
         prevMonth: this.data.month
@@ -674,6 +680,7 @@ Component({
      * 日期选择器变化
      */
     dateChange: function (event) {
+      console.log(33);
       const eventDetail = {
         prevYear: this.data.year,
         prevMonth: this.data.month
@@ -687,7 +694,6 @@ Component({
         month: month,
         days_array: this._setCalendarData(year, month)
       });
-
       eventDetail['currentYear'] = year;
       eventDetail['currentMonth'] = month;
       this.triggerEvent('dateChange', eventDetail);
@@ -698,16 +704,34 @@ Component({
      */
     dayClick: function (event) {
       const click_day = event.currentTarget.dataset.day;
+  
       const eventDetail = {
         year: click_day.year,
         month: click_day.month,
         day: click_day.day,
-        color: click_day.color,
+        color: "red",
         lunarMonth: click_day.lunarMonth,
         lunarDay: click_day.lunarDay,
-        background: click_day.background
+        background: "red"
       };
+
       this.triggerEvent('dayClick', eventDetail);
+      this.setData({
+        d_state: event.currentTarget.dataset.day.day,
+        days_array: this.data.days_array
+      });
+      // var arr1 = this.data.days_array;
+      // arr1.forEach((fatherVal2) => {
+      //   fatherVal2.forEach((fatherVal3) => {
+      //     if (fatherVal3.day == eventDetail.day){
+      //       fatherVal3.background = "#fff;";
+      //       fatherVal3.color = "#3F88FB!important;";
+      //     }
+      //   })
+      // })
+      // this.setData({
+      //   days_array: arr1
+      // });
     }
   },
 
@@ -715,32 +739,38 @@ Component({
   },
 
   attached: function () {
+
     const year = this.data.year;
     const month = this.data.month;
-  
-    console.log("当前年月");
-    console.log(year);
-    console.log(month);
+    const day=this.data.day;
+    console.log(this.data.month);
     // this.setData({
     //   days_array: this._setCalendarData(year, month)
     // });
-
      var dayarr = this._setCalendarData(year, month);
-    var recordsarr = [{ day_code: 10, name: 'testA' }, { day_code: 11, name: 'testB' },
+    var recordsarr = [{ year: 2019, month: 10, day_code: 8, name: 'testA',statu:2 }, { year: 2019, month: 10,day_code: 9, name: 'testB',statu:1 },
     ];
     
     dayarr.forEach((fatherVal) => {
       fatherVal.forEach((fatherVal1) => {
       recordsarr.forEach((sonVal) => {
-        if (sonVal.day_code === fatherVal1.day) {
+        if (sonVal.day_code === fatherVal1.day && sonVal.statu==1) {
           console.log('A === ' + sonVal.day_code)
           fatherVal1.statu=1;
+        } else if (sonVal.day_code === fatherVal1.day && sonVal.statu == 2){
+          console.log('A === ' + sonVal.day_code)
+          fatherVal1.statu = 2;
         }
       })
+        if (fatherVal1.day == day ) {
+          fatherVal1.color = "#3F88FB;";
+          fatherVal1.background ="rgba(0,0,0,0.1)";
+        }
       })
     })
      this.setData({
-       days_array: dayarr
+       days_array: dayarr,
+         d_state: this.data.day
     });
     console.log(this.data.days_array);
   },

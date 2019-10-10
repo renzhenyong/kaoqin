@@ -111,9 +111,7 @@ background:#3F88FB;color:#fff;
 .calendar-lunar-day {    
     font-size: 20rpx;
 }
-.calendar-day{
-color:#fff!important;
-}
+
 .demo4-calendar {
     background-color: #3F88FB;
     padding-top: 10px;
@@ -164,3 +162,8 @@ width:123px;height:85px;border-radius:5px;
 margin-top:10px;
 }
 
+.red_day{
+   color: #3F88FB!important; 
+  background: #fff!important;
+ 
+}
