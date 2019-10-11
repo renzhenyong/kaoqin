@@ -1,7 +1,8 @@
 {
   "pages":[
+    "pages/index/index",
     "pages/xwsq/kaoqin_record",
-            "pages/index/index",
+           
                 "pages/index/regular",
             "pages/index/zuce",
       "pages/mine/index",

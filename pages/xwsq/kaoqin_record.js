@@ -27,7 +27,7 @@
  * header-style 标题样式
  * board-style 面板样式
  */
-
+const app = getApp();
 const lunar = require('./lunar.js');
 const minYear = 1900;
 const maxYear = 2099;
@@ -644,6 +644,37 @@ Component({
       this.setData({
         days_array: this._setCalendarData(this.data.year, this.data.month)
       });
+
+      //当前月的考勤记录
+      var dayarr = this._setCalendarData(2019, this.data.month + 1);
+      var recordsarr = [{ year: 2019, month: 10, day_code: 8, name: 'testA', statu: 2 }, { year: 2019, month: 10, day_code: 9, name: 'testB', statu: 1 },
+      ];
+
+      dayarr.forEach((fatherVal) => {
+        fatherVal.forEach((fatherVal1) => {
+          recordsarr.forEach((sonVal) => {
+            if (sonVal.day_code === fatherVal1.day && sonVal.statu == 1) {
+              console.log('A === ' + sonVal.day_code)
+              fatherVal1.statu = 1;
+            } else if (sonVal.day_code === fatherVal1.day && sonVal.statu == 2) {
+              console.log('A === ' + sonVal.day_code)
+              fatherVal1.statu = 2;
+            }
+          })
+          // if (fatherVal1.day == day) {
+          //   fatherVal1.color = "#3F88FB;";
+          //   fatherVal1.background = "rgba(0,0,0,0.1)";
+          // }
+        })
+      })
+      this.setData({
+        days_array: dayarr,
+        d_state: this.data.day
+      });
+      console.log(this.data.days_array);
+
+
+
       eventDetail['currentYear'] = this.data.year;
       eventDetail['currentMonth'] = this.data.month;
       this.triggerEvent('nextMonth', eventDetail);
@@ -739,14 +770,16 @@ Component({
   },
 
   attached: function () {
+    this.data.sid = wx.getStorageSync('uid');
+    console.log("this.data.sid");
+    console.log(this.data.sid);
+    app.post('signRecordMonth', { sid: this.data.sid,year:2019,month:10}, res => {
+
+    })
 
     const year = this.data.year;
     const month = this.data.month;
     const day=this.data.day;
-    console.log(this.data.month);
-    // this.setData({
-    //   days_array: this._setCalendarData(year, month)
-    // });
      var dayarr = this._setCalendarData(year, month);
     var recordsarr = [{ year: 2019, month: 10, day_code: 8, name: 'testA',statu:2 }, { year: 2019, month: 10,day_code: 9, name: 'testB',statu:1 },
     ];

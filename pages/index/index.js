@@ -19,6 +19,8 @@ Page({
     latitude: "",
     longitude: "",
     scale: 16,
+    isrange:"",
+    rangcolor:"#1AAD19",
     markers: [{
       iconPath: "../../img/marker.png",
       id: 1,
@@ -38,23 +40,8 @@ Page({
   onReady: function () {
   },
   onLoad: function (option) {
-    console.log("that.data.mark");
-    console.log(option.mark);
     let time = util.formatTime(new Date());
     let dakatime = util.dakaTime(new Date())
-    if ('13:00' <= dakatime && '22:00'>=dakatime){
-      this.setData({
-        background: "#3F88FB",
-        guiqin_daka:"归勤打卡"
-      })
-    }else{
-      this.setData({
-        background: "#9A999F",
-        guiqin_daka: "未到打卡时间"
-      })
-    }
-    console.log("option.mark");
-    console.log(option);
     if (option==undefined){
     this.setData({
       time: time,
@@ -93,6 +80,7 @@ Page({
     var that = this;
     app.hasLogin();
     this.data.sid = wx.getStorageSync('uid');
+
     if (this.data.sid != '') {
       var that = this
       //获取当前的地理位置、速度
@@ -104,9 +92,53 @@ Page({
             latitude: parseFloat(res.latitude),
             longitude: parseFloat(res.longitude),
           })
+          // 是否在考勤范围内
+          app.post('inSignDistance', { sid: that.data.sid, lng: that.data.longitude, lat: that.data.latitude }, res => {
+            if (res.data.code == 1) {
+              that.setData({
+                isrange:"您已在考勤范围内",
+                rangcolor: "#1AAD19"
+              })
+            }else{
+              that.setData({
+                isrange: "您未在考勤范围内",
+                rangcolor:"#E64340"
+              })
+            }
+          })
+      //是否到打卡时间 
+          app.post('inSignTime', { sid: that.data.sid}, res => {
+            if (res.data.code == 1) {
+              that.setData({
+              guiqin_daka:"归勤打卡",
+                background: "#3F88FB",
+              })
+            }else{
+              that.setData({
+              guiqin_daka:"未到考勤时间",
+              background: "#9A999F",
+            
+              })
+            }
+            that.setData({
+            start_time: res.data.data.start_time.slice(0,5),
+              end_time: res.data.data.end_time.slice(0,5),
+            })
+
+})
+//是否已打卡
+          app.post('hadSign', { sid: that.data.sid }, res => {
+              if(res.data.code==0){
+                that.setData({
+                guiqin_daka: "已打卡",
+                  background:"#3F88FB"
+                })
+              }
+          })
           that.reverseGeocoder();
         }
       })
+   
     } else {
       wx.reLaunch({
         url: '../login/index',
@@ -115,33 +147,50 @@ Page({
   
   },
   takePhoto(){
+    var that = this
     let dakatime1 = util.dakaTime(new Date())
-    console.log(dakatime1);
-    if ('13:00' >= dakatime1 || '22:00' <= dakatime1) {
+    if (that.data.start_time >= dakatime1 || that.data.end_time <= dakatime1) {
       wx.showModal({
         title: '提示',
-        content: '请在21点到22点之间打卡',
+        content: '请在规定时间内打卡',
+      })
+      return;
+    }else if(that.data.guiqin_daka=='已打卡'){
+      wx.showModal({
+        title: '今天已打卡',
+        content: '请勿重复打卡，好好休息',
       })
       return;
     }
-    var that = this
+    let tim=util.currentTime(new Date());
+    let timestamp = Date.parse(tim)
+    console.log(that.data.sid);
+    console.log(that.data.latitude);
+    console.log(that.data.longitude);
+    console.log(timestamp);
+  
+    
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['camera'],
       success(res) {
+
         // tempFilePath可以作为img标签的src属性显示图片
         const tempFilePaths = res.tempFilePaths
+        console.log("tempFilePaths");
+        console.log(tempFilePaths[0]);
         wx.uploadFile({
           url: app.globalData.api + 'uploadImg',  //仅为示例，非真实的接口地址
           filePath: tempFilePaths[0],
           name: 'image',
           formData: {
+            image: tempFilePaths[0],
             sid: that.data.sid,
-            latitude: that.data.latitude,
-            longitude: that.data.longitude,
-            currentime: util.currentTime(new Date()),
-            remark: that.data.mark,
+            lat: that.data.latitude,
+            lng: that.data.longitude,
+            sign_time: timestamp,
+            remark: "",
           },
           success(res) {
             console.log("photo");

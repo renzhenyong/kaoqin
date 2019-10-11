@@ -9,7 +9,7 @@
   </view> 
   </view>
   <view style="position:absolute;top:28vh;left:30%;"><image src="/img/popover.png" style="width:150px;height:50px"></image>
-  <text style="position:absolute;top:18px;left:10px;color:#1AAD19">你已在考勤范围内</text>
+  <text style="position:absolute;top:18px;left:10px;color:{{rangcolor}}">{{isrange}}</text>
   </view>
 </map>
    <view class="floor"><image src="../../img/gps2.png" style="width:16px;height:16px;"></image>{{addrssDetail}}</view>
@@ -21,7 +21,7 @@
          <view class="daka_guiqin">{{guiqin_daka}}</view>
      </view>
      <view class="daka_attention">
-     <text style="color:#9A999F;margin:0 auto">请在21:00-22:00之间打卡</text>
+     <text style="color:#9A999F;margin:0 auto">请在{{start_time}}-{{end_time}}之间打卡</text>
      <text class="kaoqin_gz" bindtap='gqgz'>考勤规则</text>
      </view>
  <!-- modal弹窗-->
