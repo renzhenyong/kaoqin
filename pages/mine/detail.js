@@ -1,11 +1,14 @@
 // pages/mine/detail.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    number: '',
+    name: '',
+    face_img: '',
   },
 
   /**
@@ -26,7 +29,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.data.sid = wx.getStorageSync('uid');
+    app.post('studentInfo', { sid: this.data.sid }, res => {
+      if (res.data.code == 1) {
+        this.setData({
+          number: res.data.data.number,
+          face_img: res.data.data.face_img,
+          name: res.data.data.name
+        })
+      }
+    })
   },
 
   /**
@@ -65,7 +77,6 @@ Page({
   },
   logout: function (e) {
     wx.clearStorageSync();
-    console.log(136);
     wx.redirectTo({
       url: '../login/index'
     })

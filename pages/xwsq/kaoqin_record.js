@@ -771,41 +771,41 @@ Component({
 
   attached: function () {
     this.data.sid = wx.getStorageSync('uid');
-    console.log("this.data.sid");
-    console.log(this.data.sid);
-    app.post('signRecordMonth', { sid: this.data.sid,year:2019,month:10}, res => {
-
-    })
-
     const year = this.data.year;
     const month = this.data.month;
     const day=this.data.day;
      var dayarr = this._setCalendarData(year, month);
-    var recordsarr = [{ year: 2019, month: 10, day_code: 8, name: 'testA',statu:2 }, { year: 2019, month: 10,day_code: 9, name: 'testB',statu:1 },
-    ];
-    
-    dayarr.forEach((fatherVal) => {
-      fatherVal.forEach((fatherVal1) => {
-      recordsarr.forEach((sonVal) => {
-        if (sonVal.day_code === fatherVal1.day && sonVal.statu==1) {
-          console.log('A === ' + sonVal.day_code)
-          fatherVal1.statu=1;
-        } else if (sonVal.day_code === fatherVal1.day && sonVal.statu == 2){
-          console.log('A === ' + sonVal.day_code)
-          fatherVal1.statu = 2;
-        }
-      })
-        if (fatherVal1.day == day ) {
-          fatherVal1.color = "#3F88FB;";
-          fatherVal1.background ="rgba(0,0,0,0.1)";
-        }
-      })
+    // var recordsarr = [{ year: 2019, month: 10, day_code: 8, name: 'testA',statu:2 }, { year: 2019, month: 10,day_code: 9, name: 'testB',statu:1 },
+    // ];
+    app.post('signRecordMonth', { sid: this.data.sid, year: year, month: month }, res => {
+      if (res.data.code == 1) {
+        var recordsarr = res.data.data;
+        dayarr.forEach((fatherVal) => {
+          fatherVal.forEach((fatherVal1) => {
+            recordsarr.forEach((sonVal) => {
+              var dian_day = sonVal.sign_date.slice(8, 9) == 0 ? sonVal.sign_date.slice(9, 10) : sonVal.sign_date.slice(8, 10)
+              if (dian_day == fatherVal1.day && sonVal.sign_status == 1) {
+                fatherVal1.statu = 1;
+              } else if (dian_day == fatherVal1.day && sonVal.statu == 2) {
+                fatherVal1.statu = 2;
+              }
+            })
+            if ( fatherVal1.day == day) {
+              fatherVal1.color = "#3F88FB;";
+              fatherVal1.background = "rgba(0,0,0,0.1)";
+            }
+          })
+        })
+        console.log("dayarr");
+        console.log(dayarr);
+        this.setData({
+          days_array: dayarr,
+          d_state: this.data.day
+        });
+      }
     })
-     this.setData({
-       days_array: dayarr,
-         d_state: this.data.day
-    });
-    console.log(this.data.days_array);
+
+   
   },
 
   ready: function () {

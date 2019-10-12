@@ -32,24 +32,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.login({
-      success: res => {
-        app.post('login', { code: res.code }, res => {
-          app.globalData.uid = res.data.sid;
-          if (res.data.code==1) {
-            wx.switchTab({
-              url: '../index/index',
-            })
-          } else {
-            wx.navigateTo({
-              url: '../index/zuce',
-            })
-          }
-          //登录，则更新sid标识
-          wx.setStorageSync('uid', res.data.sid);
-        })
-      }
-    })
+
   },
 
   /**
@@ -87,10 +70,24 @@ Page({
 
   },
   bindGetUserInfo: function (e) {
-    e.detail.userInfo.sid = wx.getStorageSync('uid');
-    // wx.switchTab({
-    //   url: '../index/index',
-    // })
+    wx.login({
+      success: res => {
+        app.post('login', { code: res.code }, res => {
+          app.globalData.uid = res.data.sid;
+          if (res.data.code == 1) {
+            wx.switchTab({
+              url: '../index/index',
+            })
+          } else {
+            wx.navigateTo({
+              url: '../index/zuce',
+            })
+          }
+          //登录，则更新sid标识
+          wx.setStorageSync('uid', res.data.sid);
+        })
+      }
+    })
  
   }
 })

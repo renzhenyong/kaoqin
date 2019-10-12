@@ -6,9 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array: ['本人', '其他人'],
+    array: ['本人'],
     index: 0,
     choice1: false,
+    buka_date:'',
+    reason:''
   },
 
   /**
@@ -86,53 +88,62 @@ Page({
       reason: e.detail.value,
     })
   },
-  takephoto(){
-    var that = this
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['camera'],
-      success(res) {
-        // tempFilePath可以作为img标签的src属性显示图片
-        const tempFilePaths = res.tempFilePaths
-        wx.uploadFile({
-          url: app.globalData.api + 'uploadImg',  //仅为示例，非真实的接口地址
-          filePath: tempFilePaths[0],
-          name: 'image',
-          formData: {
-            sid: that.data.sid
-          },
-          success(res) {
-            var imgres = JSON.parse(res.data);
-            wx.request({
-              url: 'https://banpai.chxgk.com/api/Sushe/huoti',
-              data: {
-                sid: that.data.sid,
-                applyren: that.data.index,
-                bukadate: that.data.buka_date,
-                reason: that.data.reason,
-                pic1: imgres.data,
-              },
-              method: "POST",
-              success: res => {
-                that.setData({
-                  // modalHidden: false,
-                  // score: res.data.Score
-                })
-              }
-            })
+  // takephoto(){
+  //   var that = this
+  //   wx.chooseImage({
+  //     count: 1,
+  //     sizeType: ['original', 'compressed'],
+  //     sourceType: ['camera'],
+  //     success(res) {
+  //       // tempFilePath可以作为img标签的src属性显示图片
+  //       const tempFilePaths = res.tempFilePaths
+  //       wx.uploadFile({
+  //         url: app.globalData.api + 'uploadImg',  //仅为示例，非真实的接口地址
+  //         filePath: tempFilePaths[0],
+  //         name: 'image',
+  //         formData: {
+  //           sid: that.data.sid
+  //         },
+  //         success(res) {
+  //           var imgres = JSON.parse(res.data);
+  //           wx.request({
+  //             url: 'https://banpai.chxgk.com/api/Sushe/huoti',
+  //             data: {
+  //               sid: that.data.sid,
+  //               applyren: that.data.index,
+  //               bukadate: that.data.buka_date,
+  //               reason: that.data.reason,
+  //               pic1: imgres.data,
+  //             },
+  //             method: "POST",
+  //             success: res => {
+  //               that.setData({
+  //                 // modalHidden: false,
+  //                 // score: res.data.Score
+  //               })
+  //             }
+  //           })
 
-          }
-        })
+  //         }
+  //       })
 
-      }
-    })
-  },
+  //     }
+  //   })
+  // },
 
   tijiao(){
-    console.log(this.data.index);
-    wx.navigateTo({
-      url: '../xwsq/buka_success',
+    let that = this
+    app.post('askFill', { sid: this.data.sid, remark: that.data.reason, date: that.data.buka_date }, res => {
+if(res.data,code==1){
+  wx.navigateTo({
+    url: '../xwsq/buka_success',
+  })
+}else{
+  wx.navigateTo({
+    url: '../xwsq/buka',
+  })
+}
     })
+  
   }
 })

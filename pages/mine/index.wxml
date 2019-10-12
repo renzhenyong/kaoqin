@@ -2,13 +2,13 @@
 <view class="xw_bg">
   <view class="xwsq_card" bindtap="getdetail">
     <view class="mine_ziliao">
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <image class="userinfo-avatar" src="{{face_img}}" mode="cover"></image>
       <view class="mine1">
         <view class="mine2">
-          <text class="mine2_1">{{userInfo.nickName}}</text>
+          <text class="mine2_1">{{name}}</text>
           <text class="mine2_2">18053535260</text>
         </view>
-        <view class="mine3">三年级二班</view>
+        <view class="mine3">{{dept_name}}</view>
         <view class="mine4">计算机学院</view>
       </view>
       <view class="mine5">诚海中职学校</view>

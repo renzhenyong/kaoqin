@@ -26,9 +26,9 @@
       <textarea placeholder="请填写申请原因" name="textarea" class="senqing_reason_content" value='{{reason}}' bindinput='bindWordLimit'></textarea>
     </view>
   </view>
-  <view class="tijiao_zaopian">提交照片</view>
+  <!-- <view class="tijiao_zaopian">提交照片</view>
   <view class="buzao_content" bindtap="takephoto">
      <image src="../../img/bukapaiz.png" class="bupaizaopian"></image>
-  </view>
+  </view> -->
    <button form-type="submit" class="tijao" bindtap="tijiao">确认提交 </button>
 </view>
