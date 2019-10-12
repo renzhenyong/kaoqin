@@ -1,4 +1,5 @@
 // pages/xwsq/record_detail.js
+const app = getApp();
 Page({
 
   /**
@@ -14,7 +15,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      console.log(options.clickdate);
+    this.setData({
+      clickdate:options.clickdate
+    })
+    this.data.sid = wx.getStorageSync('uid');
+    app.post('signRecord', { sid: this.data.sid, sign_date: options.clickdate}, res => {
+      if (res.data.code == 1) {
+      }
+    })
   },
 
   /**
@@ -41,8 +50,9 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
+  // options接受传过来的参数
+  onUnload: function (options) {
+ 
   },
 
   /**
@@ -64,5 +74,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  bukasq(){
+    console.log(this.data.clickdate);
+    wx.navigateTo({
+      url: '../xwsq/buka?clickdate=' + this.data.clickdate
+    })
   }
+
 })

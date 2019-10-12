@@ -126,12 +126,12 @@ Page({
        }
     app.post('askLeave', { sid: this.data.sid, leave_type: 1, start_date: this.data.start_date, end_date: this.data.end_date, day_length: this.data.inputValue, remark: this.data.reason},  res => {
     //     console.log(res);
-        if (res.data.code == 0) {
+        if (res.data.code == 1) {
           wx.navigateTo({
             url: '../xwsq/buka_success',
           })
           wx.setNavigationBarTitle({
-            title: '趣味表情'
+            title: '成功'
           })
         } else {
           wx.showModal({

@@ -37,7 +37,7 @@
   </view>
   <view class="tijiao_zaopian">说明原因</view>
    <view class="senqing_reason">
-      <textarea placeholder="请输入请假事由" value='{{reason}}' bindblur='bindTextAreaBlur'  name="textarea" class="senqing_reason_content"></textarea>
+      <textarea placeholder="请输入请假事由" value='{{reason}}' bindinput='bindTextAreaBlur'  name="textarea" class="senqing_reason_content"></textarea>
     </view>
 
    <button form-type="submit" class="tijao" bindtap="tijiao">确认提交 </button>

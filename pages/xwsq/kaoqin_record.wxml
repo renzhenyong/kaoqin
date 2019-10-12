@@ -141,6 +141,8 @@
 </view>
 
 <view class="record_content" bindtap='record_detail'>
+<view>请假申请</view>
+<view>补卡申请</view>
   <view style="display:flex">
     <view class="record_icon"></view>
     <view>

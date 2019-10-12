@@ -210,10 +210,48 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    // 考勤记录方法
+    recordes(){
+    let dayarr = this._setCalendarData(this.data.year, this.data.month)
+        app.post('signRecordMonth', { sid: this.data.sid, year: this.data.year, month: this.data.month }, res => {
+      if (res.data.code == 1) {
+        let recordsarr = res.data.data;
+        dayarr.forEach((fatherVal) => {
+          fatherVal.forEach((fatherVal1) => {
+            recordsarr.forEach((sonVal) => {
+              let dian_day = sonVal.sign_date.slice(8, 9) == 0 ? sonVal.sign_date.slice(9, 10) : sonVal.sign_date.slice(8, 10)
+              if (dian_day == fatherVal1.day && sonVal.sign_status == 1) {
+                fatherVal1.statu = 1;
+              } else if (dian_day == fatherVal1.day && sonVal.statu == 2) {
+                fatherVal1.statu = 2;
+              }
+            })
+            if (fatherVal1.day == this.data.day) {
+              fatherVal1.color = "#3F88FB;";
+              fatherVal1.background = "rgba(0,0,0,0.1)";
+            }
+          })
+        })
+        this.setData({
+          days_array: dayarr,
+          d_state: this.data.day
+        });
+      }
+    })
+    },
+// 考勤记录某一天详情
+    recordsdetail(click_date){
+      this.setData({
+        click_date:click_date
+      })
+    app.post('signRecord', { sid: this.data.sid, sign_date: click_date }, res => {
+      if (res.data.code == 1) {
+      }
+    })
+},
     record_detail() {
-      console.log(666);
       wx.navigateTo({
-        url: '../xwsq/record_detail',
+        url: '../xwsq/record_detail?clickdate=' + this.data.click_date,
       })
     },
     /**
@@ -621,8 +659,6 @@ Component({
      * 点击下个月
      */
     nextMonth: function () {
-      console.log(this.data.month);
-      console.log(this.data.month+1);
       this.setData({
         d_state: ""
       });
@@ -641,40 +677,10 @@ Component({
           month: this.data.month + 1
         });
       }
-      this.setData({
-        days_array: this._setCalendarData(this.data.year, this.data.month)
-      });
-
+      if (this.data.month == wx.getStorageSync('nowmonth')){
+        this.recordes();
+      }
       //当前月的考勤记录
-      var dayarr = this._setCalendarData(2019, this.data.month + 1);
-      var recordsarr = [{ year: 2019, month: 10, day_code: 8, name: 'testA', statu: 2 }, { year: 2019, month: 10, day_code: 9, name: 'testB', statu: 1 },
-      ];
-
-      dayarr.forEach((fatherVal) => {
-        fatherVal.forEach((fatherVal1) => {
-          recordsarr.forEach((sonVal) => {
-            if (sonVal.day_code === fatherVal1.day && sonVal.statu == 1) {
-              console.log('A === ' + sonVal.day_code)
-              fatherVal1.statu = 1;
-            } else if (sonVal.day_code === fatherVal1.day && sonVal.statu == 2) {
-              console.log('A === ' + sonVal.day_code)
-              fatherVal1.statu = 2;
-            }
-          })
-          // if (fatherVal1.day == day) {
-          //   fatherVal1.color = "#3F88FB;";
-          //   fatherVal1.background = "rgba(0,0,0,0.1)";
-          // }
-        })
-      })
-      this.setData({
-        days_array: dayarr,
-        d_state: this.data.day
-      });
-      console.log(this.data.days_array);
-
-
-
       eventDetail['currentYear'] = this.data.year;
       eventDetail['currentMonth'] = this.data.month;
       this.triggerEvent('nextMonth', eventDetail);
@@ -684,6 +690,9 @@ Component({
      * 点击上个月
      */
     prevMonth: function () {
+      this.setData({
+        d_state: ""
+      });
       const eventDetail = {
         prevYear: this.data.year,
         prevMonth: this.data.month
@@ -699,9 +708,9 @@ Component({
           month: this.data.month - 1
         })
       }
-      this.setData({
-        days_array: this._setCalendarData(this.data.year, this.data.month)
-      });
+      if (this.data.month == wx.getStorageSync('nowmonth')) {
+        this.recordes();
+      }
       eventDetail['currentYear'] = this.data.year;
       eventDetail['currentMonth'] = this.data.month;
       this.triggerEvent('prevMonth', eventDetail);
@@ -735,7 +744,6 @@ Component({
      */
     dayClick: function (event) {
       const click_day = event.currentTarget.dataset.day;
-  
       const eventDetail = {
         year: click_day.year,
         month: click_day.month,
@@ -751,18 +759,9 @@ Component({
         d_state: event.currentTarget.dataset.day.day,
         days_array: this.data.days_array
       });
-      // var arr1 = this.data.days_array;
-      // arr1.forEach((fatherVal2) => {
-      //   fatherVal2.forEach((fatherVal3) => {
-      //     if (fatherVal3.day == eventDetail.day){
-      //       fatherVal3.background = "#fff;";
-      //       fatherVal3.color = "#3F88FB!important;";
-      //     }
-      //   })
-      // })
-      // this.setData({
-      //   days_array: arr1
-      // });
+      let click_date = click_day.year + '-' + click_day.month + '-' + click_day.day;
+      this.recordsdetail(click_date);
+      
     }
   },
 
@@ -774,44 +773,15 @@ Component({
     const year = this.data.year;
     const month = this.data.month;
     const day=this.data.day;
-     var dayarr = this._setCalendarData(year, month);
-    // var recordsarr = [{ year: 2019, month: 10, day_code: 8, name: 'testA',statu:2 }, { year: 2019, month: 10,day_code: 9, name: 'testB',statu:1 },
-    // ];
-    app.post('signRecordMonth', { sid: this.data.sid, year: year, month: month }, res => {
-      if (res.data.code == 1) {
-        var recordsarr = res.data.data;
-        dayarr.forEach((fatherVal) => {
-          fatherVal.forEach((fatherVal1) => {
-            recordsarr.forEach((sonVal) => {
-              var dian_day = sonVal.sign_date.slice(8, 9) == 0 ? sonVal.sign_date.slice(9, 10) : sonVal.sign_date.slice(8, 10)
-              if (dian_day == fatherVal1.day && sonVal.sign_status == 1) {
-                fatherVal1.statu = 1;
-              } else if (dian_day == fatherVal1.day && sonVal.statu == 2) {
-                fatherVal1.statu = 2;
-              }
-            })
-            if ( fatherVal1.day == day) {
-              fatherVal1.color = "#3F88FB;";
-              fatherVal1.background = "rgba(0,0,0,0.1)";
-            }
-          })
-        })
-        console.log("dayarr");
-        console.log(dayarr);
-        this.setData({
-          days_array: dayarr,
-          d_state: this.data.day
-        });
-      }
-    })
-
-   
+    wx.setStorageSync('nowmonth', month);
+    this.recordes();
+    let click_date = year + '-' + month + '-' + day;
+    this.recordsdetail(click_date);
+  
   },
 
   ready: function () {
-   
   },
-
   externalClasses: [
     'calendar-style',     // 日历整体样式
     'header-style',       // 标题样式

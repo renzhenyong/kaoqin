@@ -10,6 +10,7 @@ height:100vh;
   padding:15px 10px;
   display:flex;
   justify-content: space-between;
+  margin-top:10px;
 
 }
 .mineqingjia12{

@@ -22,8 +22,10 @@
     </view>
     <view class="mine62">1102室</view>
   </view>
-
-  <view class="mine7">消息</view>
+         <view class="mine7">
+           <text >消息</text>
+             <text class="jilu" bindtap="jilu">提交记录</text>
+          </view>   
   <view class="mine8">
     <view class="mine81" bindtap="qingjia">
       <view style="display:flex;">

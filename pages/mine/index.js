@@ -36,6 +36,11 @@ Page({
   },
   qingjia(){
     wx.navigateTo({
+      url: '../mine/qingjiaDetail'
+    })
+  },
+  jilu(){
+    wx.navigateTo({
       url: '../mine/qingjia'
     })
   }

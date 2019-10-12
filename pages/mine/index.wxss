@@ -67,6 +67,12 @@ font-size:14px;
 }
 .mine7{
   margin:20px 0 10px 10px;
+  display:flex;
+justify-content: space-between;
+}
+.jilu{
+  font-size:13px;
+  margin-top:3px;
 }
 .mine8{
     background:#fff;

@@ -20,5 +20,5 @@
       </view>
       <view class="detail_time detail_beizu"><text class="detail_beizu_text">备注</text><text>无备注</text></view>
   </view>
-  <view class="senqing_buka">提交补卡申请</view>
+  <view class="senqing_buka" bindtap="bukasq">提交补卡申请</view>
 </view>
