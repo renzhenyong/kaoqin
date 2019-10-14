@@ -6,21 +6,21 @@
       <view class="mine1">
         <view class="mine2">
           <text class="mine2_1">{{name}}</text>
-          <text class="mine2_2">18053535260</text>
         </view>
+        <view class="mine4">{{phone}}</view> 
         <view class="mine3">{{dept_name}}</view>
-        <view class="mine4">计算机学院</view>
+       
       </view>
-      <view class="mine5">诚海中职学校</view>
+      <view class="mine5">{{school_name}}</view>
     </view>
   </view>
 
   <view class="mine6">
     <view style="display:flex">
       <image src="../../img/my_floor.png" class="mine61"></image>
-      <view>心悦楼</view>
+      <view>{{build}}</view>
     </view>
-    <view class="mine62">1102室</view>
+    <view class="mine62">{{room}}室</view>
   </view>
          <view class="mine7">
            <text >消息</text>

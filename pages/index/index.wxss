@@ -25,12 +25,12 @@ map {
   position: relative;
 }
 .schoolname{
-margin-left:20px;
-font-size:1.1rem;
+margin-left:5px;
+font-size:1rem;
  color:#313131;
 }
 .suaxin{
- width:28px;height:28px;margin-right:10px;align-self: center;
+ width:28px;height:28px;align-self: center;
 }
 .current_time{
   color:#686868;

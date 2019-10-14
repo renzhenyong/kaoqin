@@ -149,19 +149,19 @@ Page({
   takePhoto(){
     var that = this
     let dakatime1 = util.dakaTime(new Date())
-    if (that.data.start_time >= dakatime1 || that.data.end_time <= dakatime1) {
-      wx.showModal({
-        title: '提示',
-        content: '请在规定时间内打卡',
-      })
-      return;
-    }else if(that.data.guiqin_daka=='已打卡'){
-      wx.showModal({
-        title: '今天已打卡',
-        content: '请勿重复打卡，好好休息',
-      })
-      return;
-    }
+    // if (that.data.start_time >= dakatime1 || that.data.end_time <= dakatime1) {
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '请在规定时间内打卡',
+    //   })
+    //   return;
+    // }else if(that.data.guiqin_daka=='已打卡'){
+    //   wx.showModal({
+    //     title: '今天已打卡',
+    //     content: '请勿重复打卡，好好休息',
+    //   })
+    //   return;
+    // }
     let tim=util.currentTime(new Date());
     let timestamp = Date.parse(tim)
     console.log(that.data.sid);
@@ -175,11 +175,15 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['camera'],
       success(res) {
-
         // tempFilePath可以作为img标签的src属性显示图片
         const tempFilePaths = res.tempFilePaths
-        console.log("tempFilePaths");
-        console.log(tempFilePaths[0]);
+        wx.showToast({
+          title: '正在上传...',
+          icon: 'loading',
+          mask: true,
+          duration: 3000
+        })  
+
         wx.uploadFile({
           url: app.globalData.api + 'uploadImg',  //仅为示例，非真实的接口地址
           filePath: tempFilePaths[0],
@@ -193,7 +197,7 @@ Page({
             remark: "",
           },
           success(res) {
-            console.log("photo");
+            wx.hideToast();
             if (res.statusCode==200){
               let imgobj = JSON.parse(res.data);
               var ht_endtime = util.dakaTime(new Date())
@@ -224,7 +228,17 @@ Page({
 
             }
        
-          }
+          },
+
+                 fail: function (res) {
+            wx.hideToast();
+            wx.showModal({
+              title: '错误提示',
+              content: '上传图片失败',
+              showCancel: false,
+              success: function (res) { }
+            })
+          } 
         })
 
       }

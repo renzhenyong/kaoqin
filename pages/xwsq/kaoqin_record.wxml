@@ -114,8 +114,8 @@
                  <text   class="calendar-day" style="color: {{day.color}};">{{day.day}}</text>
                    <!-- <block wx:for="{{days_array[i]}}" wx:for-item="day" wx:key=""> -->
                
-<text wx:if="{{day.statu==1}}" class="calendar-day" style="color: {{day.color}};position:absolute;bottom:-7px">.</text>     
-  <text wx:if="{{day.statu==2}}" class="calendar-day" style="color: red!important;position:absolute;bottom:-7px">.</text>          
+<text wx:if="{{day.statu==1}}" class="calendar-day" style="color: {{day.color}};position:absolute;bottom:-7px;width:4px;height:4px;background:#fff;border-radius:50%;"></text>     
+  <text wx:if="{{day.statu==2}}" class="calendar-day" style="color: red!important;position:absolute;bottom:-7px;width:4px;height:4px;background:#fff;border-radius:50%;"></text>          
                     
                         
                                 <block wx:if="{{addon == 'lunar'}}">
@@ -140,9 +140,22 @@
     </view>
 </view>
 
-<view class="record_content" bindtap='record_detail'>
-<view>请假申请</view>
-<view>补卡申请</view>
+
+<view class="qingjiarecord" style="border-bottom:1px solid #D8D8D8" bindtap="qingjaidetail">
+  <view >
+     <view style="font-size:14px;color:#333;">请假申请</view>
+     <view style="font-size:12px;color:#666;">4.19 21:00-22:00</view>
+  </view>
+ <image style="width:18px;height:18px;color:#fff;text-align:center;margin-top:5px;" src="../../img/right.png"></image>
+</view>
+<view class="qingjiarecord" bindtap="bukadetail">
+  <view >
+     <view style="font-size:14px;color:#333;">补卡申请</view>
+     <view style="font-size:12px;color:#666;">4.19 21:00-22:00</view>
+  </view>
+ <image style="width:18px;height:18px;color:#fff;text-align:center;margin-top:5px;" src="../../img/right.png"></image>
+</view>
+<view class="record_content" bindtap='record_detail' >
   <view style="display:flex">
     <view class="record_icon"></view>
     <view>
@@ -151,7 +164,11 @@
       <text class="kqsj">（考勤时间21:00）</text>
     </view>
   </view>
-  <view class="record_date"><text>2019.06.12</text> <text style="margin-left:5px;">（星期五）</text></view>
+  <view class="record_date"><text>2019.06.12</text> 
+  <text style="margin-left:5px;">（星期五）</text>
+  <text style="color:#3F88FB;border:1px solid #3F88FB;border-radius:3px;padding:0 5px;">请假</text>
+  <text style="color:#3F88FB;border:1px solid #3F88FB;border-radius:3px;padding:0 5px;margin-left:10px">补卡</text>
+  </view>
    <view class="record_date zengcang">正常</view>
    <view class="record_date" ><image src="../../img/wxtx.jpg" class="img_tou"></image></view>
       <view style="border:1px solid #D8D8D8;margin-top:30px;"></view>

@@ -127,7 +127,7 @@ background:#3F88FB;color:#fff;
      color: white;
 }
 .record_content{
-  padding:23px;
+  padding:18px;
 }
 .record_icon{
   width:9px;height:9px;
@@ -166,4 +166,11 @@ margin-top:10px;
    color: #3F88FB!important; 
   background: #fff!important;
  
+}
+.qingjiarecord{
+padding:10px 23px;
+background:#EFEFF4;
+display:flex;
+justify-content: space-between;
+
 }

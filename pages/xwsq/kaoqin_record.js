@@ -762,6 +762,16 @@ Component({
       let click_date = click_day.year + '-' + click_day.month + '-' + click_day.day;
       this.recordsdetail(click_date);
       
+    },
+    qingjaidetail(){
+      wx.navigateTo({
+        url: '../mine/qingjiaDetail'
+      })
+    },
+    bukadetail(){
+      wx.navigateTo({
+        url: '../mine/qingjiaDetail'
+      })
     }
   },
 

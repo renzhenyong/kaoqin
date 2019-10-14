@@ -6,6 +6,10 @@ Page({
   data: {
     dept_name:'',
     name:'',
+    phone:'',
+    school_name:'',
+    build:'',
+    room:'',
     face_img:'',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -23,7 +27,11 @@ Page({
              this.setData({
                dept_name: res.data.data.dept_name,
                face_img: res.data.data.face_img,
-               name: res.data.data.name
+               name: res.data.data.name,
+               phone: res.data.data.phone,
+               school_name: res.data.data.school_name,
+               build: res.data.data.build,
+               room: res.data.data.room,
              })
            }
     })

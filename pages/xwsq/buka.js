@@ -18,8 +18,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      choice1: true,
-    buka_date:options.clickdate,
+      choice1: false,
+   buka_date:options.clickdate,
     })
   },
 
@@ -136,14 +136,32 @@ Page({
 
   tijiao(){
     let that = this
+    if (that.data.buka_date == '') {
+      console.log(11);
+      wx.showModal({
+        title: '提示',
+        content: "请填写补卡时间",
+      })
+      return;
+    } else if (that.data.reason == '') {
+      console.log(22);
+      wx.showModal({
+        title: '提示',
+        content: "请填写补卡原因",
+      })
+      return;
+    }
+  
+   
     app.post('askFill', { sid: this.data.sid, remark: that.data.reason, date: that.data.buka_date }, res => {
-if(res.data,code==1){
+if(res.data.code==1){
   wx.navigateTo({
     url: '../xwsq/buka_success',
   })
 }else{
-  wx.navigateTo({
-    url: '../xwsq/buka',
+  wx.showModal({
+    title: '错误提示',
+    content: res.data.msg,
   })
 }
     })

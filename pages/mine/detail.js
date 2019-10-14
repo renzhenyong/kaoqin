@@ -9,6 +9,8 @@ Page({
     number: '',
     name: '',
     face_img: '',
+    floor:'',
+    bed:'',
   },
 
   /**
@@ -35,7 +37,9 @@ Page({
         this.setData({
           number: res.data.data.number,
           face_img: res.data.data.face_img,
-          name: res.data.data.name
+          name: res.data.data.name,
+          floor: res.data.data.floor,
+          bed: res.data.data.bed,
         })
       }
     })

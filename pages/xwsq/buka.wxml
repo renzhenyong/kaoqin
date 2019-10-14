@@ -3,18 +3,18 @@
   <view class="baka_content">
     <view class="senqing_ren">
       <view>申请人</view>
-       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+       <!-- <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}"> -->
     <view class="picker">
            <view class="benren">
               <view >{{array[index]}}</view>
               <image src="../../img/down.png" class="down_icon"></image>
             </view>
             </view>
-    </picker>
+    <!-- </picker> -->
     </view>
     <view class="baka_time">
       <view>补卡时间</view>
-        <picker mode="date" value="{{buka_date}}" start="2015-09-01" end="2031-09-01" bindchange="bindbukaDateChange">
+        <picker mode="date" value="{{buka_date}}" start="2015-09-01" end="2031-09-01" bindinput="bindbukaDateChange">
            <view class="picker" class="bukapicker">
      <image src="../../img/datetime.png" class="baka_time_icon" hidden="{{choice1}}"></image>
      {{buka_date}}
