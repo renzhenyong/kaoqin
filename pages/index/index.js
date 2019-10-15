@@ -149,19 +149,19 @@ Page({
   takePhoto(){
     var that = this
     let dakatime1 = util.dakaTime(new Date())
-    // if (that.data.start_time >= dakatime1 || that.data.end_time <= dakatime1) {
-    //   wx.showModal({
-    //     title: '提示',
-    //     content: '请在规定时间内打卡',
-    //   })
-    //   return;
-    // }else if(that.data.guiqin_daka=='已打卡'){
-    //   wx.showModal({
-    //     title: '今天已打卡',
-    //     content: '请勿重复打卡，好好休息',
-    //   })
-    //   return;
-    // }
+    if (that.data.start_time >= dakatime1 || that.data.end_time <= dakatime1) {
+      wx.showModal({
+        title: '提示',
+        content: '请在规定时间内打卡',
+      })
+      return;
+    }else if(that.data.guiqin_daka=='已打卡'){                                                                                                                                                                                        
+      wx.showModal({
+        title: '今天已打卡',
+        content: '请勿重复打卡，好好休息',
+      })
+      return;
+    }
     let tim=util.currentTime(new Date());
     let timestamp = Date.parse(tim)
     console.log(that.data.sid);

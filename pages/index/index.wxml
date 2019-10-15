@@ -8,7 +8,7 @@
   <!-- <text class="current_time">星期三</text> -->
   </view> 
   </view>
-  <view style="position:absolute;top:28vh;left:30%;"><image src="/img/popover.png" style="width:150px;height:50px"></image>
+  <view style="position:absolute;top:53%;left:32%;"><image src="/img/popover.png" style="width:150px;height:50px"></image>
   <text style="position:absolute;top:18px;left:10px;color:{{rangcolor}}">{{isrange}}</text>
   </view>
 </map>

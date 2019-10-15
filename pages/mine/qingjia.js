@@ -1,4 +1,5 @@
 // pages/mine/qingjia.js
+const app = getApp()
 Page({
 
   /**
@@ -12,7 +13,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.data.sid = wx.getStorageSync('uid');
+    app.post('fillRecord', { sid: this.data.sid }, res => {
 
+    })
   },
 
   /**

@@ -35,6 +35,10 @@ Page({
              })
            }
     })
+    app.post('approveLast', { sid: this.data.sid }, res => {
+
+    })
+
   },
 
   getdetail:function(){
@@ -44,7 +48,7 @@ Page({
   },
   qingjia(){
     wx.navigateTo({
-      url: '../mine/qingjiaDetail'
+      url: '../mine/qingjiaDetail?id='+21
     })
   },
   jilu(){
