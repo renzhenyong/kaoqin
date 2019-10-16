@@ -19,7 +19,7 @@ Page({
     hours:'0',
     multiArray: [['今天', '明天', '3-2', '3-3', '3-4', '3-5'], [0, 1, 2, 3, 4, 5, 6], [0, 10, 20]],
     multiIndex: [0, 0, 0],
-    array: ['事假', '休假', '婚假', '病假'],
+    array: ['病假','事假'],
     index:5,
     choice:false,
     choice1: false,

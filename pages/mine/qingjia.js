@@ -6,7 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    currentData:0,
+    leaveinfo:[],
+    fillinfo:[],
+    leavearr: ["病假", "事假"],
+    fillarr: ["","未打卡"],
+    verfystatu: ["正在审批中","已通过","未通过"],
   },
 
   /**
@@ -14,8 +19,12 @@ Page({
    */
   onLoad: function (options) {
     this.data.sid = wx.getStorageSync('uid');
-    app.post('fillRecord', { sid: this.data.sid }, res => {
-
+    app.post('leaveRecord', { sid: this.data.sid }, res => {
+      if(res.data.code==1){
+             this.setData({
+               leaveinfo:res.data.data
+             })
+      }
     })
   },
 
@@ -67,9 +76,52 @@ Page({
   onShareAppMessage: function () {
 
   },
-  qingjiadetail(){
-    wx.navigateTo({
-      url: '../mine/qingjiaDetail'
+  //获取当前滑块的index
+  bindchange: function (e) {
+    const that = this;
+    that.setData({
+      currentData: e.detail.current
     })
-  }
+  },
+  //点击切换，滑块index赋值
+  checkCurrent: function (e) {
+    const that = this;
+
+    if (that.data.currentData === e.target.dataset.current) {
+      return false;
+    } else {
+
+      that.setData({
+        currentData: e.target.dataset.current
+      })
+      if(e.target.dataset.current==1){
+        app.post('fillRecord', { sid: that.data.sid }, res => {
+          if (res.data.code == 1) {
+            this.setData({
+              fillinfo: res.data.data
+            })
+          }
+        })
+      }else{
+        app.post('leaveRecord', { sid: that.data.sid }, res => {
+          if (res.data.code == 1) {
+            this.setData({
+              leaveinfo: res.data.data
+            })
+          }
+        })
+      }
+    }
+  },
+  
+  qingjiadetail(e){
+    wx.navigateTo({
+      url: '../mine/qingjiaDetail?id=' + e.currentTarget.dataset.id 
+    })
+  },
+  bukadetail(e) {
+    wx.navigateTo({
+      url: '../mine/bukaDetail?id=' + e.currentTarget.dataset.id
+    })
+  },
 })

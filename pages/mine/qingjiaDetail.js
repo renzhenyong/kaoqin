@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    info:{},
+    faceimg:'',
+    leavearr: ["事假", "病假"],
   },
 
   /**
@@ -14,12 +16,16 @@ Page({
    */
   onLoad: function (options) {
     this.data.sid = wx.getStorageSync('uid');
-console.log(options.id);
+    this.setData({
+  faceimg:wx.getStorageSync("faceimg")
+})
     app.post('leaveDetail', { sid: this.data.sid, id: options.id }, res => {
-
+                  this.setData({
+                    info:res.data.data
+                  })
     })
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

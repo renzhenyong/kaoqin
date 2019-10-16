@@ -11,6 +11,8 @@ Page({
     build:'',
     room:'',
     face_img:'',
+    fill:{},
+    leave:{},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -33,10 +35,16 @@ Page({
                build: res.data.data.build,
                room: res.data.data.room,
              })
+             wx.setStorageSync("faceimg",res.data.data.face_img);
            }
     })
     app.post('approveLast', { sid: this.data.sid }, res => {
-
+             if(res.data.code==1){
+               this.setData({
+               fill:res.data.data.fill,
+                 leave: res.data.data.leave,
+               })
+             }
     })
 
   },

@@ -3,7 +3,7 @@
 <map class='map' longitude='{{longitude}}' latitude='{{latitude}}'  scale='{{scale}}' markers="{{markers}}" show-location>
   <view class="cover" >
   <view class="scan">
-   <view><text class="schoolname" >烟台开发区实验中学</text><text class="current_time">{{time}}</text></view>
+   <view><text class="schoolname" >{{shoolname}}</text><text class="current_time">{{time}}</text></view>
   <image src="../../img/suaxin.png" class="suaxin" bindtap="sua"></image>
   <!-- <text class="current_time">星期三</text> -->
   </view> 

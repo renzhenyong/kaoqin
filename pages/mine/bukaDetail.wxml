@@ -1,0 +1,26 @@
+<!--pages/mine/qingjiaDetail.wxml-->
+<view class="qingjiadetail_bg">
+           <view class="qingjiadetail1">
+              <image src="{{faceimg}}" class="qingjiadetail11"></image>
+              <view>
+                           <view class="qingjiadetail111">{{info.stu_name}}的补卡</view>
+                           <!-- <view class="xueyuan" style="margin-top:10px"><text class="qingjiadetail1111">所在学院</text>
+                           <text class="qingjiadetail1112">计算机学院</text></view> -->
+                            <view class="xueyuan"><text class="qingjiadetail1111">异常状态</text>
+                           <text class="qingjiadetail1112">{{fillarr[info.status]}}</text></view>
+                            <view class="xueyuan"><text class="qingjiadetail1111">补卡时间</text>
+                           <text class="qingjiadetail1112">{{info.fill_date}}</text><text style="margin-left:5px">{{info.fill_time}}</text></view>
+                      
+                             <view class="xueyuan"><text class="qingjiadetail1111">补卡事由</text>
+                           <text class="qingjiadetail1112">{{info.remark}}</text></view>
+              </view>
+           </view>
+
+           <view class="splc">审批流程</view>
+           <view class="senpiok">
+                  <view class="senpiok1"></view>
+                  <view class="senpiok2"></view>
+                  <view class="senpiok3">{{info.approver}}老师已同意</view>
+           </view>
+           <view class="cexiao">通过后/未通过前的撤销</view>
+</view>

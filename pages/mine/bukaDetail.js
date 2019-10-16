@@ -1,21 +1,28 @@
-// pages/xwsq/index.js
+// pages/mine/qingjiaDetail.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    info: {},
+    faceimg: '',
+    fillarr: ["未打卡"],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("wx.getStorageSync('schoolname')");
-    console.log(wx.getStorageSync('shoolname'));
+    this.data.sid = wx.getStorageSync('uid');
     this.setData({
-      schoolname: wx.getStorageSync('shoolname')
+      faceimg: wx.getStorageSync("faceimg")
+    })
+    app.post('fillDetail', { sid: this.data.sid, id: options.id }, res => {
+      this.setData({
+        info: res.data.data
+      })
     })
   },
 
@@ -66,21 +73,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  buka(){
-    wx.navigateTo({
-      url: '../xwsq/buka',
-    })
-  },
-  qingjia(){
-    wx.navigateTo({
-      url: '../xwsq/qingjia',
-    })
-  },
-  kaoqin_record() {
-    wx.navigateTo({
-      url: '../xwsq/kaoqin_record',
-    })
-  },
-  
+  }
 })

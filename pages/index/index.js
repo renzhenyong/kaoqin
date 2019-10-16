@@ -80,6 +80,18 @@ Page({
     var that = this;
     app.hasLogin();
     this.data.sid = wx.getStorageSync('uid');
+// 当前学校经纬度
+    app.post('schoolInfo', { sid: that.data.sid }, res => {
+       if(res.data.code==1){
+         that.setData({
+         shoolname:res.data.data.name,
+           suselat:res.data.data.lat,
+           suselng: res.data.data.lng,
+         })
+         wx.setStorageSync('shoolname', res.data.data.name);
+       }
+    })
+    
 
     if (this.data.sid != '') {
       var that = this

@@ -35,7 +35,7 @@
           <view class="mine812">你的请假已通过</view>
         </view>
       </view>
-      <view class="mine812">8:56</view>
+      <view class="mine812">{{leave.create_date}}</view>
     </view>
 
     <view class="mine81">
@@ -46,7 +46,7 @@
           <view class="mine812">你的补卡已通过</view>
         </view>
       </view>
-      <view class="mine812">8:56</view>
+      <view class="mine812">{{fill.create_date}}</view>
     </view>
   </view>
 </view>

@@ -1,21 +1,23 @@
 <!--pages/mine/qingjiaDetail.wxml-->
 <view class="qingjiadetail_bg">
            <view class="qingjiadetail1">
-              <view class="qingjiadetail11"></view>
+              <image src="{{faceimg}}" class="qingjiadetail11"></image>
               <view>
-                           <view class="qingjiadetail111">张靓颖的请假</view>
-                           <view class="xueyuan" style="margin-top:10px"><text class="qingjiadetail1111">所在学院</text>
-                           <text class="qingjiadetail1112">计算机学院</text></view>
+                           <view class="qingjiadetail111">{{info.stu_name}}的请假</view>
+                           <!-- <view class="xueyuan" style="margin-top:10px"><text class="qingjiadetail1111">所在学院</text>
+                           <text class="qingjiadetail1112">计算机学院</text></view> -->
                             <view class="xueyuan"><text class="qingjiadetail1111">请假类型</text>
-                           <text class="qingjiadetail1112">事假</text></view>
+                           <text class="qingjiadetail1112">{{leavearr[info.leave_type]}}</text></view>
                             <view class="xueyuan"><text class="qingjiadetail1111">开始时间</text>
-                           <text class="qingjiadetail1112">2019/02/03</text></view>
+                           <text class="qingjiadetail1112">{{info.start_date}}</text><text style="margin-left:5px">{{info.start_time}}</text></view>
                              <view class="xueyuan"><text class="qingjiadetail1111">结束时间</text>
-                           <text class="qingjiadetail1112">2019/02/03</text></view>
+                           <text class="qingjiadetail1112">{{info.end_date}}</text>
+                           <text style="margin-left:5px">{{info.start_time}}</text>
+                           </view>
                              <view class="xueyuan"><text class="qingjiadetail1111">请假时长</text>
-                           <text class="qingjiadetail1112">1小时</text></view>
+                           <text class="qingjiadetail1112">{{info.day_length}}</text></view>
                              <view class="xueyuan"><text class="qingjiadetail1111">请假事由</text>
-                           <text class="qingjiadetail1112">起晚了</text></view>
+                           <text class="qingjiadetail1112">{{info.remark}}</text></view>
               </view>
            </view>
 
@@ -23,7 +25,7 @@
            <view class="senpiok">
                   <view class="senpiok1"></view>
                   <view class="senpiok2"></view>
-                  <view class="senpiok3">赵家栋老师已同意</view>
+                  <view class="senpiok3">{{info.approver}}老师已同意</view>
            </view>
            <view class="cexiao">通过后/未通过前的撤销</view>
 </view>

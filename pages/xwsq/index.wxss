@@ -1,7 +1,7 @@
 /* pages/xwsq/index.wxss */
 .chzz{
   position: absolute;
-  width:70px;height:30px;
+  width:150px;height:30px;
   color:#fff;
    left: 0;
       right: 0;
