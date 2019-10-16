@@ -85,9 +85,11 @@ Page({
        if(res.data.code==1){
          that.setData({
          shoolname:res.data.data.name,
-           suselat:res.data.data.lat,
-           suselng: res.data.data.lng,
+          //  suselat:res.data.data.lat,
+          //  suselng: res.data.data.lng,
          })
+         that.data.markers[0].latitude = res.data.data.lat;
+         that.data.markers[0].longitude = res.data.data.lng;
          wx.setStorageSync('shoolname', res.data.data.name);
        }
     })
