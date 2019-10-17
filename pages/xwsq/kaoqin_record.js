@@ -194,20 +194,20 @@ Component({
    */
   data: {
     days_array: [], // 日期数组
-    days_record:[],//考勤记录
+    days_record: [], //考勤记录
     days_color: [], // 日期字体、背景颜色数组
     days_addon: [], // 日期附件
     weekTitle: ['日', '一', '二', '三', '四', '五', '六'],
     max_year: 2099, // 最大年份
-    max_month: 12,  // 最大月份
+    max_month: 12, // 最大月份
     min_year: 1900, // 最小年份
-    min_month: 1,   // 最小月份  
-    dakastatu:1,
-    d_state: "",      
-    dayfill:[],
-    dayleave:[],
-    daysign:[],
-    daystatus:['缺勤','正常','晚归','请假']
+    min_month: 1, // 最小月份  
+    dakastatu: 1,
+    d_state: "",
+    dayfill: [],
+    dayleave: [],
+    daysign: [],
+    daystatus: ['缺勤', '正常', '晚归', '请假']
   },
 
   /**
@@ -215,49 +215,56 @@ Component({
    */
   methods: {
     // 考勤记录方法
-    recordes(){
-    let dayarr = this._setCalendarData(this.data.year, this.data.month)
-        app.post('signRecordMonth', { sid: this.data.sid, year: this.data.year, month: this.data.month }, res => {
-      if (res.data.code == 1) {
-        let recordsarr = res.data.data;
-        dayarr.forEach((fatherVal) => {
-          fatherVal.forEach((fatherVal1) => {
-            recordsarr.forEach((sonVal) => {
-              let dian_day = sonVal.sign_date.slice(8, 9) == 0 ? sonVal.sign_date.slice(9, 10) : sonVal.sign_date.slice(8, 10)
-              if (dian_day == fatherVal1.day && sonVal.sign_status == 1) {
-                fatherVal1.statu = 1;
-              } else if (dian_day == fatherVal1.day && sonVal.statu == 2) {
-                fatherVal1.statu = 2;
+    recordes() {
+      let dayarr = this._setCalendarData(this.data.year, this.data.month)
+      app.post('signRecordMonth', {
+        sid: this.data.sid,
+        year: this.data.year,
+        month: this.data.month
+      }, res => {
+        if (res.data.code == 1) {
+          let recordsarr = res.data.data;
+          dayarr.forEach((fatherVal) => {
+            fatherVal.forEach((fatherVal1) => {
+              recordsarr.forEach((sonVal) => {
+                let dian_day = sonVal.sign_date.slice(8, 9) == 0 ? sonVal.sign_date.slice(9, 10) : sonVal.sign_date.slice(8, 10)
+                if (dian_day == fatherVal1.day && sonVal.sign_status == 1) {
+                  fatherVal1.statu = 1;
+                } else if (dian_day == fatherVal1.day && sonVal.statu == 2) {
+                  fatherVal1.statu = 2;
+                }
+              })
+              if (fatherVal1.day == this.data.day) {
+                fatherVal1.color = "#3F88FB;";
+                fatherVal1.background = "rgba(0,0,0,0.1)";
               }
             })
-            if (fatherVal1.day == this.data.day) {
-              fatherVal1.color = "#3F88FB;";
-              fatherVal1.background = "rgba(0,0,0,0.1)";
-            }
           })
-        })
-        this.setData({
-          days_array: dayarr,
-          d_state: this.data.day
-        });
-      }
-    })
-    },
-// 考勤记录某一天详情
-    recordsdetail(click_date){
-      this.setData({
-        click_date:click_date
+          this.setData({
+            days_array: dayarr,
+            d_state: this.data.day
+          });
+        }
       })
-    app.post('signRecord', { sid: this.data.sid, sign_date: click_date }, res => {
-      if (res.data.code == 1) {
-        this.setData({
-                 dayfill:res.data.data.fill,
-                   dayleave: res.data.data.leave,
-          daysign: res.data.data.sign,
-        })
-      }
-    })
-},
+    },
+    // 考勤记录某一天详情
+    recordsdetail(click_date) {
+      this.setData({
+        click_date: click_date
+      })
+      app.post('signRecord', {
+        sid: this.data.sid,
+        sign_date: click_date
+      }, res => {
+        if (res.data.code == 1) {
+          this.setData({
+            dayfill: res.data.data.fill,
+            dayleave: res.data.data.leave,
+            daysign: res.data.data.sign,
+          })
+        }
+      })
+    },
     record_detail(e) {
       wx.navigateTo({
         url: '../xwsq/record_detail?clickdate=' + this.data.click_date,
@@ -266,7 +273,7 @@ Component({
     /**
      * 检查年份
      */
-    _checkYear: function (year) {
+    _checkYear: function(year) {
       if (year < minYear) {
         throw new RangeError('年份不能小于' + minYear + '年');
       } else if (year > maxYear) {
@@ -278,7 +285,7 @@ Component({
     /**
      * 检查月份
      */
-    _checkMonth: function (month) {
+    _checkMonth: function(month) {
       if (month < 1) {
         throw new RangeError('月份不能小于1');
       } else if (month > 12) {
@@ -291,7 +298,7 @@ Component({
      * 检查日期是否输入正确
      * @param day int 日期
      */
-    _checkDay: function (day) {
+    _checkDay: function(day) {
       if (day < 1) {
         throw new RangeError('日期不能小于1');
       } else if (day > 31) {
@@ -303,7 +310,7 @@ Component({
     /**
      * 年份属性改变
      */
-    _yearChange: function (newYear, oldYear) {
+    _yearChange: function(newYear, oldYear) {
       if (this._checkYear(newYear)) {
         this.setData({
           year: newYear,
@@ -315,7 +322,7 @@ Component({
     /**
      * 月份属性改变
      */
-    _monthChange: function (newMonth, oldMonth) {
+    _monthChange: function(newMonth, oldMonth) {
       if (this._checkMonth(newMonth)) {
         this.setData({
           month: newMonth,
@@ -327,7 +334,7 @@ Component({
     /**
      * 日期属性改变
      */
-    _dayChange: function (newDay, oldDay) {
+    _dayChange: function(newDay, oldDay) {
       if (this._checkDay(newDay)) {
         this.setData({
           day: newDay
@@ -338,7 +345,7 @@ Component({
     /**
      * 设置起始日期
      */
-    _setStartDate: function (newDate, oldDate) {
+    _setStartDate: function(newDate, oldDate) {
       if (newDate.length == 7 && newDate.indexOf('-') == 4) {
         const year = parseInt(newDate.split('-')[0]);
         const month = parseInt(newDate.split('-')[1]);
@@ -359,7 +366,7 @@ Component({
     /**
      * 设置结束日期
      */
-    _setEndDate: function (newDate, oldDate) {
+    _setEndDate: function(newDate, oldDate) {
       if (newDate.length == 7 && newDate.indexOf('-') == 4) {
         const year = parseInt(newDate.split('-')[0]);
         const month = parseInt(newDate.split('-')[1]);
@@ -380,7 +387,7 @@ Component({
     /**
      * 是否显示标题
      */
-    _headerChange: function (newHeader, oldHeader) {
+    _headerChange: function(newHeader, oldHeader) {
       this.setData({
         header: !!newHeader
       });
@@ -389,7 +396,7 @@ Component({
     /**
      * 是否显示额外的月份日期
      */
-    _moreChange: function (newMore, oldMore) {
+    _moreChange: function(newMore, oldMore) {
       this.setData({
         showMoreDays: !!newMore,
         days_array: this._setCalendarData(this.data.year, this.data.month)
@@ -399,7 +406,7 @@ Component({
     /**
      * 周标题类型
      */
-    _weeksTypeChange: function (newVal, oldVal) {
+    _weeksTypeChange: function(newVal, oldVal) {
       switch (newVal) {
         case 'en':
           this.setData({
@@ -431,7 +438,7 @@ Component({
     /**
      * 是否显示周标题
      */
-    _showWeeksChange: function (newVal, oldVal) {
+    _showWeeksChange: function(newVal, oldVal) {
       this.setData({
         weeks: !!newVal,
       });
@@ -440,7 +447,7 @@ Component({
     /**
      * 设置单元格宽度
      */
-    _setCellSize: function (newSize, oldSize) {
+    _setCellSize: function(newSize, oldSize) {
       this.setData({
         cellSize: newSize
       });
@@ -449,7 +456,7 @@ Component({
     /**
      * 是否显示农历
      */
-    _showLunar: function (newConfig, oldConfig) {
+    _showLunar: function(newConfig, oldConfig) {
       this.setData({
         lunar: !!newConfig
       });
@@ -458,10 +465,10 @@ Component({
     /**
      * 设置日期单元格字体颜色、背景
      */
-    _setDaysColor: function (newDaysColor, oldDaysColor) {
+    _setDaysColor: function(newDaysColor, oldDaysColor) {
       this.setData({
         days_color: newDaysColor
-      }, function () {
+      }, function() {
         this.setData({
           days_array: this._setCalendarData(this.data.year, this.data.month)
         });
@@ -471,7 +478,7 @@ Component({
     /**
      * 设置日期背景效果
      */
-    _setActiveType: function (newType, oldType) {
+    _setActiveType: function(newType, oldType) {
       switch (newType) {
         case 'rounded':
         case 'square':
@@ -491,10 +498,10 @@ Component({
      * @param int year 年份
      * @param int month 月份，取值1~12
      */
-    _setCalendarData: function (year, month) {
+    _setCalendarData: function(year, month) {
       const empty_days_count = new Date(year, month - 1, 1).getDay(); // 本月第一天是周几，0是星期日，6是星期六
       let empty_days = new Array;
-      const prev_month = month - 1 == 0 ? 12 : month - 1;             // 上个月的月份数
+      const prev_month = month - 1 == 0 ? 12 : month - 1; // 上个月的月份数
       const prev_year = month - 1 == 0 ? this.data.year - 1 : this.data.year;
       /**
        * 上个月的日期
@@ -514,9 +521,9 @@ Component({
       /**
        * 下个月的日期
        */
-      const last_day = new Date(year, month, 0);          // 本月最后一天
-      const days_count = last_day.getDate();              // 本月最后一天是几号
-      const last_date = last_day.getDay();                // 本月最后一天是星期几
+      const last_day = new Date(year, month, 0); // 本月最后一天
+      const days_count = last_day.getDate(); // 本月最后一天是几号
+      const last_date = last_day.getDay(); // 本月最后一天是星期几
       const next_month = month + 1 == 13 ? 1 : month + 1; // 下个月的月份数
       const next_year = month + 1 == 13 ? this.data.year + 1 : this.data.year;
       let empty_days_last = new Array;
@@ -545,15 +552,17 @@ Component({
           info: 'current',
           color: '',
           background: 'transparent',
-          statu:0
+          statu: 0
         });
       }
-      const days_range = temp;                                   // 本月
+      const days_range = temp; // 本月
       let days = empty_days.concat(days_range, empty_days_last); // 上个月 + 本月 + 下个月            
       // 如果要显示前后月份的日期
       if (this.data.showMoreDays) {
         // 显示下月的日期
-        let index = days.findIndex(element => { return element.day == -2; });
+        let index = days.findIndex(element => {
+          return element.day == -2;
+        });
         if (index != -1) {
           const length = days.length;
           const count = length - index;
@@ -563,7 +572,9 @@ Component({
         }
 
         // 显示上月的日期
-        index = days.findIndex(element => { return element.day == 1; }) - 1;
+        index = days.findIndex(element => {
+          return element.day == 1;
+        }) - 1;
         if (index != -1) {
           const last_month_day = new Date(year, month - 1, 0).getDate();
           for (let i = 0; i <= index; i++) {
@@ -624,7 +635,7 @@ Component({
       return days_array;
     },
 
-    _setAddon: function (newAddon, oldAddon) {
+    _setAddon: function(newAddon, oldAddon) {
       if (newAddon == 'none') {
         this.setData({
           lunar: false,
@@ -654,10 +665,10 @@ Component({
     /**
      * 自定义日期数组
      */
-    _setDaysAddon: function (newAddon, oldAddon) {
+    _setDaysAddon: function(newAddon, oldAddon) {
       console.log(newAddon);
       console.log(this.data.addon);
-      if (typeof (newAddon) == 'object' && newAddon instanceof Array) {
+      if (typeof(newAddon) == 'object' && newAddon instanceof Array) {
         this.setData({
           days_addon: newAddon
         });
@@ -667,7 +678,7 @@ Component({
     /**
      * 点击下个月
      */
-    nextMonth: function () {
+    nextMonth: function() {
       this.setData({
         d_state: ""
       });
@@ -686,7 +697,7 @@ Component({
           month: this.data.month + 1
         });
       }
-      if (this.data.month == wx.getStorageSync('nowmonth')){
+      if (this.data.month == wx.getStorageSync('nowmonth')) {
         this.recordes();
       }
       //当前月的考勤记录
@@ -698,7 +709,7 @@ Component({
     /**
      * 点击上个月
      */
-    prevMonth: function () {
+    prevMonth: function() {
       this.setData({
         d_state: ""
       });
@@ -728,7 +739,7 @@ Component({
     /**
      * 日期选择器变化
      */
-    dateChange: function (event) {
+    dateChange: function(event) {
       console.log(33);
       const eventDetail = {
         prevYear: this.data.year,
@@ -751,7 +762,7 @@ Component({
     /**
      * 点击具体日期
      */
-    dayClick: function (event) {
+    dayClick: function(event) {
       const click_day = event.currentTarget.dataset.day;
       const eventDetail = {
         year: click_day.year,
@@ -770,40 +781,38 @@ Component({
       });
       let click_date = click_day.year + '-' + click_day.month + '-' + click_day.day;
       this.recordsdetail(click_date);
-      
+
     },
-    qingjaidetail(e){
+    qingjaidetail(e) {
       wx.navigateTo({
-        url: '../mine/qingjiaDetail?id=' + e.currentTarget.dataset.id 
+        url: '../mine/qingjiaDetail?id=' + e.currentTarget.dataset.id
       })
     },
-    bukadetail(e){
+    bukadetail(e) {
       wx.navigateTo({
-        url: '../mine/bukaDetail?id=' + e.currentTarget.dataset.id 
+        url: '../mine/bukaDetail?id=' + e.currentTarget.dataset.id
       })
     }
   },
 
-  created: function () {
-  },
+  created: function() {},
 
-  attached: function () {
+  attached: function() {
     this.data.sid = wx.getStorageSync('uid');
     const year = this.data.year;
     const month = this.data.month;
-    const day=this.data.day;
+    const day = this.data.day;
     wx.setStorageSync('nowmonth', month);
     this.recordes();
     let click_date = year + '-' + month + '-' + day;
     this.recordsdetail(click_date);
-  
+
   },
 
-  ready: function () {
-  },
+  ready: function() {},
   externalClasses: [
-    'calendar-style',     // 日历整体样式
-    'header-style',       // 标题样式
-    'board-style',        // 面板样式        
+    'calendar-style', // 日历整体样式
+    'header-style', // 标题样式
+    'board-style', // 面板样式        
   ]
 })

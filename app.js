@@ -37,7 +37,7 @@ App({
     })
   },
   globalData: {
-    api: 'http://test-banpai.chxgk.com/api/attend/',
+    api: 'https://test-banpai.chxgk.com/api/attend/',
     // api: 'https://banpai.chxgk.com/api/attend/',
     imgurl: 'https://banpai.chxgk.com/'
   },
@@ -96,12 +96,12 @@ App({
           that.globalData.uid = uid;
           //用户已经登录
         } else {
-          return false;
+         
           //未登录 跳转到登录界面
           wx.navigateTo({
             url: '/pages/login/index'
           })
-          return false;
+          // return false;
 
         }
       },

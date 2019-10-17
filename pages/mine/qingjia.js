@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    leaveheight:'',
     currentData:0,
     leaveinfo:[],
     fillinfo:[],
@@ -21,8 +22,10 @@ Page({
     this.data.sid = wx.getStorageSync('uid');
     app.post('leaveRecord', { sid: this.data.sid }, res => {
       if(res.data.code==1){
+
              this.setData({
-               leaveinfo:res.data.data
+               leaveinfo:res.data.data,
+               leaveheight: (res.data.data.length) * 150
              })
       }
     })
@@ -98,7 +101,8 @@ Page({
         app.post('fillRecord', { sid: that.data.sid }, res => {
           if (res.data.code == 1) {
             this.setData({
-              fillinfo: res.data.data
+              fillinfo: res.data.data,
+              leaveheight: (res.data.data.length) * 150
             })
           }
         })
@@ -106,7 +110,8 @@ Page({
         app.post('leaveRecord', { sid: that.data.sid }, res => {
           if (res.data.code == 1) {
             this.setData({
-              leaveinfo: res.data.data
+              leaveinfo: res.data.data,
+              leaveheight: (res.data.data.length) * 150
             })
           }
         })

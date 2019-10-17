@@ -4,13 +4,16 @@
   <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>请假</view>
   <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>补卡</view>
 </view>
-<swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
+<swiper current="{{currentData}}" class='swiper' style="height:{{leaveheight}}px" duration="300" bindchange="bindchange">
   <swiper-item>
     <view class='swiper_con'>
-
       <view class="mineqingjia_bg">
-        <view class="mineqingjia1"  wx:for="{{leaveinfo}}" wx:for-item="item" wx:key="" wx:for-index="i"
-         bindtap="qingjiadetail" data-id='{{item.id}}'>
+
+
+        <view class="mineqingjia1" wx:for="{{leaveinfo}}" wx:for-item="item" wx:key="" wx:for-index="i" bindtap="qingjiadetail" data-id='{{item.id}}'>
+
+
+
           <view class="mineqingjia11">
             <view style="text-align:left">你的请假申请{{verfystatu[item.status]}}</view>
             <view class="mineqingjia111" style="text-align:left">请假类型：{{leavearr[item.leave_type]}}</view>
@@ -23,9 +26,11 @@
               <text style="margin-left:5px">{{item.end_time}}</text>
             </view>
           </view>
-                <image wx:if="{{item.status==0}}" src="../../img/senpiz.png" class="mineqingjia12"></image>
+          <image wx:if="{{item.status==0}}" src="../../img/senpiz.png" class="mineqingjia12"></image>
           <image wx:if="{{item.status==1}}" src="../../img/tonguo.png" class="mineqingjia12"></image>
           <image wx:if="{{item.status==2}}" src="../../img/butonguo.png" class="mineqingjia12"></image>
+
+
         </view>
       </view>
     </view>
@@ -33,8 +38,7 @@
   <swiper-item>
     <view class='swiper_con'>
       <view class="mineqingjia_bg">
-        <view class="mineqingjia1"  wx:for="{{fillinfo}}" wx:for-item="item" wx:key="" wx:for-index="i" 
-        bindtap="bukadetail" data-id='{{item.id}}'>
+        <view class="mineqingjia1" wx:for="{{fillinfo}}" wx:for-item="item" wx:key="" wx:for-index="i" bindtap="bukadetail" data-id='{{item.id}}'>
           <view class="mineqingjia11">
             <view style="text-align:left">你的补卡申请{{verfystatu[item.status]}}</view>
             <view class="mineqingjia111" style="text-align:left">异常状态：{{fillarr[item.status]}}</view>
@@ -46,9 +50,9 @@
               <text>补卡事由：{{item.remark}}</text>
             </view>
           </view>
+          <image wx:if="{{item.status==0}}" src="../../img/senpiz.png" class="mineqingjia12"></image>
           <image wx:if="{{item.status==2}}" src="../../img/butongguo.png" class="mineqingjia12"></image>
-          <image wx:if="{{item.status==0}}" src="../../img/tonguo.png" class="mineqingjia12"></image>
-
+          <image wx:if="{{item.status==1}}" src="../../img/tonguo.png" class="mineqingjia12"></image>
         </view>
       </view>
     </view>

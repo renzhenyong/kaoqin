@@ -8,7 +8,7 @@ Page({
   data: {
     info:{},
     faceimg:'',
-    leavearr: ["事假", "病假"],
+    leavearr: ["病假","事假"],
   },
 
   /**

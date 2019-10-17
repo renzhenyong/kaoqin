@@ -1,18 +1,20 @@
 // pages/index/zuce.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+name:'',
+num:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.data.sid = wx.getStorageSync('uid');
   },
 
   /**
@@ -61,6 +63,20 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+
+  },
+  tijiao(){
+    // wx.switchTab({
+    //   url: '../index/index',
+    // })
+    // app.post('studentInfo', { sid: this.data.sid, name: this.data.name, num: this.data.num}, res => {
+    //           if(res.data.code==1){
+    //             wx.switchTab({
+    //               url: '../index/index',
+    //             })
+    //           }
+
+    // })
 
   }
 })

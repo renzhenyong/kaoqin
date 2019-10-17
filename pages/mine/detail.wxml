@@ -7,32 +7,21 @@
       <image src="{{face_img}}" class="minedetail111"></image>
     </view>
     <view class="minedetail11">
-               <view>姓名</view>
-                <view class="minedetail112">{{name}}</view>
+      <view>姓名</view>
+      <view class="minedetail112">{{name}}</view>
     </view>
-     <view class="minedetail11">
-               <view>楼层</view>
-                <view class="minedetail112">{{floor}}</view>
+    <view class="minedetail11">
+      <view>楼层</view>
+      <view class="minedetail112">{{floor}}</view>
     </view>
-       <view class="minedetail11">
-               <view>床位号</view>
-                <view class="minedetail112">{{bed}}</view>
+    <view class="minedetail11">
+      <view>床位号</view>
+      <view class="minedetail112">{{bed}}</view>
     </view>
-     <view class="minedetail11">
-               <view>学号</view>
-                <view class="minedetail112">{{number}}</view>
+    <view class="minedetail11">
+      <view>学号</view>
+      <view class="minedetail112">{{number}}</view>
     </view>
   </view>
-
-          <!-- <view class="minedetail1" style="margin-top:15px;">
-                          <view class="minedetail11">
-               <view>账号</view>
-                <view class="minedetail112">男</view>
-    </view>
-     <view class="minedetail11">
-               <view>修改密码</view>
-                <view class="minedetail112">201923221223</view>
-    </view>
-          </view> -->
-          <button class="minedetail1" style="margin-top:15px;color:#E64340" bindtap="logout">退出登陆</button>
+  <button class="minedetail1" style="margin-top:15px;color:#E64340" bindtap="logout">退出登陆</button>
 </view>

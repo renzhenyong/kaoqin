@@ -1,25 +1,20 @@
 {
-  "pages":[
-     
+  "pages": [
     "pages/index/index",
     "pages/mine/qingjia",
     "pages/mine/bukaDetail",
     "pages/mine/index",
     "pages/xwsq/kaoqin_record",
-  "pages/xwsq/qingjia",
-    
-      "pages/xwsq/buka",
-                "pages/index/regular",
-            "pages/index/zuce",
+    "pages/xwsq/qingjia",
+    "pages/xwsq/buka",
+    "pages/index/regular",
+    "pages/index/zuce",
     "pages/xwsq/record_detail",
-          "pages/xwsq/index",
-     
-        "pages/login/index",
-   "pages/index/marks",
-
-"pages/xwsq/buka_success",
-       
-    "pages/mine/detail",   
+    "pages/xwsq/index",
+    "pages/login/index",
+    "pages/index/marks",
+    "pages/xwsq/buka_success",
+    "pages/mine/detail",
     "pages/mine/qingjiaDetail",
     "pages/logs/logs"
   ],
@@ -28,11 +23,11 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-  "window":{
-  "backgroundTextStyle": "light",
-  "navigationBarBackgroundColor": "#3F88FB",
-  "navigationBarTitleText": "考勤助手",
-  "navigationBarTextStyle": "white"
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3F88FB",
+    "navigationBarTitleText": "考勤助手",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "list": [
@@ -41,17 +36,18 @@
         "text": "考勤打卡",
         "iconPath": "img/tabar1.png",
         "selectedIconPath": "img/tabar1_action.png"
-      },{
-          "pagePath": "pages/xwsq/index",
-          "text": "学务申请",
-      "iconPath": "img/tabar2.png",
-      "selectedIconPath": "img/tabar2_action.png"
-        },
+      },
+      {
+        "pagePath": "pages/xwsq/index",
+        "text": "学务申请",
+        "iconPath": "img/tabar2.png",
+        "selectedIconPath": "img/tabar2_action.png"
+      },
       {
         "pagePath": "pages/mine/index",
         "text": "我的",
-  "iconPath": "img/tabar3.png",
-  "selectedIconPath": "img/tabar3_action.png"
+        "iconPath": "img/tabar3.png",
+        "selectedIconPath": "img/tabar3_action.png"
       }
     ]
   },
@@ -61,5 +57,4 @@
       "provider": "wx92c68dae5a8bb046"
     }
   }
-
 }

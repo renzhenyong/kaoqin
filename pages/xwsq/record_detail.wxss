@@ -1,41 +1,57 @@
 /* pages/xwsq/record_detail.wxss */
-.record_detail_bg{
-background: #EFEFF4;height:100vh;
-padding-top:15px;
+
+.record_detail_bg {
+  background: #efeff4;
+  height: 100vh;
+  padding-top: 15px;
 }
-.record_detail_content{
-  background:#fff;
-  padding-left:15px;
+
+.record_detail_content {
+  background: #fff;
+  padding-left: 15px;
 }
-.detail_time{
-  height:44px;line-height:44px;border-bottom:1px solid #E5E5E5;
+
+.detail_time {
+  height: 44px;
+  line-height: 44px;
+  border-bottom: 1px solid #e5e5e5;
 }
-.detail_time_text{
-  margin-right:11px;color:#9A999F;
+.detail_time_text {
+  margin-right: 11px;
+  color: #9a999f;
 }
-.detail_address{
-  font-size:13px;color:#686868;
-  margin:7px 0;
+
+.detail_address {
+  font-size: 13px;
+  color: #686868;
+  margin: 7px 0;
 }
-.detail_didian{
- display:flex;padding:10px 0;border-bottom:1px solid #E5E5E5;
+
+.detail_didian {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e5e5;
 }
-.detail_paizao{
-  width:59px;
-  height:59px;
- background: #EEEEEE;
+
+.detail_paizao {
+  width: 59px;
+  height: 59px;
+  background: #eee;
 }
-.detail_beizu{
-  color:#9A999F;
+
+.detail_beizu {
+  color: #9a999f;
 }
-.detail_beizu_text{
-  margin-right:35px;
+
+.detail_beizu_text {
+  margin-right: 35px;
 }
-.senqing_buka{
-  margin-top:15px;
-  height:44px;
-  line-height:44px;
-  color:#3F88FB;
-  background:#fff;
-  text-align:center;
+
+.senqing_buka {
+  margin-top: 15px;
+  height: 44px;
+  line-height: 44px;
+  color: #3f88fb;
+  background: #fff;
+  text-align: center;
 }

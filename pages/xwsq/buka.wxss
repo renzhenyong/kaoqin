@@ -1,68 +1,90 @@
 /* pages/xwsq/buka.wxss */
-.baka_bg{
-background:#E8EAEE;height:100vh;
-   padding-top:15px;
-}
-.baka_content{
-       background:#fff;
-       padding-left:16px;
-}
-.senqing_ren{
-height:44px;line-height:44px;
-border-bottom:1px solid #E5E5E5;
-display:flex;
-font-size:17px;
 
-justify-content: space-between
+.baka_bg {
+  background: #e8eaee;
+  height: 100vh;
+  padding-top: 15px;
 }
-.baka_time{
-  font-size:17px;
-height:44px;line-height:44px;
-border-bottom:1px solid #E5E5E5;
-display:flex;
-   justify-content: space-between;
-    align-items: center;
+
+.baka_content {
+  background: #fff;
+  padding-left: 16px;
 }
-.benren{
-   font-size:14px;
-   display:flex;
+
+.senqing_ren {
+  height: 44px;
+  line-height: 44px;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  font-size: 17px;
+  justify-content: space-between;
 }
-.baka_time_icon{
-  width:24px;height:24px;
-margin-right:15px;
+
+.baka_time {
+  font-size: 17px;
+  height: 44px;
+  line-height: 44px;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.bukapicker{
-margin-right:15px;
+
+.benren {
+  font-size: 14px;
+  display: flex;
 }
-.down_icon{
-width:18px;height:18px;  align-self: center;margin-right:15px;margin-left:5px;
+
+.baka_time_icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 15px;
 }
-.senqing_reason{
-  display:flex;
-  margin-top:10px;
-   
+
+.bukapicker {
+  margin-right: 15px;
 }
-.senqing_reason_text{
-width:80px;
-font-size:17px;
+
+.down_icon {
+  width: 18px;
+  height: 18px;
+  align-self: center;
+  margin-right: 15px;
+  margin-left: 5px;
 }
-.senqing_reason_content{
-  font-size:15px;
-  margin-top:4px;
+
+.senqing_reason {
+  display: flex;
+  margin-top: 10px;
 }
-.tijiao_zaopian{
-  padding:5px 15px;
+
+.senqing_reason_text {
+  width: 80px;
+  font-size: 17px;
 }
-.buzao_content{
-  background:#fff;
-    padding:26px 18px;
+
+.senqing_reason_content {
+  font-size: 15px;
+  margin-top: 4px;
 }
-.bupaizaopian{
-  width:68px;height:68px;
-  background:#DCDCDC;
+
+.tijiao_zaopian {
+  padding: 5px 15px;
 }
-.tijao{
-margin:30px 20px;
-background: #126FFA;
-color:#fff;
+
+.buzao_content {
+  background: #fff;
+  padding: 26px 18px;
+}
+
+.bupaizaopian {
+  width: 68px;
+  height: 68px;
+  background: #dcdcdc;
+}
+
+.tijao {
+  margin: 30px 20px;
+  background: #126ffa;
+  color: #fff;
 }

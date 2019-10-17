@@ -1,8 +1,7 @@
 <!--pages/index/marks.wxml-->
 <view class="mark_bg">
-<view class="mark_form">
-    <textarea placeholder="备注" name="textarea"  value='{{reason}}' bindinput='bindWordLimit'/>
-</view>
- <button  form-type="submit" class="tijao" bindtap='ckmark'> 确认 </button>
-
+  <view class="mark_form">
+    <textarea placeholder="备注" name="textarea" value='{{reason}}' bindinput='bindWordLimit' />
+  </view>
+  <button form-type="submit" class="tijao" bindtap='ckmark'> 确认 </button>
 </view>

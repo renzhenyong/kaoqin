@@ -1,7 +1,6 @@
 /* pages/mine/qingjia.wxss */
 .mineqingjia_bg{
   background: #E8EAEE;
-height:100vh;
  padding:15px 10px;
 }
 .mineqingjia1{
@@ -22,8 +21,6 @@ height:100vh;
   font-size:14px;
   margin:5px 0;
 }
-
-
 .tab{float: left; width: 50%;text-align: center;padding: 10rpx 0; }
 .topTabSwiper{border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; zoom: 1;}
 .topTabSwiper:after{content: ""; clear: both;display: block;}
