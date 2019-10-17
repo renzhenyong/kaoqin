@@ -3,22 +3,23 @@
   <view class="record_detail_content">
     <view class="detail_time">
       <text class="detail_time_text">打卡时间</text>
-      <text>9:30</text>
+      <text>{{signdetail.sign_time}}</text>
     </view>
     <view class="detail_didian">
       <view class="detail_time_text">打卡地点</view>
       <view>
-                <view style="font-size:17px;">山东诚海中职3号宿舍楼</view>
-                 <view class="detail_address">山东烟台市福山区银河路</view>
+                <!-- <view style="font-size:17px;">山东诚海中职3号宿舍楼</view>
+                 <view class="detail_address">山东烟台市福山区银河路</view> -->
                  <view>
-                 <map style="width:270px;height:113px;" longitude='{{longitude}}' latitude='{{latitude}}' scale='{{scale}}'  show-location></map>
+                 <map style="width:270px;height:113px;" longitude='{{signdetail.lng}}' latitude='{{signdetail.lat}}' scale='{{scale}}'  show-location></map>
                  </view>
       </view>
     </view>
     <view class="detail_didian">
-      <view class="detail_time_text">打卡拍照</view><view class="detail_paizao"></view>
+      <view class="detail_time_text">打卡拍照</view>
+      <image src="{{signdetail.pic}}" class="detail_paizao"></image>
       </view>
-      <view class="detail_time detail_beizu"><text class="detail_beizu_text">备注</text><text>无备注</text></view>
+      <view class="detail_time detail_beizu"><text class="detail_beizu_text">备注</text><text>{{signdetail.remark}}</text></view>
   </view>
   <view class="senqing_buka" bindtap="bukasq">提交补卡申请</view>
 </view>

@@ -204,6 +204,10 @@ Component({
     min_month: 1,   // 最小月份  
     dakastatu:1,
     d_state: "",      
+    dayfill:[],
+    dayleave:[],
+    daysign:[],
+    daystatus:['缺勤','正常','晚归','请假']
   },
 
   /**
@@ -246,10 +250,15 @@ Component({
       })
     app.post('signRecord', { sid: this.data.sid, sign_date: click_date }, res => {
       if (res.data.code == 1) {
+        this.setData({
+                 dayfill:res.data.data.fill,
+                   dayleave: res.data.data.leave,
+          daysign: res.data.data.sign,
+        })
       }
     })
 },
-    record_detail() {
+    record_detail(e) {
       wx.navigateTo({
         url: '../xwsq/record_detail?clickdate=' + this.data.click_date,
       })
@@ -763,14 +772,14 @@ Component({
       this.recordsdetail(click_date);
       
     },
-    qingjaidetail(){
+    qingjaidetail(e){
       wx.navigateTo({
-        url: '../mine/qingjiaDetail'
+        url: '../mine/qingjiaDetail?id=' + e.currentTarget.dataset.id 
       })
     },
-    bukadetail(){
+    bukadetail(e){
       wx.navigateTo({
-        url: '../mine/qingjiaDetail'
+        url: '../mine/bukaDetail?id=' + e.currentTarget.dataset.id 
       })
     }
   },

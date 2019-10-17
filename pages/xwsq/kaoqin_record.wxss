@@ -153,9 +153,15 @@ font-size:12px;
   color:#fff;
   width:62px;
   height:19px;
-  background:#3F88FB;
   border-radius:9px;
   text-align:center;
+}
+.daystatucolor{
+background: #3F88FB
+}
+.daystatucolor1{
+  
+    background: #E64340
 }
 .img_tou{
 width:123px;height:85px;border-radius:5px;

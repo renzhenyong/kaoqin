@@ -6,15 +6,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    latitude: "37.49794",
-    longitude: "121.26757",
+    // latitude: "37.49794",
+    // longitude: "121.26757",
     scale: 16,
+    signdetail:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("options.clickdate");
       console.log(options.clickdate);
     this.setData({
       clickdate:options.clickdate
@@ -22,6 +24,9 @@ Page({
     this.data.sid = wx.getStorageSync('uid');
     app.post('signRecord', { sid: this.data.sid, sign_date: options.clickdate}, res => {
       if (res.data.code == 1) {
+        this.setData({
+             signdetail:res.data.data.sign[0],
+        })
       }
     })
   },

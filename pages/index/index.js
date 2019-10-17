@@ -176,6 +176,13 @@ Page({
       })
       return;
     }
+    if (that.data.isrange =='您未在考勤范围内'){
+          wx.showModal({
+        title: '提示',
+            content: '您未在考勤范围内',
+      })
+      return;
+    }
     let tim=util.currentTime(new Date());
     let timestamp = Date.parse(tim)
     console.log(that.data.sid);
@@ -217,28 +224,42 @@ Page({
               var ht_endtime = util.dakaTime(new Date())
               that.setData({
                 modalHidden: false,
-                daka_pic:imgobj.data,
+                daka_pic:imgobj.data.pic,
                 daka_endtime: ht_endtime,
               })
-              if (ht_endtime > '21:00' && ht_endtime < '22:00') {
-                that.setData({
-                  dakastatu: '正常',
-                  daka_background: "#3F88FB",
-                  knowcolor:"#4188FE"
-                });
-              } else if (ht_endtime > '22:00' && ht_endtime < '23:00') {
-                that.setData({
-                  dakastatu: '迟到',
-                  daka_background: "#EEB536",
-                  knowcolor: "#EEB536"
-                });
-              } else {
-                that.setData({
-                  dakastatu: '晚归',
-                  daka_background: "#3F88FB",
-                  knowcolor: "#E64340"
-                });
+              console.log(imgobj.data.sign_status);
+              if (imgobj.data.sign_status==1){
+                     that.setData({
+                dakastatu: '正常',
+                daka_background: "#3F88FB",
+                 knowcolor:"#4188FE"
+               });
+              }else{
+                  that.setData({
+                dakastatu: '晚归',
+             daka_background: "#E64340",
+               knowcolor: "#E64340"
+             });
               }
+              // if (ht_endtime > '21:00' && ht_endtime < '22:00') {
+              //   that.setData({
+              //     dakastatu: '正常',
+              //     daka_background: "#3F88FB",
+              //     knowcolor:"#4188FE"
+              //   });
+              // } else if (ht_endtime > '22:00' && ht_endtime < '23:00') {
+              //   that.setData({
+              //     dakastatu: '迟到',
+              //     daka_background: "#EEB536",
+              //     knowcolor: "#EEB536"
+              //   });
+              // } else {
+              //   that.setData({
+              //     dakastatu: '晚归',
+              //     daka_background: "#3F88FB",
+              //     knowcolor: "#E64340"
+              //   });
+              // }
 
             }
        

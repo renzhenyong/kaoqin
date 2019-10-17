@@ -23,8 +23,9 @@
               <text style="margin-left:5px">{{item.end_time}}</text>
             </view>
           </view>
-          <image wx:if="{{item.status==0}}" src="../../img/tonguo.png" class="mineqingjia12"></image>
-          <image wx:if="{{item.status==1}}" src="../../img/butonguo.png" class="mineqingjia12"></image>
+                <image wx:if="{{item.status==0}}" src="../../img/senpiz.png" class="mineqingjia12"></image>
+          <image wx:if="{{item.status==1}}" src="../../img/tonguo.png" class="mineqingjia12"></image>
+          <image wx:if="{{item.status==2}}" src="../../img/butonguo.png" class="mineqingjia12"></image>
         </view>
       </view>
     </view>

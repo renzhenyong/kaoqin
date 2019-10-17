@@ -14,7 +14,7 @@
     </view>
     <view class="baka_time">
       <view>补卡时间</view>
-        <picker mode="date" value="{{buka_date}}" start="2015-09-01" end="2031-09-01" bindinput="bindbukaDateChange">
+        <picker mode="date" value="{{buka_date}}" start="2015-09-01" end="2031-09-01" bindchange="bindbukaDateChange">
            <view class="picker" class="bukapicker">
      <image src="../../img/datetime.png" class="baka_time_icon" hidden="{{choice1}}"></image>
      {{buka_date}}

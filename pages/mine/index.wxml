@@ -27,7 +27,7 @@
              <text class="jilu" bindtap="jilu">提交记录</text>
           </view>   
   <view class="mine8">
-    <view class="mine81" bindtap="qingjia">
+    <view class="mine81" bindtap="qingjia" data-id='{{leave.id}}'>
       <view style="display:flex;">
          <view class="mine811"><image src="../../img/myqingjia.png" style="width:32px;height:32px;margin-top:7px;"></image></view>
         <view>
@@ -38,7 +38,7 @@
       <view class="mine812">{{leave.create_date}}</view>
     </view>
 
-    <view class="mine81">
+    <view class="mine81" bindtap="buka" data-id='{{fill.id}}'>
       <view style="display:flex;">
        <view class="mine811 bu1"><image src="../../img/mybuka.png" style="width:32px;height:32px;margin-top:7px;"></image></view>
         <view>

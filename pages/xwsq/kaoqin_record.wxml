@@ -141,35 +141,36 @@
 </view>
 
 
-<view class="qingjiarecord" style="border-bottom:1px solid #D8D8D8" bindtap="qingjaidetail">
+<view class="qingjiarecord" style="border-bottom:1px solid #D8D8D8"   wx:if="dayleave!=''" wx:for="{{dayleave}}" wx:for-index="index" wx:for-item="item" bindtap="qingjaidetail" data-id='{{item.id}}'>
   <view >
      <view style="font-size:14px;color:#333;">请假申请</view>
-     <view style="font-size:12px;color:#666;">4.19 21:00-22:00</view>
+     <view style="font-size:12px;color:#666;"><text>{{item.start_date}}</text>
+     <text style="margin-left:5px">{{item.start_time}}</text>~<text>{{item.end_date}}</text><text style="margin-left:5px">{{item.end_time}}</text></view>
   </view>
  <image style="width:18px;height:18px;color:#fff;text-align:center;margin-top:5px;" src="../../img/right.png"></image>
 </view>
-<view class="qingjiarecord" bindtap="bukadetail">
+<view class="qingjiarecord"  wx:if="dayfill!=''" wx:for="{{dayfill}}" wx:for-index="index" wx:for-item="item" bindtap="bukadetail" data-id='{{item.id}}'>
   <view >
      <view style="font-size:14px;color:#333;">补卡申请</view>
-     <view style="font-size:12px;color:#666;">4.19 21:00-22:00</view>
+     <view style="font-size:12px;color:#666;"><text>{{item.fill_date}}</text> <text style="margin-left:5px;">{{item.fill_time}}</text></view>
   </view>
  <image style="width:18px;height:18px;color:#fff;text-align:center;margin-top:5px;" src="../../img/right.png"></image>
 </view>
-<view class="record_content" bindtap='record_detail' >
+<view class="record_content" wx:if="daysign!=''" wx:for="{{daysign}}" wx:for-index="index" wx:for-item="item" bindtap="record_detail" data-id='{{item.id}}'>
   <view style="display:flex">
     <view class="record_icon"></view>
     <view>
       <text>打卡时间</text>
-      <text class="record_time">21:30</text>
-      <text class="kqsj">（考勤时间21:00）</text>
+      <text class="record_time">{{item.sign_time}}</text>
+      <!-- <text class="kqsj">（考勤时间21:00）</text> -->
     </view>
   </view>
-  <view class="record_date"><text>2019.06.12</text> 
-  <text style="margin-left:5px;">（星期五）</text>
-  <text style="color:#3F88FB;border:1px solid #3F88FB;border-radius:3px;padding:0 5px;">请假</text>
-  <text style="color:#3F88FB;border:1px solid #3F88FB;border-radius:3px;padding:0 5px;margin-left:10px">补卡</text>
+  <view class="record_date"><text>{{item.sign_date}}</text> 
+  <!-- <text style="margin-left:5px;">（星期五）</text> -->
+  <text style="color:#3F88FB;border:1px solid #3F88FB;border-radius:3px;padding:0 5px;margin-left:10px" wx:if="dayleave!=''">请假</text>
+  <text style="color:#3F88FB;border:1px solid #3F88FB;border-radius:3px;padding:0 5px;margin-left:10px" wx:if="dayfill!=''">补卡</text>
   </view>
-   <view class="record_date zengcang">正常</view>
+   <view class="record_date zengcang {{1==item.sign_status?'daystatucolor':'daystatucolor1'}}">{{daystatus[item.sign_status]}}</view>
    <view class="record_date" ><image src="../../img/wxtx.jpg" class="img_tou"></image></view>
       <view style="border:1px solid #D8D8D8;margin-top:30px;"></view>
 </view>

@@ -54,9 +54,14 @@ Page({
       url: '../mine/detail'
     })
   },
-  qingjia(){
+  qingjia(e){
     wx.navigateTo({
-      url: '../mine/qingjiaDetail?id='+21
+      url: '../mine/qingjiaDetail?id='+ e.currentTarget.dataset.id 
+    })
+  },
+  buka(e) {
+    wx.navigateTo({
+      url: '../mine/bukaDetail?id=' + e.currentTarget.dataset.id 
     })
   },
   jilu(){
