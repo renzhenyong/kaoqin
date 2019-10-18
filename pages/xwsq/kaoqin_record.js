@@ -217,6 +217,8 @@ Component({
     // 考勤记录方法
     recordes() {
       let dayarr = this._setCalendarData(this.data.year, this.data.month)
+      console.log("dayarr");
+      console.log(dayarr);
       app.post('signRecordMonth', {
         sid: this.data.sid,
         year: this.data.year,
@@ -224,6 +226,9 @@ Component({
       }, res => {
         if (res.data.code == 1) {
           let recordsarr = res.data.data;
+          console.log("recordsarr");
+          console.log(recordsarr);
+          if (recordsarr!== undefined){
           dayarr.forEach((fatherVal) => {
             fatherVal.forEach((fatherVal1) => {
               recordsarr.forEach((sonVal) => {
@@ -240,6 +245,7 @@ Component({
               }
             })
           })
+          }
           this.setData({
             days_array: dayarr,
             d_state: this.data.day

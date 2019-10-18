@@ -82,6 +82,7 @@ App({
       success() {
         //session_key 未过期，并且在本生命周期一直有效
         var uid = wx.getStorageSync('uid');
+        console.log();
         if (uid) {
           //判断是否合法
           that.post('isAuth', { sid: uid }, res => {
@@ -106,7 +107,7 @@ App({
         }
       },
       fail() {
-        wx.redirectTo({
+        wx.navigateTo({
           url: '/pages/login/index',
         })
       }

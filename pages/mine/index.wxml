@@ -24,8 +24,9 @@
     <text>消息</text>
     <text class="jilu" bindtap="jilu">提交记录</text>
   </view>
-  <view class="mine8">
-    <view class="mine81" bindtap="qingjia" data-id='{{leave.id}}'>
+
+  <view class="mine8" style="border：1px solid #000" wx:if="{{fill.length!=0}}&&{{leavefill.length!=0}}">
+    <view class="mine81" bindtap="qingjia" data-id='{{leave.id}}' >
       <view style="display:flex;">
         <view class="mine811">
           <image src="../../img/myqingjia.png" style="width:32px;height:32px;margin-top:7px;"></image>
@@ -50,5 +51,6 @@
       </view>
       <view class="mine812">{{fill.create_date}}</view>
     </view>
+        <!-- <view  style="border：1px solid #000;margin:0 auto;text-align:center;background:#fff;width:100%;height:50px;line-height:50px;"  >{{fill.length}}</view> -->
   </view>
 </view>

@@ -66,6 +66,9 @@ Page({
    */
   onShareAppMessage: function() {},
   bindGetUserInfo: function(e) {
+    if (e.detail.errMsg =="getUserInfo:fail auth deny"){
+    return;
+    }else{
     wx.login({
       success: res => {
         app.post('login', {
@@ -87,6 +90,6 @@ Page({
         })
       }
     })
-
+    }
   }
 })

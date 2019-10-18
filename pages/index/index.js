@@ -43,6 +43,7 @@ Page({
   },
   onReady: function() {},
   onLoad: function(option) {
+    app.hasLogin();
     let time = util.formatTime(new Date());
     let dakatime = util.dakaTime(new Date())
     if (option == undefined) {
@@ -81,7 +82,7 @@ Page({
 
   onShow: function() {
     var that = this;
-    app.hasLogin();
+
     this.data.sid = wx.getStorageSync('uid');
     // 当前学校经纬度
     app.post('schoolInfo', {
@@ -108,27 +109,27 @@ Page({
         success: function(res) {
           //赋值经纬度
           that.setData({
-            latitude: parseFloat(res.latitude),
-            longitude: parseFloat(res.longitude),
-          })
-          // 是否在考勤范围内
-          app.post('inSignDistance', {
-            sid: that.data.sid,
-            lng: that.data.longitude,
-            lat: that.data.latitude
-          }, res => {
-            if (res.data.code == 1) {
-              that.setData({
-                isrange: "您已在考勤范围内",
-                rangcolor: "#1AAD19"
-              })
-            } else {
-              that.setData({
-                isrange: "您未在考勤范围内",
-                rangcolor: "#E64340"
-              })
-            }
-          })
+              latitude: parseFloat(res.latitude),
+              longitude: parseFloat(res.longitude),
+            }),
+            // 是否在考勤范围内
+            app.post('inSignDistance', {
+              sid: that.data.sid,
+              lng: that.data.longitude,
+              lat: that.data.latitude
+            }, res => {
+              if (res.data.code == 1) {
+                that.setData({
+                  isrange: "您已在考勤范围内",
+                  rangcolor: "#1AAD19"
+                })
+              } else {
+                that.setData({
+                  isrange: "您未在考勤范围内",
+                  rangcolor: "#E64340"
+                })
+              }
+            })
           //是否到打卡时间 
           app.post('inSignTime', {
             sid: that.data.sid
@@ -146,7 +147,7 @@ Page({
               })
             }
             that.setData({
-              start_time: res.data.data.start_time.slice(0,5),
+              start_time: res.data.data.start_time.slice(0, 5),
               end_time: res.data.data.end_time.slice(0, 5),
             })
 
@@ -163,6 +164,21 @@ Page({
             }
           })
           that.reverseGeocoder();
+        },
+        fail() {
+          console.log("fail");
+          wx.getSetting({
+            success: function(res) {
+              console.log(res);
+              if (res.authSetting['scope.userLocation'] == false) {
+                wx.showModal({
+                  title: '',
+                  content: '请点击右上方"..."->"设置"->"地理位置"设为允许',
+                })
+              }
+
+            }
+          })
         }
       })
 
@@ -171,7 +187,6 @@ Page({
         url: '../login/index',
       })
     }
-
   },
   takePhoto() {
     var that = this
@@ -221,13 +236,14 @@ Page({
             sid: that.data.sid,
             lat: that.data.latitude,
             lng: that.data.longitude,
-            sign_time: timestamp,
+            // sign_time: timestamp,
             remark: "",
           },
           success(res) {
-            wx.hideToast();
             if (res.statusCode == 200) {
               let imgobj = JSON.parse(res.data);
+              if (imgobj.code==1) {
+                wx.hideToast();
               var ht_endtime = util.dakaTime(new Date())
               that.setData({
                 modalHidden: false,
@@ -248,28 +264,15 @@ Page({
                   knowcolor: "#E64340"
                 });
               }
-              // if (ht_endtime > '21:00' && ht_endtime < '22:00') {
-              //   that.setData({
-              //     dakastatu: '正常',
-              //     daka_background: "#3F88FB",
-              //     knowcolor:"#4188FE"
-              //   });
-              // } else if (ht_endtime > '22:00' && ht_endtime < '23:00') {
-              //   that.setData({
-              //     dakastatu: '迟到',
-              //     daka_background: "#EEB536",
-              //     knowcolor: "#EEB536"
-              //   });
-              // } else {
-              //   that.setData({
-              //     dakastatu: '晚归',
-              //     daka_background: "#3F88FB",
-              //     knowcolor: "#E64340"
-              //   });
-              // }
-
+            }else{
+              console.log("res.msg");
+                console.log(imgobj.msg);
+                wx.showModal({
+                  title: '错误提示',
+                  content: imgobj.msg,
+                })
             }
-
+            }
           },
 
           fail: function(res) {

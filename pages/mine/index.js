@@ -10,8 +10,8 @@ Page({
     build: '',
     room: '',
     face_img: '',
-    fill: {},
-    leave: {},
+    fill: [],
+    leave: [],
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -47,6 +47,7 @@ Page({
           fill: res.data.data.fill,
           leave: res.data.data.leave,
         })
+
       }
     })
   },
