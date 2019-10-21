@@ -46,8 +46,11 @@ Page({
         this.setData({
           fill: res.data.data.fill,
           leave: res.data.data.leave,
+        //    fill: [],
+        //  leave: [],
         })
-
+        console.log("00");
+        console.log(this.data.fill.length);
       }
     })
   },
