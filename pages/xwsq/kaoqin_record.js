@@ -226,18 +226,26 @@ Component({
       }, res => {
         if (res.data.code == 1) {
           let recordsarr = res.data.data;
-          console.log("recordsarr");
-          console.log(recordsarr);
           if (recordsarr!== undefined){
           dayarr.forEach((fatherVal) => {
             fatherVal.forEach((fatherVal1) => {
               recordsarr.forEach((sonVal) => {
                 let dian_day = sonVal.sign_date.slice(8, 9) == 0 ? sonVal.sign_date.slice(9, 10) : sonVal.sign_date.slice(8, 10)
-                if (dian_day == fatherVal1.day && sonVal.sign_status == 1) {
-                  fatherVal1.statu = 1;
-                } else if (dian_day == fatherVal1.day && sonVal.statu == 2) {
-                  fatherVal1.statu = 2;
-                }
+                if (dian_day == fatherVal1.day){
+                       if (sonVal.sign_status == 1){
+                    fatherVal1.statu = 1;
+                  } else if (sonVal.sign_status == 2){
+                    fatherVal1.statu = 2;
+                            }
+               }
+                
+                // if (dian_day == fatherVal1.day && sonVal.sign_status == 1) {
+                //   fatherVal1.statu = 1;
+                // } else if (dian_day == fatherVal1.day && sonVal.statu == 2) {
+                //   fatherVal1.statu = 2;
+                //   console.log("fatherVal1");
+                //   console.log(fatherVal1.statu);
+                // }
               })
               if (fatherVal1.day == this.data.day) {
                 fatherVal1.color = "#3F88FB;";
@@ -246,6 +254,8 @@ Component({
             })
           })
           }
+          console.log("dayarr");
+          console.log(dayarr);
           this.setData({
             days_array: dayarr,
             d_state: this.data.day

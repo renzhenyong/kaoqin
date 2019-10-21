@@ -10,7 +10,7 @@
         <view class="mine4">{{phone}}</view>
         <view class="mine3">{{dept_name}}</view>
       </view>
-      <view class="mine5">{{school_name}}</view>
+      <!-- <view class="mine5">{{school_name}}</view> -->
     </view>
   </view>
   <view class="mine6">
