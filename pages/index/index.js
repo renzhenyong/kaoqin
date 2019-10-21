@@ -236,7 +236,7 @@ Page({
             sid: that.data.sid,
             lat: that.data.latitude,
             lng: that.data.longitude,
-            // sign_time: timestamp,
+            sign_time: timestamp,
             remark: "",
           },
           success(res) {
