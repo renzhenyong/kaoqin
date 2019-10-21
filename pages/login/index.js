@@ -74,19 +74,21 @@ Page({
         app.post('login', {
           code: res.code
         }, res => {
-          app.globalData.uid = res.data.sid;
+         
           console.log("login111");
           if (res.data.code == 1) {
             wx.switchTab({
               url: '../index/index',
             })
+            app.globalData.uid = res.data.sid;
+            //登录，则更新sid标识
+            wx.setStorageSync('uid', res.data.sid);
           } else {
             wx.navigateTo({
               url: '../index/zuce',
             })
           }
-          //登录，则更新sid标识
-          wx.setStorageSync('uid', res.data.sid);
+         
         })
       }
     })
