@@ -41,7 +41,7 @@
         <view class="mineqingjia1" wx:for="{{fillinfo}}" wx:for-item="item" wx:key="" wx:for-index="i" bindtap="bukadetail" data-id='{{item.id}}'>
           <view class="mineqingjia11">
             <view style="text-align:left">你的补卡申请{{verfystatu[item.status]}}</view>
-            <view class="mineqingjia111" style="text-align:left">异常状态：{{fillarr[item.status]}}</view>
+            <view class="mineqingjia111" style="text-align:left">异常状态：未打卡</view>
             <view class="mineqingjia111" style="text-align:left">
               <text>补卡时间：{{item.start_date}}</text>
               <text style="margin-left:5px">{{item.fill_date}}</text>

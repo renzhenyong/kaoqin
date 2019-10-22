@@ -8,12 +8,12 @@
                            <text class="qingjiadetail1112">计算机学院</text></view> -->
       <view class="xueyuan">
         <text class="qingjiadetail1111">异常状态</text>
-        <text class="qingjiadetail1112">{{fillarr[info.status]}}</text>
+        <text class="qingjiadetail1112">未打卡</text>
       </view>
       <view class="xueyuan">
         <text class="qingjiadetail1111">补卡时间</text>
         <text class="qingjiadetail1112">{{info.fill_date}}</text>
-        <text style="margin-left:5px">{{info.fill_time}}</text>
+        <!-- <text style="margin-left:5px">{{info.fill_time}}</text> -->
       </view>
       <view class="xueyuan">
         <text class="qingjiadetail1111">补卡事由</text>
@@ -26,7 +26,7 @@
   <view class="senpiok">
     <view class="senpiok1"></view>
     <view class="senpiok2"></view>
-    <view class="senpiok3">{{info.approver}}老师已同意</view>
+    <view class="senpiok3">{{info.approver}}老师{{verfystatu[info.status]}}</view>
   </view>
   <view class="cexiao">通过后/未通过前的撤销</view>
 </view>

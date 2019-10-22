@@ -9,6 +9,7 @@ Page({
     info:{},
     faceimg:'',
     leavearr: ["病假","事假"],
+    verfystatu: ["正在审批中", "已通过", "未通过"],
   },
 
   /**

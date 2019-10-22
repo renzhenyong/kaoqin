@@ -25,7 +25,7 @@
            <view class="senpiok">
                   <view class="senpiok1"></view>
                   <view class="senpiok2"></view>
-                  <view class="senpiok3">{{info.approver}}老师已同意</view>
+                  <view class="senpiok3">{{info.approver}}老师{{verfystatu[info.status]}}</view>
            </view>
            <view class="cexiao">通过后/未通过前的撤销</view>
 </view>

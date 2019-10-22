@@ -207,7 +207,7 @@ Component({
     dayfill: [],
     dayleave: [],
     daysign: [],
-    daystatus: ['缺勤', '正常', '晚归', '请假']
+    daystatus: ['缺勤', '正常', '晚归', '请假','']
   },
 
   /**
@@ -217,8 +217,6 @@ Component({
     // 考勤记录方法
     recordes() {
       let dayarr = this._setCalendarData(this.data.year, this.data.month)
-      console.log("dayarr");
-      console.log(dayarr);
       app.post('signRecordMonth', {
         sid: this.data.sid,
         year: this.data.year,
@@ -230,13 +228,17 @@ Component({
           dayarr.forEach((fatherVal) => {
             fatherVal.forEach((fatherVal1) => {
               recordsarr.forEach((sonVal) => {
-                let dian_day = sonVal.sign_date.slice(8, 9) == 0 ? sonVal.sign_date.slice(9, 10) : sonVal.sign_date.slice(8, 10)
+                let dian_day = sonVal.dateline.slice(8, 9) == 0 ? sonVal.dateline.slice(9, 10) : sonVal.dateline.slice(8, 10)
                 if (dian_day == fatherVal1.day){
                        if (sonVal.sign_status == 1){
                     fatherVal1.statu = 1;
-                  } else if (sonVal.sign_status == 2){
+                       } else if (sonVal.sign_status == 2 ){
                     fatherVal1.statu = 2;
-                            }
+                       } else if (sonVal.sign_status == 3){
+                         fatherVal1.statu = 3;
+                       } else if (sonVal.sign_status == 0) {
+                         fatherVal1.statu = 0;
+                       }
                }
                 
                 // if (dian_day == fatherVal1.day && sonVal.sign_status == 1) {
@@ -278,6 +280,7 @@ Component({
             dayleave: res.data.data.leave,
             daysign: res.data.data.sign,
           })
+     
         }
       })
     },
@@ -568,7 +571,7 @@ Component({
           info: 'current',
           color: '',
           background: 'transparent',
-          statu: 0
+          statu: 4
         });
       }
       const days_range = temp; // 本月

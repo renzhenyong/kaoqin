@@ -115,6 +115,9 @@
 
                 <text wx:if="{{day.statu==1}}" class="calendar-day" style="color: {{day.color}};position:absolute;bottom:-7px;width:4px;height:4px;background:#fff;border-radius:50%;"></text>
                 <text wx:if="{{day.statu==2}}" class="calendar-day" style="color: red!important;position:absolute;bottom:-7px;width:4px;height:4px;background:red;border-radius:50%;"></text>
+       <text wx:if="{{day.statu==3}}" class="calendar-day" style="color: {{day.color}};position:absolute;bottom:-7px;width:4px;height:4px;background:#fff;border-radius:50%;"></text>
+
+            <text wx:if="{{day.statu==0}}" class="calendar-day" class="calendar-day" style="color: red!important;position:absolute;bottom:-7px;width:4px;height:4px;background:red;border-radius:50%;"></text>
 
                 <block wx:if="{{addon == 'lunar'}}">
                   <text class="calendar-lunar-day" style="color: {{day.color}};" wx:if="{{lunar}}">{{day.lunarDay}}</text>
@@ -162,21 +165,23 @@
   <image style="width:18px;height:18px;color:#fff;text-align:center;margin-top:5px;" src="../../img/right.png"></image>
 </view>
 <view class="record_content" wx:if="daysign.length!=0" wx:for="{{daysign}}" wx:for-index="index" wx:for-item="item" bindtap="record_detail" data-id='{{item.id}}'>
-  <view style="display:flex">
+  <view style="display:flex" wx:if="{{item.sign_status!=0&&item.sign_status!=3}}">
     <view class="record_icon"></view>
-    <view>
-      <text>打卡时间</text>
+    <view >
+      <text >打卡时间</text>
       <text class="record_time">{{item.sign_time}}</text>
       <!-- <text class="kqsj">（考勤时间21:00）</text> -->
     </view>
   </view>
-  <view class="record_date">
+  <view class="record_date" wx:if="{{item.sign_status!=0&&item.sign_status!=3}}">
     <text>{{item.sign_date}}</text>
     <!-- <text style="margin-left:5px;">（星期五）</text> -->
     <!-- <text style="color:#3F88FB;border:1px solid #3F88FB;border-radius:3px;padding:0 5px;margin-left:10px" wx:if="dayleave!=''">请假</text>
     <text style="color:#3F88FB;border:1px solid #3F88FB;border-radius:3px;padding:0 5px;margin-left:10px" wx:if="dayfill!=''">补卡</text> -->
   </view>
-  <view class="record_date zengcang {{1==item.sign_status?'daystatucolor':'daystatucolor1'}}">{{daystatus[item.sign_status]}}</view>
+  <view class="record_date zengcang {{1==item.sign_status||3==item.sign_status?'daystatucolor':'daystatucolor1'}}">{{daystatus[item.sign_status]}}
+  </view>
+
   <view class="record_date">
     <image src="{{item.pic}}" class="img_tou"></image>
   </view>

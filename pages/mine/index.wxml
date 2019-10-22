@@ -49,7 +49,7 @@
           <view class="mine812">你的补卡已通过</view>
         </view>
       </view>
-      <view class="mine812">{{fill[0].create_date}}</view>
+      <view class="mine812">{{fill[0].approve_date}}</view>
     </view> 
       
   </view>
