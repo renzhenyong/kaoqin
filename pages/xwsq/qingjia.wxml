@@ -13,13 +13,20 @@
     <view class="qingjia_start">
       <text>开始时间</text>
       <picker class='time-picker' mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" style="margin-right:15px;">
-        {{startDate}}
+            <view class="picker">
+        <text hidden="{{choice1}}" class="qxz">请选择</text> 
+          <text hidden="{{choice2}}"> {{startDate}}</text>
+      </view>
+        <!-- {{startDate}} -->
       </picker>
     </view>
     <view class="baka_time">
       <view>结束时间</view>
-      <picker class='time-picker' mode="multiSelector" bindchange="bindEndMultiPickerChange" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" style="margin-right:15px;">
-        {{endDate}}
+      <picker class='time-picker' mode="multiSelector" bindchange="bindEndMultiPickerChange" bindtap='bindEndMultiPickerChangebindEndMultiPickerChange' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" style="margin-right:15px;">
+           <view class="picker">
+        <text hidden="{{choice3}}" class="qxz">请选择</text> 
+          <text hidden="{{choice4}}"> {{endDate}}</text>
+      </view>
       </picker>
     </view>
     <view class="baka_time">

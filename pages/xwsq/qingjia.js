@@ -27,7 +27,9 @@ Page({
     index: 5,
     choice: false,
     choice1: false,
-    choice2: false,
+    choice2: true,
+    choice3: false,
+    choice4: true,
     start_date: "",
     end_date: "",
     inputValue: '',
@@ -290,6 +292,10 @@ Page({
     }
   },
   bindStartMultiPickerChange: function(e) {
+    this.setData({
+      choice1: true,
+      choice2: false,
+    })
     var that = this;
     var monthDay = that.data.multiArray[0][e.detail.value[0]];
     var hours = that.data.multiArray[1][e.detail.value[1]];
@@ -324,11 +330,16 @@ Page({
     }
     console.log(hours);
     that.setData({
+
       startDate: startDate,
       hours: hours
     })
   },
   bindEndMultiPickerChange: function(e) {
+    this.setData({
+      choice3: true,
+      choice4: false,
+    })
     var that = this;
     var monthDay = that.data.multiArray[0][e.detail.value[0]];
     var hours = that.data.multiArray[1][e.detail.value[1]];
