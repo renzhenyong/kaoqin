@@ -1,9 +1,9 @@
 <!--pages/index/regular.wxml-->
 <view style="padding:20px">
-    <view>
-        1.考勤规则1
+    <view wx:for="{{info}}" wx:for-item="item" wx:key="" wx:for-index="i" >
+       <view><text>{{item.week}}</text> <text style="margin-left:10px;">{{item.start_time}}--</text><text>{{item.end_time}}</text></view>
      </view>
-     <view>
+     <!-- <view>
         2.考勤规则2
-     </view>
+     </view> -->
 </view>     

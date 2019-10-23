@@ -10,6 +10,9 @@ const wxMap = new QQMapWX({
 });
 Page({
   data: {
+    dakatime:"",
+    dakasijian:false,
+    disabled: false,
     hidedaka:false,
     hidejiadaka: true,
     address: '',
@@ -51,12 +54,12 @@ Page({
     if (option == undefined) {
       this.setData({
         time: time,
-        dakatime: dakatime
+        // dakatime: dakatime
       });
     } else {
       this.setData({
         time: time,
-        dakatime: dakatime,
+        // dakatime: dakatime,
         mark: option.mark
       });
     }
@@ -93,6 +96,7 @@ Page({
       if (res.data.code == 1) {
         that.setData({
           shoolname: res.data.data.name,
+          dakatime: res.data.data.time,
           //  suselat:res.data.data.lat,
           //  suselng: res.data.data.lng,
         })
@@ -143,16 +147,22 @@ Page({
               })
             } else {
               that.setData({
-                guiqin_daka: "未到考勤时间",
+                guiqin_daka: res.data.msg,
                 background: "#9A999F",
-
+               disabled:true
               })
+          
             }
+            if (res.data.data){
             that.setData({
               start_time: res.data.data.start_time.slice(0, 5),
               end_time: res.data.data.end_time.slice(0, 5),
             })
-
+            }else{
+              that.setData({
+              dakasijian:true
+              })
+            }
           })
           //是否已打卡
           app.post('hadSign', {
@@ -191,6 +201,8 @@ Page({
     }
   },
   takePhoto() {
+  //  sClicked(this);
+    
     var that = this
     let dakatime1 = util.dakaTime(new Date())
     if (that.data.start_time >= dakatime1 || that.data.end_time <= dakatime1) {
@@ -206,13 +218,14 @@ Page({
       })
       return;
     }
-    if (that.data.isrange == '您未在考勤范围内') {
-      wx.showModal({
-        title: '提示',
-        content: '您未在考勤范围内',
-      })
-      return;
-    }
+    // if (that.data.isrange == '您未在考勤范围内') {
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '您未在考勤范围内',
+    //   })
+    //   return;
+    // }
+
     let tim = util.currentTime(new Date());
     let timestamp = Date.parse(tim)
     wx.chooseImage({
@@ -314,6 +327,7 @@ Page({
   },
   sua() {
     this.onLoad();
+    this.onShow();
   },
   gqgz() {
     wx.navigateTo({

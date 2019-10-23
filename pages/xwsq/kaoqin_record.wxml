@@ -156,10 +156,10 @@
 </view>
 <view class="qingjiarecord" wx:if="dayfill!=''" wx:for="{{dayfill}}" wx:for-index="index" wx:for-item="item" bindtap="bukadetail" data-id='{{item.id}}'>
   <view>
-    <view style="font-size:14px;color:#333;">补卡申请</view>
+    <view style="font-size:14px;color:#333;">已申请补卡</view>
     <view style="font-size:12px;color:#666;">
       <text>{{item.fill_date}}</text>
-      <text style="margin-left:5px;">{{item.fill_time}}</text>
+      <!-- <text style="margin-left:5px;">{{item.fill_time}}</text> -->
     </view>
   </view>
   <image style="width:18px;height:18px;color:#fff;text-align:center;margin-top:5px;" src="../../img/right.png"></image>

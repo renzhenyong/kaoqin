@@ -19,7 +19,7 @@
     <image src="../../img/gps2.png" style="width:16px;height:16px;"></image>{{addrssDetail}}</view>
   <view class="distrinct">{{address}}</view>
   <view class="addmarks" bindtap='marks'>添加备注</view>
-  <view class="daka" bindtap="takePhoto" style="background:{{background}};" hidden='{{hidedaka}}'>
+  <view class="daka" bindtap="{{!disabled?'takePhoto':''}}" style="background:{{background}};" hidden='{{hidedaka}}'>
     <image src="../../img/pztb.png" class="daka_icon"></image>
     <view class="daka_time">{{dakatime}}</view>
     <view class="daka_guiqin">{{guiqin_daka}}</view>
@@ -30,7 +30,7 @@
   </view>
 
   <view class="daka_attention">
-    <text style="color:#9A999F;margin:0 auto">请在{{start_time}}-{{end_time}}之间打卡</text>
+    <text style="color:#9A999F;margin:0 auto" hidden='{{dakasijian}}'>请在{{start_time}}-{{end_time}}之间打卡</text>
     <text class="kaoqin_gz" bindtap='gqgz'>考勤规则</text>
   </view>
   <!-- modal弹窗-->

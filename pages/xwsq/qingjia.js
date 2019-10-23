@@ -6,16 +6,18 @@ var year = date.getFullYear();
 var month = date.getMonth() + 1;
 var day = date.getDate();
 const app = getApp();
-var startDate = year + '-' + month + '-' + day + ' ' + currentHours + ':' + currentMinute;
-var endDate = year + '-' + month + '-' + day + ' ' + currentHours + ':' + currentMinute
+// var startDate = year + '-' + month + '-' + day + ' ' + currentHours + ':' + currentMinute;
+// var endDate = year + '-' + month + '-' + day + ' ' + currentHours + ':' + currentMinute
+// var startDate = ;
+// var endDate = year + '-' + month + '-' + day + ' ' + currentHours + ':' + currentMinute
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    startDate: startDate,
-    endDate: endDate,
+    startDate: "",
+    endDate: "",
     hours: '0',
     multiArray: [
       ['今天', '明天', '3-2', '3-3', '3-4', '3-5'],
@@ -319,7 +321,7 @@ Page({
     var startDate = monthDay + " " + hours + ":" + minute;
     var al = new Date(startDate.replace(/-/g, "/")).getTime();
     var a2 = new Date(that.data.endDate.replace(/-/g, "/")).getTime();
-    var num = (a2 - al) / (1000 * 3600);
+    var num = (a2 - al) / (1000 * 3600)/24;
     var hours = num.toFixed(1)
     if (hours < 0) {
       wx.showModal({
@@ -328,12 +330,18 @@ Page({
       })
       return;
     }
-    console.log(hours);
-    that.setData({
 
+    if (that.data.endDate == "" ) {
+      that.setData({
+        startDate: startDate,
+        hours: "0",
+      })
+    } else{
+    that.setData({
       startDate: startDate,
-      hours: hours
+      hours: Math.abs(hours)
     })
+    }
   },
   bindEndMultiPickerChange: function(e) {
     this.setData({
@@ -362,9 +370,10 @@ Page({
     var endDate = monthDay + " " + hours + ":" + minute;
     var al = new Date(endDate.replace(/-/g, "/")).getTime();
     var a2 = new Date(that.data.startDate.replace(/-/g, "/")).getTime();
-    var num = (al - a2) / (1000 * 3600);
+    var num = (al - a2) / (1000 * 3600)/24;
     var hours = num.toFixed(1)
-    console.log(hours);
+    console.log("hours");
+    // console.log(hours);
     if (hours < 0) {
       wx.showModal({
         title: '提醒',
@@ -372,10 +381,17 @@ Page({
       })
       return;
     }
+    if (that.data.startDate == "") {
+      that.setData({
+        endDate: endDate,
+        hours: "0",
+      })
+    } else{
     that.setData({
       endDate: endDate,
-      hours: hours,
+      hours: Math.abs(hours),
     })
+    }
   },
 
 
@@ -392,7 +408,8 @@ Page({
         content: '请输入请假类型',
       })
       return;
-    } else if (this.data.end_date < this.data.start_date) {
+    } else if (a2 - al<0) {
+      console.log(555);
       wx.showModal({
         title: '提醒',
         content: '结束时间不能小于开始时间',

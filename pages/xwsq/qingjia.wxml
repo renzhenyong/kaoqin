@@ -31,7 +31,7 @@
     </view>
     <view class="baka_time">
       <view>请假时长</view>
-      <input class="weui-input" bindinput="bindKeyInput" placeholder="小时" style="text-align:right;margin-right:15px;" value="{{hours}}小时" />
+      <input class="weui-input" disabled bindinput="bindKeyInput" placeholder="小时" style="text-align:right;margin-right:15px;" value="{{hours}}天" />
     </view>
   </view>
   <view class="tijiao_zaopian">说明原因</view>
