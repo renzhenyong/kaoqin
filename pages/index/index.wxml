@@ -29,7 +29,7 @@
     <view style="margin-top:55px;color:#fff">正在上传...</view>
   </view>
 
-  <view class="daka_attention">
+  <view class="daka_attention" style="margin-bottom:20px;">
     <text style="color:#9A999F;margin:0 auto" hidden='{{dakasijian}}'>请在{{start_time}}-{{end_time}}之间打卡</text>
     <text class="kaoqin_gz" bindtap='gqgz'>考勤规则</text>
   </view>

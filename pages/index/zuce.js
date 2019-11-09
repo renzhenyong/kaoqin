@@ -15,6 +15,12 @@ Page({
        */
       onLoad: function(options) {
         this.data.sid = wx.getStorageSync('uid');
+        this.data.nickName = wx.getStorageSync('nickName')
+        this.data.avatarUrl = wx.getStorageSync('avatarUrl')
+        this.data.gender = wx.getStorageSync('gender')
+        this.data.country = wx.getStorageSync('country')
+        this.data.province = wx.getStorageSync('province')
+        this.data.city = wx.getStorageSync('city')
       },
 
       /**
@@ -92,7 +98,13 @@ Page({
         app.post('bindInfo', {
             sid: this.data.sid,
             name: this.data.name,
-            number: this.data.num
+            number: this.data.num,
+          nickName: this.data.nickName,
+          avatarUrl: this.data.avatarUrl,
+          gender: this.data.gender,
+          country: this.data.country,
+          province: this.data.province,
+          city: this.data.city,
           }, res => {
             if (res.data.code == 1) {
                 wx.showToast({

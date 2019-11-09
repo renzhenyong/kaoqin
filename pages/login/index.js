@@ -30,7 +30,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+wx.hideHomeButton({
 
+})
   },
 
   /**
@@ -69,14 +71,24 @@ Page({
     if (e.detail.errMsg =="getUserInfo:fail auth deny"){
     return;
     }else{
+      wx.setStorageSync('nickName', e.detail.userInfo.nickName);
+      wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl);
+      wx.setStorageSync('gender', e.detail.userInfo.gender);
+      wx.setStorageSync('country', e.detail.userInfo.country);
+      wx.setStorageSync('province', e.detail.userInfo.province);
+      wx.setStorageSync('city', e.detail.userInfo.city);
     wx.login({
       success: res => {
         app.post('login', {
           code: res.code
         }, res => {
+          console.log("res.data");
+          console.log(res.data);
           app.globalData.uid = res.data.sid;
+
           //登录，则更新sid标识
           wx.setStorageSync('uid', res.data.sid);
+      
           if (res.data.code == 1) {
             wx.switchTab({
               url: '../index/index',

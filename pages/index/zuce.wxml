@@ -2,13 +2,13 @@
 <view class="baka_bg">
   <view class="baka_content">
     <view class="senqing_ren">
-      <view>姓名</view>
+      <view style="width:50px;">姓名</view>
       <view>
         <input class="xingming" auto-focus placeholder="请输入姓名" value='{{name}}' bindinput="bindKeyInput"/>
       </view>
     </view>
     <view class="senqing_ren">
-      <view>学号</view>
+      <view style="width:50px;">学号</view>
       <view>
         <input class="xingming" auto-focus placeholder="请输入学号" value='{{num}}' bindinput="bindKeyInput1"/>
       </view>
