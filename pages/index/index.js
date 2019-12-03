@@ -10,6 +10,7 @@ const wxMap = new QQMapWX({
 });
 Page({
   data: {
+    guiqin_daka:"",
     dakatime:"",
     dakasijian:false,
     disabled: false,
@@ -63,6 +64,7 @@ Page({
         mark: option.mark
       });
     }
+
   },
   /**经纬度逆解析 */
   reverseGeocoder() {
@@ -85,10 +87,10 @@ Page({
     });
   },
 
-  onShow: function() {
+  onShow: function() { 
     var that = this;
-
     this.data.sid = wx.getStorageSync('uid');
+
     // 当前学校经纬度
     app.post('schoolInfo', {
       sid: that.data.sid
@@ -141,10 +143,21 @@ Page({
             sid: that.data.sid
           }, res => {
             if (res.data.code == 1) {
+              app.post('hadSign', {
+                sid: that.data.sid
+              }, res => {
+                if (res.data.code == 0) {
               that.setData({
-                guiqin_daka: "归勤打卡",
+                guiqin_daka: "已打卡",
                 background: "#3F88FB",
               })
+                  }else{
+                  that.setData({
+                    guiqin_daka: "归勤打卡",
+                    background: "#3F88FB",
+                  })
+                  }
+                })
             } else {
               that.setData({
                 guiqin_daka: res.data.msg,
@@ -164,18 +177,8 @@ Page({
               })
             }
           })
-          //是否已打卡
-          app.post('hadSign', {
-            sid: that.data.sid
-          }, res => {
-            if (res.data.code == 0) {
-              that.setData({
-                guiqin_daka: "已打卡",
-                background: "#3F88FB"
-              })
-            }
-          })
-          that.reverseGeocoder();
+
+        that.reverseGeocoder();
         },
         fail() {
           console.log("fail");
@@ -193,7 +196,11 @@ Page({
           })
         }
       })
-
+      // console.log(111);
+      // setInterval(function () {
+      //   that.reverseGeocoder();
+      //   console.log("轮播请求1秒触发一次");
+      // },3000) 
     } else {
       wx.reLaunch({
         url: '../login/index',
@@ -218,13 +225,13 @@ Page({
       })
       return;
     }
-    // if (that.data.isrange == '您未在考勤范围内') {
-    //   wx.showModal({
-    //     title: '提示',
-    //     content: '您未在考勤范围内',
-    //   })
-    //   return;
-    // }
+    if (that.data.isrange == '您未在考勤范围内') {
+      wx.showModal({
+        title: '提示',
+        content: '您未在考勤范围内',
+      })
+      return;
+    }
 
     let tim = util.currentTime(new Date());
     let timestamp = Date.parse(tim)
