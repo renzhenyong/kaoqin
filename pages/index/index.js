@@ -50,6 +50,7 @@ Page({
   onReady: function() {},
   onLoad: function(option) {
     app.hasLogin();
+    this.data.sid = wx.getStorageSync('uid');
     let time = util.formatTime(new Date());
     let dakatime = util.dakaTime(new Date())
     if (option == undefined) {
@@ -67,18 +68,18 @@ Page({
 
   },
   /**经纬度逆解析 */
-  reverseGeocoder() {
+  reverseGeocode() {
     var that = this;
     wxMap.reverseGeocoder({
       location: {
         // 你的经纬度
-        latitude: this.data.latitude,
-        longitude: this.data.longitude,
+        latitude: that.data.latitude,
+        longitude: that.data.longitude,
       },
       success: function(res) {
         that.setData({
           address: res.result.address,
-          addrssDetail: res.result.address_reference.landmark_l2.title
+          addrssDetail: res.result.address_component.street
         })
       },
       fail: function(res) {
@@ -87,120 +88,125 @@ Page({
     });
   },
 
-  onShow: function() { 
-    var that = this;
-    this.data.sid = wx.getStorageSync('uid');
-
-    // 当前学校经纬度
-    app.post('schoolInfo', {
-      sid: that.data.sid
-    }, res => {
-      if (res.data.code == 1) {
-        that.setData({
-          shoolname: res.data.data.name,
-          dakatime: res.data.data.time,
-          //  suselat:res.data.data.lat,
-          //  suselng: res.data.data.lng,
-        })
-        that.data.markers[0].latitude = res.data.data.lat;
-        that.data.markers[0].longitude = res.data.data.lng;
-        wx.setStorageSync('shoolname', res.data.data.name);
-      }
-    })
-
-
-    if (this.data.sid != '') {
-      var that = this
-      //获取当前的地理位置、速度
-      wx.getLocation({
-        type: 'gcj02', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
-        success: function(res) {
-          //赋值经纬度
-          that.setData({
-              latitude: parseFloat(res.latitude),
-              longitude: parseFloat(res.longitude),
-            }),
-            // 是否在考勤范围内
-            app.post('inSignDistance', {
-              sid: that.data.sid,
-              lng: that.data.longitude,
-              lat: that.data.latitude
-            }, res => {
-              if (res.data.code == 1) {
-                that.setData({
-                  isrange: "您已在考勤范围内",
-                  rangcolor: "#1AAD19"
-                })
-              } else {
-                that.setData({
-                  isrange: "您未在考勤范围内",
-                  rangcolor: "#E64340"
-                })
-              }
+  // 当前学校信息，经纬度
+schooinfo(){
+  var that = this;
+  app.post('schoolInfo', {
+    sid: that.data.sid
+  }, res => {
+    if (res.data.code == 1) {
+      that.setData({
+        shoolname: res.data.data.name,
+        dakatime: res.data.data.time,
+        //  suselat:res.data.data.lat,
+        //  suselng: res.data.data.lng,
+      })
+      that.data.markers[0].latitude = res.data.data.lat;
+      that.data.markers[0].longitude = res.data.data.lng;
+     // wx.setStorageSync('shoolname', res.data.data.name);
+    }
+  })
+},
+//考勤状态
+kaoqin(){
+  var that = this
+  //获取当前的地理位置、速度
+  wx.getLocation({
+    type: 'gcj02', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
+    success: function (res) {
+      //赋值经纬度
+      that.setData({
+        latitude: parseFloat(res.latitude),
+        longitude: parseFloat(res.longitude),
+      }),
+        // 是否在考勤范围内
+        app.post('inSignDistance', {
+          sid: that.data.sid,
+          lng: that.data.longitude,
+          lat: that.data.latitude
+        }, res => {
+          if (res.data.code == 1) {
+            that.setData({
+              isrange: "您已在考勤范围内",
+              rangcolor: "#1AAD19"
             })
-          //是否到打卡时间 
-          app.post('inSignTime', {
+          } else {
+            that.setData({
+              isrange: "您未在考勤范围内",
+              rangcolor: "#E64340"
+            })
+          }
+        })
+      //是否到打卡时间 
+      app.post('inSignTime', {
+        sid: that.data.sid
+      }, res => {
+        if (res.data.code == 1) {
+          app.post('hadSign', {
             sid: that.data.sid
           }, res => {
-            if (res.data.code == 1) {
-              app.post('hadSign', {
-                sid: that.data.sid
-              }, res => {
-                if (res.data.code == 0) {
+            if (res.data.code == 0) {
               that.setData({
                 guiqin_daka: "已打卡",
                 background: "#3F88FB",
               })
-                  }else{
-                  that.setData({
-                    guiqin_daka: "归勤打卡",
-                    background: "#3F88FB",
-                  })
-                  }
-                })
             } else {
               that.setData({
-                guiqin_daka: res.data.msg,
-                background: "#9A999F",
-               disabled:true
-              })
-          
-            }
-            if (res.data.data){
-            that.setData({
-              start_time: res.data.data.start_time.slice(0, 5),
-              end_time: res.data.data.end_time.slice(0, 5),
-            })
-            }else{
-              that.setData({
-              dakasijian:true
+                guiqin_daka: "归勤打卡",
+                background: "#3F88FB",
               })
             }
           })
+        } else {
+          that.setData({
+            guiqin_daka: res.data.msg,
+            background: "#9A999F",
+            disabled: true
+          })
 
-        that.reverseGeocoder();
-        },
-        fail() {
-          console.log("fail");
-          wx.getSetting({
-            success: function(res) {
-              console.log(res);
-              if (res.authSetting['scope.userLocation'] == false) {
-                wx.showModal({
-                  title: '',
-                  content: '请点击右上方"..."->"设置"->"地理位置"设为允许',
-                })
-              }
-
-            }
+        }
+        if (res.data.data) {
+          that.setData({
+            start_time: res.data.data.start_time.slice(0, 5),
+            end_time: res.data.data.end_time.slice(0, 5),
+          })
+        } else {
+          that.setData({
+            dakasijian: true
           })
         }
       })
-      // console.log(111);
-      // setInterval(function () {
-      //   that.reverseGeocoder();
-      //   console.log("轮播请求1秒触发一次");
-      // },3000) 
+    },
+    fail() {
+      console.log("fail");
+      wx.getSetting({
+        success: function (res) {
+          console.log(res);
+          if (res.authSetting['scope.userLocation'] == false) {
+            wx.showModal({
+              title: '',
+              content: '请点击右上方"..."->"设置"->"地理位置"设为允许',
+            })
+          }
+
+        }
+      })
+    }
+  })
+},
+  onShow: function() { 
+    if (this.data.sid != '') {
+      var that = this;
+      that.schooinfo();
+      that.kaoqin();
+      that.reverseGeocode();
+      setInterval(function () {
+      that.schooinfo();
+       that.kaoqin();
+        that.reverseGeocode();
+      }, 3000)
+
+  
     } else {
       wx.reLaunch({
         url: '../login/index',
@@ -209,7 +215,6 @@ Page({
   },
   takePhoto() {
   //  sClicked(this);
-    
     var that = this
     let dakatime1 = util.dakaTime(new Date())
     if (that.data.start_time >= dakatime1 || that.data.end_time <= dakatime1) {
