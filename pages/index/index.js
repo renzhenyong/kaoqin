@@ -242,7 +242,7 @@ kaoqin(){
     let timestamp = Date.parse(tim)
     wx.chooseImage({
       count: 1,
-      sizeType: ['original', 'compressed'],
+      sizeType: ['compressed'],
       sourceType: ['camera'],
       success(res) {
         // tempFilePath可以作为img标签的src属性显示图片

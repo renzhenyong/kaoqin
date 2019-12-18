@@ -12,17 +12,18 @@
   <view class="baka_content">
     <view class="qingjia_start">
       <text>开始时间</text>
-      <picker class='time-picker' mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" style="margin-right:15px;">
-            <view class="picker">
+   <picker class='time-picker' mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}" style="margin-right:15px;">
+           <view class="picker">
         <text hidden="{{choice1}}" class="qxz">请选择</text> 
-          <text hidden="{{choice2}}"> {{startDate}}</text>
+          <text hidden="{{choice2}}"> {{startDate}}
+
+  </text>
       </view>
-        <!-- {{startDate}} -->
       </picker>
     </view>
     <view class="baka_time">
       <view>结束时间</view>
-      <picker class='time-picker' mode="multiSelector" bindchange="bindEndMultiPickerChange" bindtap='bindEndMultiPickerChangebindEndMultiPickerChange' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" style="margin-right:15px;">
+      <picker class='time-picker' mode="multiSelector" value="{{dateTime2}}" bindchange="changeDateTime2" bindcolumnchange="changeDateTimeColumn2" range="{{dateTimeArray2}}" style="margin-right:15px;">
            <view class="picker">
         <text hidden="{{choice3}}" class="qxz">请选择</text> 
           <text hidden="{{choice4}}"> {{endDate}}</text>
@@ -31,7 +32,7 @@
     </view>
     <view class="baka_time">
       <view>请假时长</view>
-      <input class="weui-input" disabled bindinput="bindKeyInput" placeholder="小时" style="text-align:right;margin-right:15px;" value="{{hours}}天" />
+      <input class="weui-input" disabled bindinput="bindKeyInput" placeholder="小时" style="text-align:right;margin-right:15px;" value="{{hours}}小时" />
     </view>
   </view>
   <view class="tijiao_zaopian">说明原因</view>

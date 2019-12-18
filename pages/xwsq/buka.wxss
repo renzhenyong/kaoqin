@@ -54,13 +54,13 @@
 }
 
 .senqing_reason {
-  display: flex;
+
   margin-top: 10px;
 }
 
 .senqing_reason_text {
-  width: 80px;
-  font-size: 17px;
+  padding: 5px 0px;
+
 }
 
 .senqing_reason_content {
