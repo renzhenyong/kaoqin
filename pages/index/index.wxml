@@ -7,7 +7,7 @@
           <text class="schoolname">{{shoolname}}</text>
           <text class="current_time">{{time}}</text>
         </view>
-        <!-- <image src="../../img/suaxin.png" class="suaxin" bindtap="sua"></image> -->
+      <image src="../../img/suaxin.png" class="suaxin" bindtap="sua"></image>
       </view>
     </view>
     <view style="position:absolute;top:53%;left:30%;">
