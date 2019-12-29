@@ -716,9 +716,9 @@ Component({
           month: this.data.month + 1
         });
       }
-      if (this.data.month == wx.getStorageSync('nowmonth')) {
+      // if (this.data.month == wx.getStorageSync('nowmonth')) {
         this.recordes();
-      }
+      // }
       //当前月的考勤记录
       eventDetail['currentYear'] = this.data.year;
       eventDetail['currentMonth'] = this.data.month;
@@ -747,9 +747,9 @@ Component({
           month: this.data.month - 1
         })
       }
-      if (this.data.month == wx.getStorageSync('nowmonth')) {
+      // if (this.data.month == wx.getStorageSync('nowmonth')) {
         this.recordes();
-      }
+      // }
       eventDetail['currentYear'] = this.data.year;
       eventDetail['currentMonth'] = this.data.month;
       this.triggerEvent('prevMonth', eventDetail);
